@@ -1,0 +1,1369 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Iron Scythe",
+      "image": "iron_scythe.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 3,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A strong scythe.",
+      "attributes": {
+        "AttackPower": 5
+      }
+    },
+    {
+      "id": 2,
+      "name": "Poison Blade",
+      "image": "havoc_blade.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 10,
+      "aspeed": 2.7,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 4,
+      "description": "A fungal grown blade.",
+      "attributes": {
+        "AttackPower": 15
+      }
+    },
+    {
+      "id": 3,
+      "name": "Spirit Mace",
+      "image": "spirit_mace.png",
+      "type": "MACE",
+      "slot": "RIGHTHAND",
+      "level": 15,
+      "aspeed": 2.6,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A blessed mace by a cleric",
+      "attributes": {
+        "AttackPower": 24,
+        "Crit": 5
+      }
+    },
+    {
+      "id": 4,
+      "name": "Wyvern Fang",
+      "image": "wyvern_fang.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 20,
+      "aspeed": 2.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 5,
+      "description": "A refined tooth of a wyvern.",
+      "attributes": {
+        "AttackPower": 35
+      }
+    },
+    {
+      "id": 5,
+      "name": "Iron Dagger",
+      "image": "iron_dagger.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 2,
+      "aspeed": 2.6,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A basic dagger made of iron.",
+      "attributes": {
+        "AttackPower": 2
+      }
+    },
+    {
+      "id": 6,
+      "name": "Iron Axe",
+      "image": "iron_axe.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 2,
+      "aspeed": 2.8,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A basic axe made of iron.",
+      "attributes": {
+        "AttackPower": 3
+      }
+    },
+    {
+      "id": 7,
+      "name": "Iron Longsword",
+      "image": "iron_longsword.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 5,
+      "aspeed": 2.7,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A fine longsword made of iron.",
+      "attributes": {
+        "AttackPower": 8
+      }
+    },
+    {
+      "id": 8,
+      "name": "Iron Scimitar",
+      "image": "iron_scimitar.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 7,
+      "aspeed": 2.4,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 6,
+      "description": "A fine scimitar made of iron.",
+      "attributes": {
+        "AttackPower": 10
+      }
+    },
+    {
+      "id": 9,
+      "name": "Iron Sword",
+      "image": "iron_sword.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 4,
+      "aspeed": 2.7,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 5,
+      "description": "A fine sword made of iron.",
+      "attributes": {
+        "AttackPower": 4
+      }
+    },
+    {
+      "id": 10,
+      "name": "Wooden Club",
+      "image": "wooden_club.png",
+      "type": "MACE",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 5,
+      "description": "A crude wooden club.",
+      "attributes": {
+        "AttackPower": 1
+      }
+    },
+    {
+      "id": 11,
+      "name": "Wooden Shield",
+      "image": "wooden_shield.png",
+      "type": "ARMOR",
+      "slot": "LEFTHAND",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 9,
+      "description": "A wooden shield of planks.",
+      "attributes": {
+        "Armor": 10
+      }
+    },
+    {
+      "id": 12,
+      "name": "Recurve Bow",
+      "image": "recurve_bow.png",
+      "type": "BOW",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 4,
+      "aspeed": 2.8,
+      "description": "A basic recurve bow.",
+      "attributes": {
+        "AttackPower": 1
+      },
+      "projectile": "ARROW"
+    },
+    {
+      "id": 13,
+      "name": "Iron Arrows",
+      "image": "iron_arrows.png",
+      "type": "BOW",
+      "slot": "CAPE",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0,
+      "description": "A basic arrow.",
+      "attributes": {
+        "AttackPower": 1
+      },
+      "projectile": "ARROW"
+    },
+    {
+      "id": 14,
+      "name": "Iron Hatchet",
+      "image": "iron_hatchet.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 6,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 9,
+      "aspeed": 2.8,
+      "description": "A strong iron hatchet.",
+      "attributes": {
+        "AttackPower": 7
+      }
+    },
+    {
+      "id": 15,
+      "name": "Apprentice Wand",
+      "image": "apprentice_wand.png",
+      "type": "WAND",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 9,
+      "aspeed": 2.5,
+      "description": "A basic magic wand.",
+      "attributes": {
+        "AttackPower": 1
+      },
+      "projectile": "MAGIC_ORB"
+    },
+    {
+      "id": 16,
+      "name": "Scorpion Spear",
+      "image": "scorpion_spear.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 9,
+      "stackable": false,
+      "rarity": 3,
+      "weight": 7,
+      "aspeed": 3.0,
+      "description": "A tail of a scorpion on a spear.",
+      "attributes": {
+        "AttackPower": 12
+      }
+    },
+    {
+      "id": 17,
+      "name": "Founders Sword",
+      "image": "founders_sword.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "stackable": false,
+      "rarity": 4,
+      "weight": 1,
+      "description": "Thank you for supporting the game!",
+      "attributes": {
+
+      }
+    },
+    {
+      "id": 18,
+      "name": "Iron Boots",
+      "image": "iron_boots.png",
+      "type": "ARMOR",
+      "slot": "BOOTS",
+      "level": 5,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A sturdy pair of boots.",
+      "attributes": {
+        "Armor": 15
+      }
+    },
+    {
+      "id": 19,
+      "name": "Iron Chestplate",
+      "image": "iron_chestplate.png",
+      "type": "ARMOR",
+      "slot": "CHESTPLATE",
+      "level": 5,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 9,
+      "description": "A strong iron armor piece.",
+      "attributes": {
+        "Armor": 50
+      }
+    },
+    {
+      "id": 20,
+      "name": "Iron Gauntlets",
+      "image": "iron_gauntlets.png",
+      "type": "ARMOR",
+      "slot": "GLOVES",
+      "level": 5,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 4,
+      "description": "A strong iron armor piece.",
+      "attributes": {
+        "Armor": 10
+      }
+    },
+    {
+      "id": 21,
+      "name": "Iron Helmet",
+      "image": "iron_helmet.png",
+      "type": "ARMOR",
+      "slot": "HELMET",
+      "level": 5,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 6,
+      "description": "A strong iron armor piece.",
+      "attributes": {
+        "Armor": 15
+      }
+    },
+    {
+      "id": 22,
+      "name": "Iron Platelegs",
+      "image": "iron_platelegs.png",
+      "type": "ARMOR",
+      "slot": "PLATELEGS",
+      "level": 5,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A strong iron armor piece.",
+      "attributes": {
+        "Armor": 25
+      }
+    },
+    {
+      "id": 23,
+      "name": "Iron Shield",
+      "image": "iron_shield.png",
+      "type": "ARMOR",
+      "slot": "LEFTHAND",
+      "level": 5,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 8,
+      "description": "A strong iron armor piece.",
+      "attributes": {
+        "Armor": 30
+      }
+    },
+    {
+      "id": 24,
+      "name": "Berzerker Axe",
+      "image": "berzerker_axe.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 12,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 11,
+      "aspeed": 2.5,
+      "description": "A devastating axe used by orcs.",
+      "attributes": {
+        "AttackPower": 16
+      }
+    },
+    {
+      "id": 25,
+      "name": "Ancient Pendant",
+      "image": "ancient_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 3,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 2,
+      "description": "An old enchanted pendant.",
+      "attributes": {
+        "Crit": 1
+      }
+    },
+    {
+      "id": 26,
+      "name": "Kull Pendant",
+      "image": "kull_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 14,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A pendant used by Kull himself.",
+      "attributes": {
+        "Crit": 2
+      }
+    },
+    {
+      "id": 27,
+      "name": "Axe of Truth",
+      "image": "axe_of_truth.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 27,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 13,
+      "aspeed": 2.6,
+      "description": "A axe that commands truth.",
+      "attributes": {
+        "AttackPower": 46
+      }
+    },
+    {
+      "id": 28,
+      "name": "Aximus Pendant",
+      "image": "aximus_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 18,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A pendant that boosts axe prof.",
+      "attributes": {
+        "Strength": 3
+      }
+    },
+    {
+      "id": 29,
+      "name": "Bow Staff",
+      "image": "bowstaff.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 7,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 13,
+      "aspeed": 3.0,
+      "description": "A basic bow staff.",
+      "attributes": {
+        "AttackPower": 8
+      },
+      "projectile": "MAGIC_ORB"
+    },
+    {
+      "id": 30,
+      "name": "Bloodthirster",
+      "image": "bloodthirster.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 32,
+      "stackable": false,
+      "rarity": 5,
+      "weight": 3,
+      "description": "A powerful katana that needs blood.",
+      "aspeed": 2.4,
+      "attributes": {
+        "AttackPower": 72
+      }
+    },
+    {
+      "id": 31,
+      "name": "Chromatic Pendant",
+      "image": "chromatic_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 9,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A colourful pendant.",
+      "attributes": {
+        "Intellect": 2
+      }
+    },
+    {
+      "id": 32,
+      "name": "Crescent Moon Pendant",
+      "image": "crescent_moon.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 15,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A pendant powered by the moon.",
+      "attributes": {
+        "Intellect": 4
+      }
+    },
+    {
+      "id": 33,
+      "name": "Crystalline Pendant",
+      "image": "crystaline_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 36,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A powerful crystal pendant.",
+      "attributes": {
+        "Intellect": 12
+      }
+    },
+    {
+      "id": 34,
+      "name": "Crystalline Staff",
+      "image": "crystaline_staff.png",
+      "type": "WAND",
+      "slot": "RIGHTHAND",
+      "level": 32,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 11,
+      "aspeed": 3.0,
+      "description": "A powerful crystal staff.",
+      "attributes": {
+        "AttackPower": 60
+      },
+      "projectile": "MAGIC_ORB"
+    },
+    {
+      "id": 35,
+      "name": "Diabolical Pendant",
+      "image": "diabolical_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 17,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "An evil pendant.",
+      "attributes": {
+        "Strength": 4
+      }
+    },
+    {
+      "id": 36,
+      "name": "Demon Blade",
+      "image": "demon_blade.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 40,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 13,
+      "aspeed": 2.6,
+      "description": "A blade forged to slay demons.",
+      "attributes": {
+        "AttackPower": 72
+      }
+    },
+    {
+      "id": 37,
+      "name": "Dragon's Bane",
+      "image": "dragons_bane.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 30,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 12,
+      "description": "A blade forged to slay dragons.",
+      "aspeed": 2.4,
+      "attributes": {
+        "AttackPower": 48
+      }
+    },
+    {
+      "id": 38,
+      "name": "Eartharian Staff",
+      "image": "earth_staff.png",
+      "type": "WAND",
+      "slot": "RIGHTHAND",
+      "level": 37,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 12,
+      "aspeed": 3.0,
+      "description": "A staff of earth.",
+      "attributes": {
+        "AttackPower": 48
+      },
+      "projectile": "MAGIC_ORB"
+    },
+    {
+      "id": 39,
+      "name": "Demon Boots",
+      "image": "demon_boots.png",
+      "type": "ARMOR",
+      "slot": "BOOTS",
+      "level": 40,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A powerful armor forged from demon's",
+      "attributes": {
+        "Armor": 240
+      }
+    },
+    {
+      "id": 40,
+      "name": "Demon Chestplate",
+      "image": "demon_chestplate.png",
+      "type": "ARMOR",
+      "slot": "CHESTPLATE",
+      "level": 40,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 17,
+      "description": "A powerful armor forged from demon's",
+      "attributes": {
+        "Armor": 560
+      }
+    },
+    {
+      "id": 41,
+      "name": "Demon Gauntlets",
+      "image": "demon_gauntlets.png",
+      "type": "ARMOR",
+      "slot": "GLOVES",
+      "level": 40,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 9,
+      "description": "A powerful armor forged from demon's",
+      "attributes": {
+        "Armor": 160
+      }
+    },
+    {
+      "id": 42,
+      "name": "Demon Helmet",
+      "image": "demon_helmet.png",
+      "type": "ARMOR",
+      "slot": "HELMET",
+      "level": 40,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 8,
+      "description": "A powerful armor forged from demon's",
+      "attributes": {
+        "Armor": 200
+      }
+    },
+    {
+      "id": 43,
+      "name": "Demon Platelegs",
+      "image": "demon_platelegs.png",
+      "type": "ARMOR",
+      "slot": "PLATELEGS",
+      "level": 40,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 15,
+      "description": "A powerful armor forged from demon's",
+      "attributes": {
+        "Armor": 300
+      }
+    },
+    {
+      "id": 44,
+      "name": "Gloom Blade",
+      "image": "gloom_blade.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 34,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 15,
+      "aspeed": 2.4,
+      "description": "A sword of pure darkness.",
+      "attributes": {
+        "AttackPower": 40
+      }
+    },
+    {
+      "id": 45,
+      "name": "Valkrie Spear",
+      "image": "valkrie_spear.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 11,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 15,
+      "aspeed": 3.4,
+      "description": "A spear used by warrior's",
+      "attributes": {
+        "AttackPower": 14
+      }
+    },
+    {
+      "id": 46,
+      "name": "Infernal Axe",
+      "image": "infernal_axe.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 45,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 34,
+      "aspeed": 2.5,
+      "description": "An axe forged from hell fire.",
+      "attributes": {
+        "AttackPower": 92
+      }
+    },
+    {
+      "id": 47,
+      "name": "Infernal Spear",
+      "image": "infernal_spear.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 47,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 38,
+      "aspeed": 4.2,
+      "description": "An spear forged from hell fire.",
+      "attributes": {
+        "AttackPower": 112
+      }
+    },
+    {
+      "id": 48,
+      "name": "Kathulian Pendant",
+      "image": "kath_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 41,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 8,
+      "description": "A pendant used by the sea god's.",
+      "attributes": {
+        "Strength": 8,
+        "Stamina": 8,
+        "Agility": 8,
+        "Intellect": 8
+      }
+    },
+    {
+      "id": 49,
+      "name": "Large Buckler",
+      "image": "large_buckler.png",
+      "type": "ARMOR",
+      "slot": "LEFTHAND",
+      "level": 10,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 16,
+      "description": "A large shield.",
+      "attributes": {
+        "Armor": 100
+      }
+    },
+    {
+      "id": 50,
+      "name": "Life Pendant",
+      "image": "life_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 34,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 11,
+      "description": "A pendant that gives hp regen.",
+      "attributes": {
+        "HpRegen": 12
+      }
+    },
+    {
+      "id": 51,
+      "name": "Moonlit Axe",
+      "image": "moonlit_axe.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 29,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 23,
+      "description": "An that radiates with the moon.",
+      "aspeed": 2.4,
+      "attributes": {
+        "AttackPower": 44
+      }
+    },
+    {
+      "id": 52,
+      "name": "Oblivionic Boots",
+      "image": "oblivion_boots.png",
+      "type": "ARMOR",
+      "slot": "BOOTS",
+      "level": 50,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A powerful armor forged from the oblivion.",
+      "attributes": {
+        "Armor": 320
+      }
+    },
+    {
+      "id": 53,
+      "name": "Oblivionic Chestplate",
+      "image": "oblivion_chestplate.png",
+      "type": "ARMOR",
+      "slot": "CHESTPLATE",
+      "level": 50,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 17,
+      "description": "A powerful armor forged from the oblivion.",
+      "attributes": {
+        "Armor": 620
+      }
+    },
+    {
+      "id": 54,
+      "name": "Oblivionic Gauntlets",
+      "image": "oblivion_gauntlets.png",
+      "type": "ARMOR",
+      "slot": "GLOVES",
+      "level": 50,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 9,
+      "description": "A powerful armor forged from the oblivion.",
+      "attributes": {
+        "Armor": 240
+      }
+    },
+    {
+      "id": 55,
+      "name": "Oblivionic Helmet",
+      "image": "oblivion_helmet.png",
+      "type": "ARMOR",
+      "slot": "HELMET",
+      "level": 50,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 8,
+      "description": "A powerful armor forged from the oblivion.",
+      "attributes": {
+        "Armor": 370
+      }
+    },
+    {
+      "id": 56,
+      "name": "Oblivionic Platelegs",
+      "image": "oblivion_platelegs.png",
+      "type": "ARMOR",
+      "slot": "PLATELEGS",
+      "level": 50,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 15,
+      "description": "A powerful armor forged from the oblivion.",
+      "attributes": {
+        "Armor": 500
+      }
+    },
+    {
+      "id": 57,
+      "name": "Politonic Pendant",
+      "image": "politonic_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 43,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 15,
+      "description": "An amulet that binds elements.",
+      "attributes": {
+        "Intellect": 20
+      }
+    },
+    {
+      "id": 58,
+      "name": "Rahth's Pendant",
+      "image": "rahths_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 41,
+      "stackable": false,
+      "rarity": 4,
+      "weight": 15,
+      "description": "An amulet given by the god's.",
+      "attributes": {
+      }
+    },
+    {
+      "id": 59,
+      "name": "Ranger Bow",
+      "image": "ranger_bow.png",
+      "type": "BOW",
+      "slot": "RIGHTHAND",
+      "level": 30,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 15,
+      "aspeed": 3.0,
+      "description": "A perfect crafted bow.",
+      "attributes": {
+        "AttackPower": 32
+      },
+      "projectile": "ARROW"
+    },
+    {
+      "id": 60,
+      "name": "Ranger Arrows",
+      "image": "ranger_arrows.png",
+      "type": "ITEM",
+      "slot": "CAPE",
+      "level": 30,
+      "stackable": false,
+      "rarity": 1,
+      "weight": 0,
+      "description": "A powerful arrow.",
+      "attributes": {
+        "AttackPower": 24
+      },
+      "projectile": "ARROW"
+    },
+    {
+      "id": 61,
+      "name": "Ranger Boots",
+      "image": "ranger_boots.png",
+      "type": "ARMOR",
+      "slot": "BOOTS",
+      "level": 30,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A strong piece of ranger armor.",
+      "attributes": {
+        "Armor": 160
+      }
+    },
+    {
+      "id": 62,
+      "name": "Ranger Chestplate",
+      "image": "ranger_chestplate.png",
+      "type": "ARMOR",
+      "slot": "CHESTPLATE",
+      "level": 30,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 14,
+      "description": "A strong piece of ranger armor.",
+      "attributes": {
+        "Armor": 320
+      }
+    },
+    {
+      "id": 63,
+      "name": "Ranger Gloves",
+      "image": "ranger_gloves.png",
+      "type": "ARMOR",
+      "slot": "GLOVES",
+      "level": 30,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 4,
+      "description": "A strong piece of ranger armor.",
+      "attributes": {
+        "Armor": 120
+      }
+    },
+    {
+      "id": 64,
+      "name": "Ranger Hood",
+      "image": "ranger_hood.png",
+      "type": "ARMOR",
+      "slot": "HELMET",
+      "level": 30,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 6,
+      "description": "A strong piece of ranger armor.",
+      "attributes": {
+        "Armor": 180
+      }
+    },
+    {
+      "id": 65,
+      "name": "Ranger Chaps",
+      "image": "ranger_chaps.png",
+      "type": "ARMOR",
+      "slot": "PLATELEGS",
+      "level": 30,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 14,
+      "description": "A strong piece of ranger armor.",
+      "attributes": {
+        "Armor": 260
+      }
+    },
+    {
+      "id": 66,
+      "name": "Ranger Pendant",
+      "image": "ranger_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 33,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 4,
+      "description": "A powerful ranger pendant.",
+      "attributes": {
+        "Agility": 22
+      }
+    },
+    {
+      "id": 67,
+      "name": "RoseEye Pendant",
+      "image": "roseeye_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 16,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 4,
+      "description": "A powerful pendant.",
+      "attributes": {
+      }
+    },
+    {
+      "id": 68,
+      "name": "Serpentine Amulet",
+      "image": "serpentine_amulet.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 2,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 2,
+      "description": "A powerful pendant.",
+      "attributes": {
+      }
+    },
+    {
+      "id": 69,
+      "name": "Skullsplitter Pendant",
+      "image": "skullsplitter_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 22,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A powerful pendant.",
+      "attributes": {
+      }
+    },
+    {
+      "id": 70,
+      "name": "Splinter Mace",
+      "image": "splinter_mace.png",
+      "type": "MACE",
+      "slot": "RIGHTHAND",
+      "level": 47,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "aspeed": 3.2,
+      "description": "A powerful pendant.",
+      "attributes": {
+        "AttackPower": 120
+      }
+    },
+    {
+      "id": 71,
+      "name": "Sun Pendant",
+      "image": "sun_pendant.png",
+      "type": "ACCESSORY",
+      "slot": "NECKLACE",
+      "level": 18,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A powerful pendant.",
+      "attributes": {
+      }
+    },
+    {
+      "id": 72,
+      "name": "Pestilent Emissary",
+      "image": "pestilent_dagger.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 57,
+      "stackable": false,
+      "rarity": 5,
+      "weight": 13,
+      "aspeed": 2.0,
+      "description": "A powerful dagger.",
+      "attributes": {
+        "AttackPower": 160
+      }
+    },
+    {
+      "id": 73,
+      "name": "Thunder Fury",
+      "image": "thunder_fury.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 57,
+      "stackable": false,
+      "rarity": 5,
+      "weight": 13,
+      "aspeed": 3.2,
+      "description": "A powerful axe.",
+      "attributes": {
+        "AttackPower": 180
+      }
+    },
+    {
+      "id": 74,
+      "name": "Wand of Life",
+      "image": "life_wand.png",
+      "type": "WAND",
+      "slot": "RIGHTHAND",
+      "level": 57,
+      "stackable": false,
+      "rarity": 5,
+      "weight": 13,
+      "aspeed": 2.6,
+      "description": "A powerful wand.",
+      "attributes": {
+        "AttackPower": 160
+      },
+      "projectile": "MAGIC_ORB"
+    },
+    {
+      "id": 75,
+      "name": "Coins",
+      "image": "coins.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0,
+      "description": "Shiny gold coins.",
+      "attributes": {
+      }
+    },
+    {
+      "id": 76,
+      "name": "Carrot",
+      "image": "carrot.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A delicious carrot.",
+      "attributes": {
+        "CurrentHp": 15
+      }
+    },
+    {
+      "id": 77,
+      "name": "Beet Sprout",
+      "image": "beat.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 3,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A delicious beet.",
+      "attributes": {
+        "CurrentHp": 35
+      }
+    },
+    {
+      "id": 78,
+      "name": "Apple",
+      "image": "apple.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 5,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A hearty apple.",
+      "attributes": {
+        "CurrentHp": 70
+      }
+    },
+    {
+      "id": 79,
+      "name": "Cooked Ribs",
+      "image": "cooked_ribs.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 8,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A hearty pile of ribs.",
+      "attributes": {
+        "CurrentHp": 140
+      }
+    },
+    {
+      "id": 80,
+      "name": "Grapes",
+      "image": "grapes.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A hearty pile of grapes.",
+      "attributes": {
+        "CurrentHp": 10
+      }
+    },
+    {
+      "id": 81,
+      "name": "Health Potion",
+      "image": "health_potion.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 10,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A health potion.",
+      "attributes": {
+        "CurrentHp": 250
+      }
+    },
+    {
+      "id": 82,
+      "name": "Mana Potion",
+      "image": "mana_potion.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 10,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A mana potion.",
+      "attributes": {
+        "CurrentMana": 250
+      }
+    },
+    {
+      "id": 83,
+      "name": "Apprentice Staff",
+      "image": "apprentice_staff.png",
+      "type": "WAND",
+      "slot": "RIGHTHAND",
+      "level": 2,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 9,
+      "description": "A basic magic wand.",
+      "aspeed": 3.0,
+      "attributes": {
+        "AttackPower": 3
+      },
+      "projectile": "MAGIC_ORB"
+    },
+    {
+      "id": 84,
+      "name": "Moonlit Wand",
+      "image": "moonlit_wand.png",
+      "type": "WAND",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 9,
+      "description": "A basic magic wand.",
+      "aspeed": 2.8,
+      "attributes": {
+        "AttackPower": 1
+      },
+      "projectile": "MAGIC_ORB"
+    },
+    {
+      "id": 85,
+      "name": "Spidersilk Bow",
+      "image": "spidersilk_bow.png",
+      "type": "BOW",
+      "slot": "RIGHTHAND",
+      "level": 5,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 4,
+      "description": "A strong spider bow.",
+      "aspeed": 2.8,
+      "attributes": {
+        "AttackPower": 5
+      },
+      "projectile": "ARROW"
+    },
+    {
+      "id": 86,
+      "name": "Oak Log",
+      "image": "oak_log.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A strong oak log.",
+      "attributes": {
+        "Gold": 1
+      }
+    },
+    {
+      "id": 87,
+      "name": "Willow Log",
+      "image": "willow_log.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A sturdy willow log.",
+      "attributes": {
+        "Gold": 4
+      }
+    },
+    {
+      "id": 88,
+      "name": "Maple Log",
+      "image": "maple_log.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A sturdy maple log.",
+      "attributes": {
+        "Gold": 10
+      }
+    }
+  ]
+}

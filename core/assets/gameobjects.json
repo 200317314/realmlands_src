@@ -1,0 +1,231 @@
+{
+  "objects": [
+    {
+      "id": 0,
+      "name": "Tree",
+      "image": "tree_a.png",
+      "rarity": -1,
+      "description": "A tree",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 1,
+      "name": "Tree Stump",
+      "image": "stump_a.png",
+      "rarity": -1,
+      "description": "A stump",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 2,
+      "name": "Spruce",
+      "image": "tree_b.png",
+      "rarity": -1,
+      "description": "A spruce tree",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 3,
+      "name": "Spruce Stump",
+      "image": "stump_b.png",
+      "rarity": -1,
+      "description": "A spruce stump",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 4,
+      "name": "Barrel",
+      "image": "barrel.png",
+      "rarity": -1,
+      "description": "A barrel",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 5,
+      "name": "Rocks",
+      "image": "rocks.png",
+      "rarity": -1,
+      "description": "A rock",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 6,
+      "name": "Skull Spike",
+      "image": "skull_spike.png",
+      "rarity": -1,
+      "description": "A spike",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 7,
+      "name": "Chest Closed",
+      "image": "chest_closed.png",
+      "rarity": -1,
+      "description": "A chest",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 8,
+      "name": "Rocks",
+      "image": "rocks_a.png",
+      "rarity": -1,
+      "description": "A rock",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 9,
+      "name": "Chest Open",
+      "image": "chest_open.png",
+      "rarity": -1,
+      "description": "A rock",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 10,
+      "name": "Campfire",
+      "image": "campfire.png",
+      "rarity": -1,
+      "description": "A unlit campfire",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 11,
+      "name": "Campfire Lit",
+      "image": "campfire_lit.png",
+      "rarity": -1,
+      "description": "A lit campfire",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 12,
+      "name": "Castle",
+      "image": "castle.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 13,
+      "name": "House",
+      "image": "house.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 14,
+      "name": "Market",
+      "image": "market1_withstuff.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 15,
+      "name": "Market",
+      "image": "market2_withstuff.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 16,
+      "name": "Market",
+      "image": "market_1.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 17,
+      "name": "Market",
+      "image": "market_2.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 18,
+      "name": "Portal",
+      "image": "portal.png",
+      "rarity": -1,
+      "description": "",
+      "type": "PORTAL"
+    },
+    {
+      "id": 19,
+      "name": "Water Well",
+      "image": "water_well.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 20,
+      "name": "Windmill",
+      "image": "windmill.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 21,
+      "name": "Church",
+      "image": "church.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 22,
+      "name": "Return Portal",
+      "image": "portal_1.png",
+      "rarity": -1,
+      "description": "",
+      "type": "PORTAL"
+    },
+    {
+      "id": 23,
+      "name": "Oak Tree",
+      "image": "oak_tree.png",
+      "rarity": -1,
+      "description": "Must have level 1 woodcutting.",
+      "type": "RESOURCE",
+      "tree_type": "OAK_TREE"
+    },
+    {
+      "id": 24,
+      "name": "Oak Stump",
+      "image": "oak_stump.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 25,
+      "name": "Willow Tree",
+      "image": "willow_tree.png",
+      "rarity": -1,
+      "description": "Must have level 5 woodcutting.",
+      "type": "RESOURCE",
+      "tree_type": "WILLOW_TREE"
+    },
+    {
+      "id": 26,
+      "name": "Willow Stump",
+      "image": "willow_stump.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 27,
+      "name": "Maple Tree",
+      "image": "maple_tree.png",
+      "rarity": -1,
+      "description": "Must have level 10 woodcutting.",
+      "type": "RESOURCE",
+      "tree_type": "MAPLE_TREE"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "npcs": [
+    {
+      "id": 1,
+      "name": "Seymour",
+      "image": "banker.png",
+      "type": "BANKER",
+      "shop": -1
+    },
+    {
+      "id": 2,
+      "name": "Ghorza",
+      "image": "shopkeeper_2.png",
+      "type": "TRADER",
+      "shop": 1
+    },
+    {
+      "id": 3,
+      "name": "Gamel",
+      "image": "shopkeeper_1.png",
+      "type": "TRADER",
+      "shop": 2
+    },
+    {
+      "id": 4,
+      "name": "Romella",
+      "image": "shopkeeper_3.png",
+      "type": "TRADER",
+      "shop": 3
+    },
+    {
+      "id": 5,
+      "name": "Rabaz",
+      "image": "shopkeeper_5.png",
+      "type": "TRADER",
+      "shop": 4
+    }
+  ]
+}

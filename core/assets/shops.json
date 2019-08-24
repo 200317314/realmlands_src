@@ -1,0 +1,132 @@
+{
+  "shops": [
+    {
+      "id": 1,
+      "name": "Magic Supplies Store",
+      "level": -1,
+      "currency": 75,
+      "items": [
+        {
+          "id": 81
+        },
+        {
+          "id": 82
+        },
+        {
+          "id": 84
+        },
+        {
+          "id": 83
+        },
+        {
+          "id": 32
+        },
+        {
+          "id": 68
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Food Supply Store",
+      "level": -1,
+      "currency": 75,
+      "items": [
+        {
+          "id": 76
+        },
+        {
+          "id": 77
+        },
+        {
+          "id": 78
+        },
+        {
+          "id": 79
+        },
+        {
+          "id": 80
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Projectile Store",
+      "level": -1,
+      "currency": 75,
+      "items": [
+        {
+          "id": 13
+        },
+        {
+          "id": 60
+        },
+        {
+          "id": 12
+        },
+        {
+          "id": 85
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Armoury Store",
+      "level": -1,
+      "currency": 75,
+      "items": [
+        {
+          "id": 10
+        },
+        {
+          "id": 11
+        },
+        {
+          "id": 1
+        },
+        {
+          "id": 5
+        },
+        {
+          "id": 6
+        },
+        {
+          "id": 7
+        },
+        {
+          "id": 8
+        },
+        {
+          "id": 9
+        },
+        {
+          "id": 14
+        },
+        {
+          "id": 18
+        },
+        {
+          "id": 19
+        },
+        {
+          "id": 20
+        },
+        {
+          "id": 21
+        },
+        {
+          "id": 22
+        },
+        {
+          "id": 23
+        },
+        {
+          "id": 24
+        },
+        {
+          "id": 25
+        }
+      ]
+    }
+  ]
+}
