@@ -10,5 +10,6 @@ public enum SlotType {
     LEFTHAND,
     CAPE,
     GLOVES,
-    ITEM
+    ITEM,
+    RING
 }

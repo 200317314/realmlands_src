@@ -17,22 +17,6 @@
       "type": "BUIILDING"
     },
     {
-      "id": 2,
-      "name": "Spruce",
-      "image": "tree_b.png",
-      "rarity": -1,
-      "description": "A spruce tree",
-      "type": "BUIILDING"
-    },
-    {
-      "id": 3,
-      "name": "Spruce Stump",
-      "image": "stump_b.png",
-      "rarity": -1,
-      "description": "A spruce stump",
-      "type": "BUIILDING"
-    },
-    {
       "id": 4,
       "name": "Barrel",
       "image": "barrel.png",
@@ -226,6 +210,67 @@
       "description": "Must have level 10 woodcutting.",
       "type": "RESOURCE",
       "tree_type": "MAPLE_TREE"
+    },
+    {
+      "id": 28,
+      "name": "Shrimp Fishing",
+      "image": "shrimp_fishspot.png",
+      "rarity": -1,
+      "description": "Must have level 1 fishing.",
+      "type": "RESOURCE",
+      "tree_type": "SHRIMP_FISHSPOT"
+    },
+    {
+      "id": 29,
+      "name": "Crayfish Fishing",
+      "image": "crayfish_fishspot.png",
+      "rarity": -1,
+      "description": "Must have level 1 fishing.",
+      "type": "RESOURCE",
+      "tree_type": "CRAYFISH_FISHSPOT"
+    },
+    {
+      "id": 30,
+      "name": "White Perch Fishing",
+      "image": "whiteperch_fishspot.png",
+      "rarity": -1,
+      "description": "Must have level 3 fishing.",
+      "type": "RESOURCE",
+      "tree_type": "WHITEPERCH_FISHSPOT"
+    },
+    {
+      "id": 31,
+      "name": "Empty Brown Rock",
+      "image": "empty_brown_rock.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 32,
+      "name": "Empty Grey Rock",
+      "image": "empty_grey_rock.png",
+      "rarity": -1,
+      "description": "",
+      "type": "BUIILDING"
+    },
+    {
+      "id": 33,
+      "name": "Copper Rock",
+      "image": "copper_rock.png",
+      "rarity": -1,
+      "description": "Must have level 1 mining.",
+      "type": "RESOURCE",
+      "tree_type": "COPPER_ROCK"
+    },
+    {
+      "id": 34,
+      "name": "Tin Rock",
+      "image": "tin_rock.png",
+      "rarity": -1,
+      "description": "Must have level 1 mining.",
+      "type": "RESOURCE",
+      "tree_type": "TIN_ROCK"
     }
   ]
 }

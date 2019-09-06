@@ -1364,6 +1364,940 @@
       "attributes": {
         "Gold": 10
       }
+    },
+    {
+      "id": 89,
+      "name": "Crayfish",
+      "image": "crayfish.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A tiny blue uncooked lobster.",
+      "attributes": {
+        "Gold": 1
+      }
+    },
+    {
+      "id": 90,
+      "name": "Minnows",
+      "image": "minnow.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A small looking uncooked fish",
+      "attributes": {
+        "Gold": 3
+      }
+    },
+    {
+      "id": 91,
+      "name": "Shrimp",
+      "image": "shrimp.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A tasty looking uncooked seafood.",
+      "attributes": {
+        "Gold": 1
+      }
+    },
+    {
+      "id": 92,
+      "name": "SmallMouth Bass",
+      "image": "smallmouth_bass.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "An uncooked fish.",
+      "attributes": {
+        "Gold": 30
+      }
+    },
+    {
+      "id": 93,
+      "name": "Striped Bass",
+      "image": "striped_bass.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A medium sized uncooked fish.",
+      "attributes": {
+        "Gold": 10
+      }
+    },
+    {
+      "id": 94,
+      "name": "Trout",
+      "image": "trout.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A medium sized uncooked fish.",
+      "attributes": {
+        "Gold": 15
+      }
+    },
+    {
+      "id": 95,
+      "name": "Walleye",
+      "image": "walleye.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A medium sized uncooked fish.",
+      "attributes": {
+        "Gold": 20
+      }
+    },
+    {
+      "id": 96,
+      "name": "White Perch",
+      "image": "white_perch.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A medium sized uncooked fish.",
+      "attributes": {
+        "Gold": 5
+      }
+    },
+    {
+      "id": 97,
+      "name": "Yellow Perch",
+      "image": "yellow_perch.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A medium sized uncooked fish.",
+      "attributes": {
+        "Gold": 7
+      }
+    },
+    {
+      "id": 98,
+      "name": "Onion",
+      "image": "onion.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A delicious onion.",
+      "attributes": {
+        "CurrentHp": 10
+      }
+    },
+    {
+      "id": 99,
+      "name": "Pear",
+      "image": "pear.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A delicious pear.",
+      "attributes": {
+        "CurrentHp": 25
+      }
+    },
+    {
+      "id": 99,
+      "name": "Green Apple",
+      "image": "green_apple.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A delicious apple.",
+      "attributes": {
+        "CurrentHp": 20
+      }
+    },
+    {
+      "id": 100,
+      "name": "Cooked Crayfish",
+      "image": "cooked_crayfish.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 2,
+      "weight": 0.4,
+      "description": "A deliciously cooked crayfish.",
+      "attributes": {
+        "CurrentHp": 150
+      }
+    },
+    {
+      "id": 101,
+      "name": "Cooked Minnow",
+      "image": "cooked_minnow.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 2,
+      "weight": 0.4,
+      "description": "A deliciously cooked minnow.",
+      "attributes": {
+        "CurrentHp": 180
+      }
+    },
+    {
+      "id": 102,
+      "name": "Cooked SmallMouth Bass",
+      "image": "cooked_smallmouth_bass.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 2,
+      "weight": 0.4,
+      "description": "A deliciously cooked smallmouth bass.",
+      "attributes": {
+        "CurrentHp": 650
+      }
+    },
+    {
+      "id": 103,
+      "name": "Cooked Striped Bass",
+      "image": "cooked_striped_bass.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 2,
+      "weight": 0.4,
+      "description": "A deliciously cooked striped bass.",
+      "attributes": {
+        "CurrentHp": 260
+      }
+    },
+    {
+      "id": 104,
+      "name": "Cooked Trout",
+      "image": "cooked_trout.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 2,
+      "weight": 0.4,
+      "description": "A deliciously cooked trout.",
+      "attributes": {
+        "CurrentHp": 380
+      }
+    },
+    {
+      "id": 105,
+      "name": "Cooked Walleye",
+      "image": "cooked_walleye.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 2,
+      "weight": 0.4,
+      "description": "A deliciously cooked walleye.",
+      "attributes": {
+        "CurrentHp": 460
+      }
+    },
+    {
+      "id": 106,
+      "name": "Cooked White Perch",
+      "image": "cooked_white_perch.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 2,
+      "weight": 0.4,
+      "description": "A deliciously cooked white perch.",
+      "attributes": {
+        "CurrentHp": 200
+      }
+    },
+    {
+      "id": 107,
+      "name": "Cooked Yellow Perch",
+      "image": "cooked_yellow_perch.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 2,
+      "weight": 0.4,
+      "description": "A deliciously cooked yellow perch.",
+      "attributes": {
+        "CurrentHp": 225
+      }
+    },
+    {
+      "id": 108,
+      "name": "Cooked Shrimp",
+      "image": "cooked_shrimp.png",
+      "type": "CONSUMABLE",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 2,
+      "weight": 0.4,
+      "description": "A deliciously cooked shrimp.",
+      "attributes": {
+        "CurrentHp": 150
+      }
+    },
+    {
+      "id": 109,
+      "name": "Fishing Rod",
+      "image": "fishing_rod.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A basic fishing rod.",
+      "attributes": {
+        "AttackPower": 1,
+        "Fishing": 1
+      },
+      "restriction": {
+        "Fishing": 1
+      }
+    },
+    {
+      "id": 110,
+      "name": "Wooden Pickaxe",
+      "image": "wooden_pickaxe.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A basic pickaxe.",
+      "attributes": {
+        "AttackPower": 1,
+        "Mining": 1
+      },
+      "restriction": {
+        "Mining": 1
+      }
+    },
+    {
+      "id": 111,
+      "name": "Wooden Hatchet",
+      "image": "wooden_hatchet.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A basic hatchet.",
+      "attributes": {
+        "AttackPower": 1,
+        "Woodcutting": 1
+      },
+      "restriction": {
+        "Woodcutting": 1
+      }
+    },
+    {
+      "id": 112,
+      "name": "Silver Ring",
+      "image": "silver_ring.png",
+      "type": "ACCESSORY",
+      "slot": "RING",
+      "level": 5,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A blessed silver ring.",
+      "attributes": {
+      }
+    },
+    {
+      "id": 113,
+      "name": "Gold Ring",
+      "image": "gold_ring.png",
+      "type": "ACCESSORY",
+      "slot": "RING",
+      "level": 10,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A blessed gold ring.",
+      "attributes": {
+      }
+    },
+    {
+      "id": 114,
+      "name": "Iron Hatchet",
+      "image": "iron_hatchet.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A hatchet.",
+      "attributes": {
+        "AttackPower": 3,
+        "Woodcutting": 5
+      },
+      "restriction": {
+        "Woodcutting": 5
+      }
+    },
+    {
+      "id": 115,
+      "name": "Iron Fishing Rod",
+      "image": "iron_fishing_rod.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A fishing rod.",
+      "attributes": {
+        "AttackPower": 3,
+        "Fishing": 3
+      },
+      "restriction": {
+        "Fishing": 5
+      }
+    },
+    {
+      "id": 116,
+      "name": "Gold Pickaxe",
+      "image": "gold_pickaxe.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A shiny pickaxe.",
+      "attributes": {
+        "AttackPower": 3,
+        "Mining": 3
+      },
+      "restriction": {
+        "Mining": 5
+      }
+    },
+    {
+      "id": 117,
+      "name": "Bone Pickaxe",
+      "image": "bone_pickaxe.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A shiny pickaxe.",
+      "attributes": {
+        "AttackPower": 3,
+        "Mining": 7
+      },
+      "restriction": {
+        "Mining": 10
+      }
+    },
+    {
+      "id": 118,
+      "name": "Bone Fishing Rod",
+      "image": "bone_fishing_rod.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A shiny fishing rod.",
+      "attributes": {
+        "AttackPower": 3,
+        "Fishing": 7
+      },
+      "restriction": {
+        "Fishing": 10
+      }
+    },
+    {
+      "id": 119,
+      "name": "Bone Hatchet",
+      "image": "bone_hatchet.png",
+      "type": "AXE",
+      "slot": "RIGHTHAND",
+      "level": 1,
+      "aspeed": 3.0,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 3,
+      "description": "A shiny hatchet.",
+      "attributes": {
+        "AttackPower": 3,
+        "Woodcutting": 7
+      },
+      "restriction": {
+        "Woodcutting": 10
+      }
+    },
+    {
+      "id": 120,
+      "name": "Bone Crown",
+      "image": "bone_crown.png",
+      "type": "ARMOR",
+      "slot": "HELMET",
+      "level": 10,
+      "stackable": false,
+      "rarity": 5,
+      "weight": 6,
+      "description": "A bone lords crown",
+      "attributes": {
+        "Armor": 30
+      }
+    },
+    {
+      "id": 121,
+      "name": "Bone Shield",
+      "image": "bone_shield.png",
+      "type": "ARMOR",
+      "slot": "LEFTHAND",
+      "level": 10,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 9,
+      "description": "A shield made of bones.",
+      "attributes": {
+        "Armor": 100
+      }
+    },
+    {
+      "id": 122,
+      "name": "Bone Longsword",
+      "image": "bone_sword.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 10,
+      "aspeed": 2.5,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 4,
+      "description": "A long bony sword",
+      "attributes": {
+        "AttackPower": 16
+      }
+    },
+    {
+      "id": 123,
+      "name": "Goblin Shortsword",
+      "image": "goblin_sword.png",
+      "type": "SWORD",
+      "slot": "RIGHTHAND",
+      "level": 5,
+      "aspeed": 2.6,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 4,
+      "description": "A small green blade.",
+      "attributes": {
+        "AttackPower": 8
+      }
+    },
+    {
+      "id": 124,
+      "name": "Goblin Shortbow",
+      "image": "goblin_bow.png",
+      "type": "BOW",
+      "slot": "RIGHTHAND",
+      "level": 5,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 4,
+      "aspeed": 2.7,
+      "description": "A green bow.",
+      "attributes": {
+        "AttackPower": 8
+      },
+      "projectile": "ARROW"
+    },
+    {
+      "id": 125,
+      "name": "Goblin Helmet",
+      "image": "goblin_helmet.png",
+      "type": "ARMOR",
+      "slot": "HELMET",
+      "level": 5,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 6,
+      "description": "A sturdy helmet.",
+      "attributes": {
+        "Armor": 20
+      }
+    },
+    {
+      "id": 126,
+      "name": "Coal",
+      "image": "coal.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A mining resource",
+      "attributes": {
+        "Gold": 20
+      }
+    },
+    {
+      "id": 127,
+      "name": "Copper Ore",
+      "image": "copper_ore.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A mining resource",
+      "attributes": {
+        "Gold": 1
+      }
+    },
+    {
+      "id": 128,
+      "name": "Bronze Ingot",
+      "image": "bronze_ingot.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 2,
+      "weight": 0.4,
+      "description": "A mining resource",
+      "attributes": {
+        "Gold": 10
+      }
+    },
+    {
+      "id": 129,
+      "name": "Tin Ore",
+      "image": "tin_ore.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A mining resource",
+      "attributes": {
+        "Gold": 1
+      }
+    },
+    {
+      "id": 130,
+      "name": "Nickel Ore",
+      "image": "nickel_ore.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A mining resource",
+      "attributes": {
+        "Gold": 9
+      }
+    },
+    {
+      "id": 131,
+      "name": "Nickel Ingot",
+      "image": "nickel_ingot.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 2,
+      "weight": 0.4,
+      "description": "A mining resource",
+      "attributes": {
+        "Gold": 20
+      }
+    },
+    {
+      "id": 132,
+      "name": "Iron Ore",
+      "image": "iron_ore.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A mining resource",
+      "attributes": {
+        "Gold": 32
+      }
+    },
+    {
+      "id": 133,
+      "name": "Iron Ingot",
+      "image": "iron_ingot.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 2,
+      "weight": 0.4,
+      "description": "A mining resource",
+      "attributes": {
+        "Gold": 50
+      }
+    },
+    {
+      "id": 134,
+      "name": "Bat Wing",
+      "image": "bat_wing.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 1
+      }
+    },
+    {
+      "id": 135,
+      "name": "Blue Snake Scales",
+      "image": "blue_snake_scales.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 2
+      }
+    },
+    {
+      "id": 136,
+      "name": "Broken Goblin Bow",
+      "image": "broken_goblin_bow.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 9
+      }
+    },
+    {
+      "id": 137,
+      "name": "Broken Goblin Helmet",
+      "image": "broken_goblin_helmet.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 11
+      }
+    },
+    {
+      "id": 138,
+      "name": "Broken Goblin Shortsword",
+      "image": "broken_goblin_shortsword.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 13
+      }
+    },
+    {
+      "id": 139,
+      "name": "Green Snake Scales",
+      "image": "green_snake_scales.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 4
+      }
+    },
+    {
+      "id": 140,
+      "name": "Rat Tail",
+      "image": "rat_tail.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": -1,
+      "stackable": false,
+      "rarity": 1,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 1
+      }
+    },
+    {
+      "id": 141,
+      "name": "Scorpion Pincers",
+      "image": "scorpion_pincers.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 6
+      }
+    },
+    {
+      "id": 142,
+      "name": "Scorpion Tail",
+      "image": "scorpion_tail.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": 3,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 15
+      }
+    },
+    {
+      "id": 143,
+      "name": "Yellow Snake Scales",
+      "image": "yellow_snake_scales.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 7
+      }
+    },
+    {
+      "id": 144,
+      "name": "Skeleton Bone",
+      "image": "skeleton_bone.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 20
+      }
+    },
+    {
+      "id": 145,
+      "name": "Skeleton Ribs",
+      "image": "skeleton_ribs.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 27
+      }
+    },
+    {
+      "id": 146,
+      "name": "Skeleton Spider Leg",
+      "image": "skeleton_spider_leg.png",
+      "type": "ITEM",
+      "slot": "ITEM",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 0.4,
+      "description": "A misc resource",
+      "attributes": {
+        "Gold": 42
+      }
     }
   ]
 }

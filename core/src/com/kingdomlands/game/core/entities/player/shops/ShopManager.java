@@ -33,6 +33,7 @@ import com.kingdomlands.game.core.entities.util.contextmenu.ContextManager;
 import com.kingdomlands.game.core.stages.StageManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class ShopManager {
@@ -45,6 +46,7 @@ public class ShopManager {
     private static TextButton buyButton, closeButton;
     private static Table root;
     private static List<String> shopList;
+    private static HashMap<Integer, ArrayList<Item>> shopItems = new HashMap<>();
 
     private static final TextureRegionDrawable scrollPaneDrawable = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("widget_bgs/scrollpane_bg.png")), 0, 0, 360, 460));
     private static final TextureRegionDrawable titleDrawable = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("widget_bgs/title_bg.png")), 0, 0, 400, 40));
@@ -277,10 +279,16 @@ public class ShopManager {
                     ArrayList<Item> items = new ArrayList<>();
                     JsonValue dropArray = c.get("items");
 
-                    for (JsonValue v : dropArray) {
-                        if (Objects.nonNull(v)) {
-                            items.add(ItemManager.createItemById(v.getInt("id"), 1));
+                    if (shopItems.containsKey(id)) {
+                        items = shopItems.get(id);
+                    } else {
+                        for (JsonValue v : dropArray) {
+                            if (Objects.nonNull(v)) {
+                                items.add(ItemManager.createItemById(v.getInt("id"), 1));
+                            }
                         }
+
+                        shopItems.put(id, items);
                     }
 
                     shops.add(new Shop(c.getInt("id"),
@@ -358,5 +366,9 @@ public class ShopManager {
         }
 
         return 0;
+    }
+
+    public static void clearShopItems() {
+        shopItems.clear();
     }
 }

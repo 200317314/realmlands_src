@@ -14,7 +14,10 @@ public enum Images {
     //ATTRIBUTE_ICON(new Texture("hud/attribute_icon-t.png")),
     //EQUIPMENT_ICON(new Texture("hud/equipment_icon.png")),
     //SKILL_ICON(new Texture("hud/skill_icon.png")),
-    DRUID_HUD(new Texture("avatars/druid.png"));
+    DRUID_HUD(new Texture("avatars/druid.png")),
+    KNIGHT_HUD(new Texture("avatars/knight.png")),
+    WIZARD_HUD(new Texture("avatars/wizard.png")),
+    ARCHER_HUD(new Texture("avatars/archer.png"));
 
     private final Texture texture;
 

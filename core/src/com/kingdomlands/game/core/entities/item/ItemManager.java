@@ -135,7 +135,11 @@ public class ItemManager {
         if (Objects.nonNull(item) && Objects.nonNull(item.getAttributes())) {
             for (Attribute a : item.getAttributes()) {
                 if (Objects.nonNull(a)) {
-                    totalAttrs += a.getValue();
+                    if (a.getName().contains("Current")) {
+                        totalAttrs += a.getValue()/15;
+                    } else {
+                        totalAttrs += a.getValue();
+                    }
                 }
             }
         }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
+import com.kingdomlands.game.core.entities.player.ui.UIManager;
 
 import java.util.List;
 import java.util.Objects;
@@ -92,6 +93,26 @@ public class Skill implements Json.Serializable {
             if(skill.name.equals(name))
                 skill.currentExp = skill.currentExp + exp;
         });
+
+        UIManager.openSkillTab();
+    }
+
+    public static void addLevelToSkillFromList(List<Skill> skills, String name, double level) {
+        skills.forEach(skill -> {
+            if(skill.name.equals(name))
+                skill.level = skill.level + (int)level;
+        });
+
+        UIManager.openSkillTab();
+    }
+
+    public static void removeLevelToSkillFromList(List<Skill> skills, String name, double level) {
+        skills.forEach(skill -> {
+            if(skill.name.equals(name))
+                skill.level = skill.level - (int)level;
+        });
+
+        UIManager.openSkillTab();
     }
 
     public static void removeExpFromSkillFromList(List<Skill> skills, String name, double exp) {
@@ -99,6 +120,8 @@ public class Skill implements Json.Serializable {
             if(skill.name.equals(name))
                 skill.currentExp = skill.currentExp - exp;
         });
+
+        UIManager.openSkillTab();
     }
 
     @Override
@@ -113,8 +136,14 @@ public class Skill implements Json.Serializable {
     @Override
     public void read(Json json, JsonValue jsonData) {
         setName(jsonData.getString("name"));
-        setLevel(jsonData.getInt("level"));
-        setLevel(jsonData.getInt("currentExp"));
+
+        if (jsonData.getInt("level") <= 0) {
+            setLevel(1);
+        } else {
+            setLevel(jsonData.getInt("level"));
+        }
+
+        setCurrentExp(jsonData.getInt("currentExp"));
         setMaxExp(jsonData.getInt("maxExp"));
 
         if (jsonData.has("image")) {

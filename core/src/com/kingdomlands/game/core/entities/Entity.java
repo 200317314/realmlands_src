@@ -1,5 +1,6 @@
 package com.kingdomlands.game.core.entities;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -126,34 +127,35 @@ public abstract class Entity extends Actor {
     }
 
     public boolean move(Vector2 target, double speed) {
-        AStar aStar;
-        if (this instanceof Player) {
-            aStar = new AStar(this.getPosition(), target, this, PlayerManager.getCurrentPlayer().getTarget());
-        } else {
-            aStar = new AStar(this.getPosition(), target, this, null);
-        }
-
-        Vector2 next = aStar.getNextNode();
-
-        if (Objects.nonNull(next)) {
-            double destX = next.y*64 - this.getX();
-            double destY = next.x*64 - this.getY();
-
-            double dist = Math.sqrt(destX * destX + destY * destY);
-            destX = destX / dist;
-            destY = destY / dist;
-
-            double travelX = (destX * speed);
-            double travelY = (destY * speed);
-
-            if (speed < dist) {
-                this.moveBy((float) travelX, (float)travelY);
+        Gdx.app.postRunnable(() -> {
+            AStar aStar;
+            if (this instanceof Player) {
+                aStar = new AStar(this.getPosition(), target, this, PlayerManager.getCurrentPlayer().getTarget());
             } else {
-                return true;
+                aStar = new AStar(this.getPosition(), target, this, null);
             }
-        } else {
-            moveTo = null;
-        }
+
+            Vector2 next = aStar.getNextNode();
+
+            if (Objects.nonNull(next)) {
+                double destX = next.y*64 - this.getX();
+                double destY = next.x*64 - this.getY();
+
+                double dist = Math.sqrt(destX * destX + destY * destY);
+                destX = destX / dist;
+                destY = destY / dist;
+
+                double travelX = (destX * speed);
+                double travelY = (destY * speed);
+
+                if (speed < dist) {
+                    this.moveBy((int) travelX, (int)travelY);
+                }
+            } else {
+                moveTo = null;
+            }
+        });
+
 
         return false;
     }

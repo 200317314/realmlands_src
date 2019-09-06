@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.kingdomlands.game.core.Constants;
@@ -12,8 +13,7 @@ import com.kingdomlands.game.core.entities.EntityType;
 import com.kingdomlands.game.core.entities.item.Item;
 import com.kingdomlands.game.core.entities.item.ItemManager;
 import com.kingdomlands.game.core.entities.monster.Drop;
-import com.kingdomlands.game.core.entities.npc.NpcType;
-import com.kingdomlands.game.core.entities.objects.tree.Tree;
+import com.kingdomlands.game.core.entities.objects.tree.Resource;
 import com.kingdomlands.game.core.entities.player.PlayerManager;
 import com.kingdomlands.game.core.entities.util.*;
 import com.kingdomlands.game.core.entities.util.contextmenu.ContextManager;
@@ -36,7 +36,9 @@ public class GameObject extends Entity {
     private boolean isOpen;
     private ObjectType objectType;
 
-    private Tree treeType;
+    private Resource resource;
+    private int resourceHp;
+    private int resourceQuantity;
 
     public GameObject(EntityType entityType, String name, int x, int y, Image image, int rarity, String description, List<Drop> drops, ObjectType objectType) {
         super(entityType, name, x, y);
@@ -63,7 +65,7 @@ public class GameObject extends Entity {
                     .getLevel(PlayerManager.getCurrentPlayer().getPlayerAttributes()), this.rarity);
         }
 
-        if (timeout <= 0) {
+        /*if (timeout <= 0) {
             if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
                 timeout = 30;
 
@@ -77,6 +79,17 @@ public class GameObject extends Entity {
                         PlayerManager.getCurrentPlayer().setTarget(object);
                     }
                 }
+            }
+        }*/
+
+        if (Objects.nonNull(resource)) {
+            if (resourceHp <= 0) {
+
+                if (resource.getDepletedId() != -1) {
+                    StageManager.addActor(ObjectManager.createObjectById(resource.getDepletedId(), (int)this.getX() + 32, (int)this.getY()));
+                }
+
+                Gdx.app.postRunnable(this::remove);
             }
         }
     }
@@ -94,6 +107,14 @@ public class GameObject extends Entity {
                 ContextManager.setClickedEntity(this);
                 com.badlogic.gdx.scenes.scene2d.ui.List<String> list = new com.badlogic.gdx.scenes.scene2d.ui.List<String>(Constants.DEFAULT_SKIN);
                 list.setItems("Choose:", "Open Portal", "Examine");
+
+                ContextManager.getTable().add(new ScrollPane(list, Constants.DEFAULT_SKIN));
+            }
+        } else if (this.getObjectType() == ObjectType.RESOURCE) {
+            if (Objects.nonNull(resource)) {
+                ContextManager.setClickedEntity(this);
+                com.badlogic.gdx.scenes.scene2d.ui.List<String> list = new com.badlogic.gdx.scenes.scene2d.ui.List<String>(Constants.DEFAULT_SKIN);
+                list.setItems("Choose:", resource.getAction(), "Examine");
 
                 ContextManager.getTable().add(new ScrollPane(list, Constants.DEFAULT_SKIN));
             }
@@ -191,11 +212,25 @@ public class GameObject extends Entity {
         return objectType;
     }
 
-    public Tree getTreeType() {
-        return treeType;
+    public int getResourceHp() {
+        return resourceHp;
     }
 
-    public void setTreeType(Tree treeType) {
-        this.treeType = treeType;
+    public void setResourceHp(int resourceHp) {
+        this.resourceHp = resourceHp;
+    }
+
+    public Resource getResource() {
+        return resource;
+    }
+
+    public int getResourceQuantity() {
+        return resourceQuantity;
+    }
+
+    public void setResource(Resource resource) {
+        this.resource = resource;
+        this.resourceHp = resource.getHp();
+        this.resourceQuantity = Methods.random(resource.getAmount()[0], resource.getAmount()[1]);
     }
 }

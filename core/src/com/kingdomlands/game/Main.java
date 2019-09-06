@@ -23,6 +23,7 @@ import com.kingdomlands.game.core.entities.npc.Npc;
 import com.kingdomlands.game.core.entities.objects.ObjectType;
 import com.kingdomlands.game.core.entities.player.Player;
 import com.kingdomlands.game.core.entities.player.PlayerManager;
+import com.kingdomlands.game.core.entities.player.PlayerState;
 import com.kingdomlands.game.core.entities.player.chat.ChatManager;
 import com.kingdomlands.game.core.entities.player.shops.ShopManager;
 import com.kingdomlands.game.core.entities.player.timers.PlayerSaveTimer;
@@ -250,5 +251,7 @@ public class Main extends ApplicationAdapter {
 		if (Objects.nonNull(StageManager.getCurrentStage())) {
             StageManager.getCurrentStage().dispose();
 		}
+
+		Gdx.app.postRunnable(PlayerManager::savePlayer);
 	}
 }

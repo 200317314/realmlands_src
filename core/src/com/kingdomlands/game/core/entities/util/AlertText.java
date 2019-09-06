@@ -25,8 +25,8 @@ public class AlertText {
     private Image icon;
 
     public AlertText(int x, int y, String message, DamageType damageType) {
-        this.x = x;
-        this.y = y;
+        this.x = x + 64;
+        this.y = y + 32;
         this.alpha = 100;
         this.damageType = damageType;
 

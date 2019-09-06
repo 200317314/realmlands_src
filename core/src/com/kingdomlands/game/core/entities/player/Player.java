@@ -40,6 +40,7 @@ import com.kingdomlands.game.core.entities.util.contextmenu.ContextManager;
 import com.kingdomlands.game.core.stages.StageManager;
 import com.kingdomlands.game.core.stages.StageRender;
 import com.kingdomlands.game.core.stages.Stages;
+import org.omg.CORBA.ObjectHelper;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -54,7 +55,7 @@ public class Player extends Entity implements Json.Serializable {
     private final int RANGE = 90;
     private Image image, playerAvatar;
     private Entity target = null;
-    private double time = 0;
+    private double time = 0, skillTime = 0;
     public static double timeout = 0;
     private int regenTime = 0, id;
     private List<Attribute> playerAttributes = new ArrayList<>();
@@ -64,6 +65,8 @@ public class Player extends Entity implements Json.Serializable {
     private Equipment equipment;
     private PlayerClass playerClass;
     private List<Item> bank;
+    private PlayerState playerState;
+    private int resourceHpDone = 0;
 
     public Player(int id, EntityType entityType, String name, int x, int y) {
         super(entityType, name, x, y);
@@ -115,6 +118,7 @@ public class Player extends Entity implements Json.Serializable {
 
         List<EquipmentSlot> slots = new ArrayList<>();
         equipment = new Equipment(slots);
+        setPlayerState(PlayerState.IDLE);
     }
 
     public Player() {
@@ -125,6 +129,7 @@ public class Player extends Entity implements Json.Serializable {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         time += Gdx.graphics.getDeltaTime();
+        skillTime += Gdx.graphics.getDeltaTime();
         timeout -= Gdx.graphics.getDeltaTime();
         regenTime ++;
 
@@ -273,22 +278,22 @@ public class Player extends Entity implements Json.Serializable {
                     if (!ContextManager.getContextMenu().isVisible()) {
                         if (Objects.nonNull(UIManager.getCurrentTab())) {
                             if (!UIManager.isMouseOverTab() && timeout <= 0) {
-                                if (!StageManager.clickedAnEntity(new Vector2(Gdx.input.getX(), Constants.WINDOW_HEIGHT - Gdx.input.getY()))) {
+                                //if (!StageManager.clickedAnEntity(new Vector2(Gdx.input.getX(), Constants.WINDOW_HEIGHT - Gdx.input.getY()))) {
                                     tilePoint = Methods.getCenter(new Vector2((int)clickVector.x, (int)clickVector.y));
 
                                     if (Objects.nonNull(target)) {
                                         target = null;
                                     }
-                                }
+                               // }
                             }
                         } else if (timeout <= 0) {
-                            if (!StageManager.clickedAnEntity(new Vector2(Gdx.input.getX(), Constants.WINDOW_HEIGHT - Gdx.input.getY()))) {
+                            //if (!StageManager.clickedAnEntity(new Vector2(Gdx.input.getX(), Constants.WINDOW_HEIGHT - Gdx.input.getY()))) {
                                 tilePoint = Methods.getCenter(new Vector2((int)clickVector.x, (int)clickVector.y));
 
                                 if (Objects.nonNull(target)) {
                                     target = null;
                                 }
-                            }
+                            //}
                         }
                     }
                 }
@@ -319,6 +324,10 @@ public class Player extends Entity implements Json.Serializable {
             }
         }
 
+        if (isTargetResource()) {
+            gatherResource();
+        }
+
         StageManager.getCurrentStage().getCamera().position.set(getX(), getY(), 0);
 
         if(isDead()){
@@ -344,34 +353,80 @@ public class Player extends Entity implements Json.Serializable {
                 Objects.requireNonNull(player).setPosition(7265, 7800);
 
                 //Add Buildings
-                StageManager.addActor(ObjectManager.createObjectById(18, 7180, 7860));
-
-                //Add Npcs
-                Npc seymour = NpcManager.createNpc(1);
-                seymour.setPosition(9285, 16000 - 6783);
-                StageManager.addActor(seymour);
-
-                Npc ghorza = NpcManager.createNpc(2);
-                ghorza.setPosition(7052, 16000 - 8766);
-                StageManager.addActor(ghorza);
-
-                Npc gamel = NpcManager.createNpc(3);
-                gamel.setPosition(7367, 16000 - 8853);
-                StageManager.addActor(gamel);
-
-                Npc romella = NpcManager.createNpc(4);
-                romella.setPosition(7749, 16000 - 8148);
-                StageManager.addActor(romella);
-
-                Npc rabaz = NpcManager.createNpc(5);
-                rabaz.setPosition(7990, 16000 - 8306);
-                StageManager.addActor(rabaz);
+                StageManager.loadTown();
 
                 ChatManager.init();
             });
         }
 
         checkRegen();
+        skillUp();
+    }
+
+    private void gatherResource() {
+        if (skillTime >= 3) {
+            GameObject object = (GameObject) getTarget();
+            int level = Skill.getSkillFromList(playerSkills, object.getResource().getSkill()).getLevel();
+
+            int boostedLevels = 0;
+
+            for (Item item : getEquipment().getItems()) {
+                if (Objects.nonNull(item)) {
+                    for (Attribute a : item.getAttributes()) {
+                        if (Objects.nonNull(a)) {
+                            if (containsSkillBuff(a)) {
+                                boostedLevels += a.getValue();
+                            }
+                        }
+                    }
+                }
+            }
+
+            level -= boostedLevels;
+            if (Objects.nonNull(object)) {
+                if (level >= object.getResource().getLevel()) {
+                    level += boostedLevels;
+                    if (object.getResourceHp() >= 0) {
+                        object.setResourceHp(object.getResourceHp() - (10 + level*5));
+                        resourceHpDone += (10 + level*5);
+
+                        int damageForItem = object.getResource().getHp() / object.getResourceQuantity();
+
+                        SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + object.getResource().getSound())));
+
+                        if ((resourceHpDone/damageForItem) > 1) {
+                            for (int i = 0; i <= (resourceHpDone/damageForItem); i++) {
+                                if (resourceHpDone >= damageForItem) {
+                                    resourceHpDone -= damageForItem;
+
+                                    Item item = ItemManager.createItemById(object.getResource().getResourceId(), 1);
+                                    DamageTextManager.add(new DamageText((int)getX() + 16, (int)getY() + 16 - (16*i), object.getResource().getExp(), 100, DamageType.EXP));
+                                    ChatManager.addChat("[Loot]: " + "You collect a " + item.getName() + " and gained " + object.getResource().getExp() + " " + object.getResource().getSkill() + " exp.");
+                                    Skill.addExpToSkillFromList(playerSkills, object.getResource().getSkill(), object.getResource().getExp());
+                                    PlayerManager.getCurrentPlayer().getInventory().addItem(item);
+                                }
+                            }
+                        } else {
+                            if (resourceHpDone >= damageForItem) {
+                                resourceHpDone -= damageForItem;
+
+                                Item item = ItemManager.createItemById(object.getResource().getResourceId(), 1);
+                                DamageTextManager.add(new DamageText((int)getX() + 16, (int)getY() + 16, object.getResource().getExp(), 100, DamageType.EXP));
+                                ChatManager.addChat("[Loot]: " + "You collect a " + item.getName() + " and gained " + object.getResource().getExp() + " " + object.getResource().getSkill() + " exp.");
+                                Skill.addExpToSkillFromList(playerSkills, object.getResource().getSkill(), object.getResource().getExp());
+                                PlayerManager.getCurrentPlayer().getInventory().addItem(item);
+                            }
+
+                            AlertTextManager.add(new AlertText((int)PlayerManager.getCurrentPlayer().getX(), (int)PlayerManager.getCurrentPlayer().getY(), object.getResource().getBlurb(), DamageType.DEFAULT));
+                        }
+                    }
+                } else {
+                    AlertTextManager.add(new AlertText((int)PlayerManager.getCurrentPlayer().getX(), (int)PlayerManager.getCurrentPlayer().getY(), "You're level is too low.", DamageType.DEFAULT));
+                }
+            }
+
+            skillTime = 0;
+        }
     }
 
     @Override
@@ -387,6 +442,14 @@ public class Player extends Entity implements Json.Serializable {
         Attribute.setAttributeValueFromList(this.playerAttributes,
                 "CurrentExp",
                 Attribute.getAttributeFromList(this.playerAttributes, "CurrentExp").getCurrExp(this.playerAttributes) + exp);
+    }
+
+    public PlayerState getPlayerState() {
+        return playerState;
+    }
+
+    public void setPlayerState(PlayerState playerState) {
+        this.playerState = playerState;
     }
 
     public void checkRegen() {
@@ -448,6 +511,48 @@ public class Player extends Entity implements Json.Serializable {
 
     public void levelUp() {
         PlayerClass.levelUp(this);
+    }
+
+    public void skillUp() {
+        for (Skill s : playerSkills) {
+            if (Objects.nonNull(s)) {
+                if (s.getCurrentExp() >= s.getMaxExp()) {
+                    s.setCurrentExp(s.getCurrentExp() - s.getMaxExp());
+                    s.setLevel(s.getLevel() + 1);
+
+                    int boostedLevels = 0;
+
+                    for (Item item : getEquipment().getItems()) {
+                        if (Objects.nonNull(item)) {
+                            for (Attribute a : item.getAttributes()) {
+                                if (Objects.nonNull(a)) {
+                                    if (containsSkillBuff(a)) {
+                                        boostedLevels += a.getValue();
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    s.setMaxExp(getExpForLevel(s.getLevel() - boostedLevels));
+                    AlertTextManager.add(new AlertText((int)PlayerManager.getCurrentPlayer().getX() + 32, (int)PlayerManager.getCurrentPlayer().getY(), "Skill Up!", DamageType.LEVEL_UP));
+                }
+            }
+        }
+    }
+
+    public boolean containsSkillBuff(Attribute a) {
+        if (Objects.nonNull(a)) {
+            for (Skill s : PlayerManager.getCurrentPlayer().getPlayerSkills()) {
+                if (Objects.nonNull(s)) {
+                    if (s.getName().equals(a.getName())) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 
     public void inCombat() {
@@ -577,6 +682,7 @@ public class Player extends Entity implements Json.Serializable {
 
     public void setTarget(Entity target) {
         this.target = target;
+        resourceHpDone = 0;
     }
 
     public Vector2 getCenter() {
@@ -656,6 +762,28 @@ public class Player extends Entity implements Json.Serializable {
         super(entityType, name, x, y);
      */
 
+    public boolean isDoingSkill() {
+        if (Objects.nonNull(getPlayerState())) {
+            if (getPlayerState().equals(PlayerState.FISHING ) ||
+                    getPlayerState().equals(PlayerState.MINING) ||
+                    getPlayerState().equals(PlayerState.WOODCUTTING)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean isTargetResource() {
+        if (Objects.nonNull(getTarget()) && getTarget() instanceof GameObject) {
+            if (Objects.nonNull((((GameObject) getTarget()).getResource()))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     @Override
     public void write(Json json) {
         json.writeValue("id", getId());
@@ -694,13 +822,13 @@ public class Player extends Entity implements Json.Serializable {
         invenJson = "{" + invenJson + "}";
         setInventory(json.fromJson(Inventory.class, invenJson));
 
+        for (Item i : getInventory().getItems()) {
+            i.setImage(ItemManager.createItemById(i.getId(), 1).getImage());
+        }
+
         String equipJson = jsonData.get("equipment").toString();
         equipJson = "{" + equipJson + "}";
         setEquipment(json.fromJson(Equipment.class, equipJson));
-
-        //remove this
-        List<EquipmentSlot> slots = new ArrayList<>();
-        setEquipment(new Equipment(slots));
 
         List<Skill> skills = new ArrayList<>();
 
@@ -721,23 +849,14 @@ public class Player extends Entity implements Json.Serializable {
             playerSkills.add(new Skill("Mining", 1, 0, 100, "mining.png"));
             playerSkills.add(new Skill("Smithing", 1, 0, 100, "smithing.png"));
         } else {
-            //playerSkills = skills;
-            playerSkills.add(new Skill("Sword Proficiency", 1, 0, 100, "sword.png"));
-            playerSkills.add(new Skill("Axe Proficiency", 1, 0, 100, "axe.png"));
-            playerSkills.add(new Skill("Mace Proficiency", 1, 0, 100, "mace.png"));
-            playerSkills.add(new Skill("Staff Proficiency", 1, 0, 100, "staff.png"));
-            playerSkills.add(new Skill("Bow Proficiency", 1, 0, 100, "bow.png"));
-            playerSkills.add(new Skill("Woodcutting", 1, 0, 100, "woodcutting.png"));
-            playerSkills.add(new Skill("Fishing", 1, 0, 100, "fishing.png"));
-            playerSkills.add(new Skill("Mining", 1, 0, 100, "mining.png"));
-            playerSkills.add(new Skill("Smithing", 1, 0, 100, "smithing.png"));
+            playerSkills = skills;
         }
 
-        Attribute.setAttributeValueFromList(playerAttributes, "Level", 1);
-        setPlayerClass(PlayerClass.DRUID); //ADD HUD pics for other classes
-
-        if (Objects.nonNull(playerClass)) {
-            //setPlayerClass(playerClass);
+        if (jsonData.has("classes")) {
+            setPlayerClass(PlayerClass.valueOf(jsonData.getString("classes")));
+            Gdx.app.postRunnable(() -> setImage(new Image(new Texture(Gdx.files.internal("classes/" + playerClass.getImage())))));
+        } else {
+            setPlayerClass(PlayerClass.KNIGHT);
             Gdx.app.postRunnable(() -> setImage(new Image(new Texture(Gdx.files.internal("classes/" + playerClass.getImage())))));
         }
 
@@ -769,36 +888,6 @@ public class Player extends Entity implements Json.Serializable {
             setBank(new ArrayList<>());
         }
 
-        //TODO: remove this shit
-        playerAttributes.clear();
-        playerAttributes.add(new Attribute("Stamina", 1));
-        playerAttributes.add(new Attribute("Strength", 7));
-        playerAttributes.add(new Attribute("Agility", 1));
-        playerAttributes.add(new Attribute("Intellect", 1));
-        playerAttributes.add(new Attribute("Crit", 1));
-        playerAttributes.add(new Attribute("Haste", 1));
-        playerAttributes.add(new Attribute("ExpBoost", 1));
-        playerAttributes.add(new Attribute("BonusArmor", 1));
-        playerAttributes.add(new Attribute("LifeSteal", 1));
-        playerAttributes.add(new Attribute("AttackPower", 1));
-        playerAttributes.add(new Attribute("SpellPower", 1));
-        playerAttributes.add(new Attribute("CastingSpeed", 1));
-        playerAttributes.add(new Attribute("ManaRegen", 1));
-        playerAttributes.add(new Attribute("HpRegen", 1));
-        playerAttributes.add(new Attribute("Armor", 1));
-        playerAttributes.add(new Attribute("Dodge", 1));
-        playerAttributes.add(new Attribute("Parry", 1));
-        playerAttributes.add(new Attribute("Block", 1));
-        playerAttributes.add(new Attribute("Resist", 1));
-        playerAttributes.add(new Attribute("MovementSpeed", 4));
-        playerAttributes.add(new Attribute("CurrentHp", 100));
-        playerAttributes.add(new Attribute("MaxHp", 100));
-        playerAttributes.add(new Attribute("CurrentExp", 99));
-        playerAttributes.add(new Attribute("MaxExp", 100));
-        playerAttributes.add(new Attribute("Level", 1));
-        playerAttributes.add(new Attribute("CurrentMana", 100));
-        playerAttributes.add(new Attribute("MaxMana", 100));
-        playerAttributes.add(new Attribute("AttackSpeed", 2.0));
-        playerAttributes.add(new Attribute("Slowness", 0));
+        setPlayerState(PlayerState.IDLE);
     }
 }

@@ -138,32 +138,34 @@ public class PlayerManager {
     }
 
     public static void savePlayer() {
-        Json json = new Json();
-        Net.HttpRequest request = new Net.HttpRequest(Net.HttpMethods.POST);
+        Gdx.app.postRunnable(() -> {
+            Json json = new Json();
+            Net.HttpRequest request = new Net.HttpRequest(Net.HttpMethods.POST);
 
-        Attribute.setAttributeValueFromList(getCurrentPlayer().getPlayerAttributes(), "CurrentExp", (int)(Attribute.getAttributeValueFromList(getCurrentPlayer().getPlayerAttributes(), "CurrentExp")));
+            Attribute.setAttributeValueFromList(getCurrentPlayer().getPlayerAttributes(), "CurrentExp", (int)(Attribute.getAttributeValueFromList(getCurrentPlayer().getPlayerAttributes(), "CurrentExp")));
 
-        request.setContent(playerToken + ":" + json.toJson(getCurrentPlayer()));
-        request.setUrl("https://realmlands.com/rest/players/update/");
-        request.setHeader("Content-Type", "text/plain");
-        //request.setUrl("http://localhost:8080/rest/players/update/");
+            request.setContent(playerToken + ":" + json.toJson(getCurrentPlayer()));
+            request.setUrl("https://realmlands.com/rest/players/update/");
+            request.setHeader("Content-Type", "text/plain");
+            //request.setUrl("http://localhost:8080/rest/players/update/");
 
-        Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
-            @Override
-            public void handleHttpResponse (Net.HttpResponse httpResponse) {
-                //System.out.println(httpResponse.getResultAsString());
-                //System.out.println("Successfully saved player.");
-            }
+            Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
+                @Override
+                public void handleHttpResponse (Net.HttpResponse httpResponse) {
+                    //System.out.println(httpResponse.getResultAsString());
+                    //System.out.println("Successfully saved player.");
+                }
 
-            @Override
-            public void failed(Throwable t) {
-                System.out.println("Failed to save player [E1]");
-            }
+                @Override
+                public void failed(Throwable t) {
+                    System.out.println("Failed to save player [E1]");
+                }
 
-            @Override
-            public void cancelled() {
-                System.out.println("Failed to save player [E2]");
-            }
+                @Override
+                public void cancelled() {
+                    System.out.println("Failed to save player [E2]");
+                }
+            });
         });
     }
 

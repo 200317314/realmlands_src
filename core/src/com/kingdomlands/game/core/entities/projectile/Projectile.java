@@ -18,7 +18,7 @@ public class Projectile extends Entity {
     private Entity target;
 
     public Projectile(EntityType entityType, String name, int x, int y, Projectiles projectiles, int damage, Entity target) {
-        super(entityType, name, x + 32, y + 32);
+        super(entityType, name, x + 64, y);
         this.projectiles = projectiles;
         this.image = projectiles.getImage();
         this.damage = damage;
@@ -42,7 +42,7 @@ public class Projectile extends Entity {
     }
 
     private void update() {
-        if (this.getDistance(target) < 80) {
+        if (this.getDistance(target) < 46) {
             if (target instanceof Monster) {
                 ((Monster) target).takeDamage(damage, false, projectiles);
             } else if (target instanceof Player) {
@@ -51,7 +51,7 @@ public class Projectile extends Entity {
 
             this.remove();
         } else {
-            this.moveP((int)target.getPosition().x, (int)target.getPosition().y + 64, projectiles.getSpeed());
+            this.moveP((int)target.getPosition().x, (int)target.getPosition().y, projectiles.getSpeed());
         }
     }
 

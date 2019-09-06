@@ -9,6 +9,7 @@ import com.kingdomlands.game.core.entities.player.Player;
 import com.kingdomlands.game.core.entities.player.PlayerManager;
 import com.kingdomlands.game.core.entities.player.ui.UIManager;
 import com.kingdomlands.game.core.entities.util.Attribute;
+import com.kingdomlands.game.core.entities.util.Skill;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class Equipment implements Json.Serializable {
             this.equipmentSlots.add(new EquipmentSlot("Lefthand", 1156, 280, SlotType.LEFTHAND, null));
             this.equipmentSlots.add(new EquipmentSlot("Cape", 1028, 344, SlotType.CAPE, null));
             this.equipmentSlots.add(new EquipmentSlot("Gloves", 1156, 216, SlotType.GLOVES, null));
+            this.equipmentSlots.add(new EquipmentSlot("Ring", 1156, 216, SlotType.RING, null));
         } else {
             this.equipmentSlots = equipmentSlots;
         }
@@ -112,6 +114,8 @@ public class Equipment implements Json.Serializable {
                 }
             }
         }
+
+        UIManager.openEquipmentTab();
     }
 
     public List<EquipmentSlot> getEquipmentSlots() {
@@ -140,6 +144,10 @@ public class Equipment implements Json.Serializable {
                 double currVal = Attribute.getAttributeValueFromList(PlayerManager.getCurrentPlayer().getPlayerAttributes(), a.getName());
 
                 Attribute.setAttributeValueFromList(PlayerManager.getCurrentPlayer().getPlayerAttributes(), a.getName(), (int) (currVal + a.getValue()));
+
+                if (containsSkillBuff(a)) {
+                    Skill.addLevelToSkillFromList(PlayerManager.getCurrentPlayer().getPlayerSkills(), a.getName(), a.getValue());
+                }
             }
         }
     }
@@ -150,6 +158,10 @@ public class Equipment implements Json.Serializable {
                 double currVal = Attribute.getAttributeValueFromList(PlayerManager.getCurrentPlayer().getPlayerAttributes(), a.getName());
 
                 Attribute.setAttributeValueFromList(PlayerManager.getCurrentPlayer().getPlayerAttributes(), a.getName(), (int) (currVal - a.getValue()));
+
+                if (containsSkillBuff(a)) {
+                    Skill.removeLevelToSkillFromList(PlayerManager.getCurrentPlayer().getPlayerSkills(), a.getName(), a.getValue());
+                }
             }
         }
     }
@@ -192,5 +204,19 @@ public class Equipment implements Json.Serializable {
         }
 
         return null;
+    }
+
+    public boolean containsSkillBuff(Attribute a) {
+        if (Objects.nonNull(a)) {
+            for (Skill s : PlayerManager.getCurrentPlayer().getPlayerSkills()) {
+                if (Objects.nonNull(s)) {
+                    if (s.getName().equals(a.getName())) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 }

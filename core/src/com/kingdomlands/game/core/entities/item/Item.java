@@ -232,6 +232,7 @@ public class Item extends Entity implements Json.Serializable {
                         list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Sell 5", "Sell All", "Examine");
                     }
                 } else {
+                    System.out.println("else ree");
                     list.setItems("Choose:", "Consume", "Drop", "Examine");
                 }
 
@@ -329,7 +330,7 @@ public class Item extends Entity implements Json.Serializable {
                     } else if (this.getAmount() >= 5) {
                         list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit All", "Examine");
                     }
-                } else {
+                }/* else {
                     if (!this.isStackable() || this.isStackable() && this.getAmount() == 1) {
                         list.setItems("Choose:", "Consume", "Drop", "Examine");
                     } else if (this.getAmount() >= 100) {
@@ -343,7 +344,7 @@ public class Item extends Entity implements Json.Serializable {
                     } else if (this.getAmount() >= 5) {
                         list.setItems("Choose:", "Consume", "Drop 1", "Drop 5", "Drop All", "Examine");
                     }
-                }
+                }*/
 
                 ScrollPane scrollPane = new ScrollPane(list, Constants.DEFAULT_SKIN);
                 ContextManager.getTable().add(scrollPane);
@@ -587,6 +588,8 @@ public class Item extends Entity implements Json.Serializable {
     private void addRandomAttributes(int rarity) {
         //String[] attrs = {"Stamina", "Strength", "Agility", "Intellect", "Crit", "Haste", "ExpBoost", "BonusArmor", "LifeSteal", "SpellPower", "CastingSpeed", "ManaRegen", "HpRegen", "Dodge", "Parry", "Block", "Resist", "MovementSpeed", "MaxHp", "MaxMana"};
         String[] attrs = {"Stamina", "Strength", "Agility", "Intellect", "BonusArmor", "SpellPower", "ManaRegen", "HpRegen", "MaxHp", "MaxMana"};
+
+
 
         for (int i = 0; i < rarity; i++) {
             int rngNum = Methods.getSecureRandom().nextInt(attrs.length);

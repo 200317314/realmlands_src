@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.kingdomlands.game.core.entities.EntityType;
-import com.kingdomlands.game.core.entities.objects.tree.Tree;
+import com.kingdomlands.game.core.entities.objects.tree.Resource;
 import com.kingdomlands.game.core.stages.StageManager;
 
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class ObjectManager {
                             val.getInt("rarity"), val.getString("description"), new ArrayList<>(), ObjectType.valueOf(val.getString("type")));
 
                     if (val.has("tree_type")) {
-                        gameObject.setTreeType(Tree.valueOf(val.getString("tree_type")));
+                        gameObject.setResource(Resource.valueOf(val.getString("tree_type")));
                     }
 
                     return gameObject;

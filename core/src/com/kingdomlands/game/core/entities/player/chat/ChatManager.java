@@ -105,6 +105,7 @@ public class ChatManager {
                 Label label = new Label(s, Constants.DEFAULT_SKIN);
                 label.setColor(DamageType.getColor(s));
                 label.setAlignment(Align.left);
+                label.setWrap(true);
                 table.add(label).width(360);
                 table.row();
             });

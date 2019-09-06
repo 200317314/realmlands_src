@@ -247,30 +247,19 @@ public class ContextManager {
                         Objects.requireNonNull(player).setPosition(7165, 1378);
 
                         //Add Buildings
-                        StageManager.addActor(ObjectManager.createObjectById(18, 7180, 7860));
-
-                        //Add Npcs
-                        Npc seymour = NpcManager.createNpc(1);
-                        seymour.setPosition(9285, 16000 - 6783);
-                        StageManager.addActor(seymour);
-
-                        Npc ghorza = NpcManager.createNpc(2);
-                        ghorza.setPosition(7052, 16000 - 8766);
-                        StageManager.addActor(ghorza);
-
-                        Npc gamel = NpcManager.createNpc(3);
-                        gamel.setPosition(7367, 16000 - 8853);
-                        StageManager.addActor(gamel);
-
-                        Npc romella = NpcManager.createNpc(4);
-                        romella.setPosition(7749, 16000 - 8148);
-                        StageManager.addActor(romella);
-
-                        Npc rabaz = NpcManager.createNpc(5);
-                        rabaz.setPosition(7990, 16000 - 8306);
-                        StageManager.addActor(rabaz);
+                        StageManager.loadTown();
 
                         ChatManager.init();
+                    } else {
+                        AlertTextManager.add(new AlertText((int)PlayerManager.getCurrentPlayer().getX(), (int)PlayerManager.getCurrentPlayer().getY(), "You need to be closer to do that...", DamageType.DEFAULT));
+                    }
+
+                    close();
+                } else if (selectedEntity instanceof GameObject && Objects.nonNull(((GameObject) selectedEntity).getResource())) {
+                    if (selectedEntity.getDistance(PlayerManager.getCurrentPlayer()) <= 160) {
+                        if (Objects.nonNull(((GameObject) selectedEntity).getResource())) {
+                            PlayerManager.getCurrentPlayer().setTarget(selectedEntity);
+                        }
                     } else {
                         AlertTextManager.add(new AlertText((int)PlayerManager.getCurrentPlayer().getX(), (int)PlayerManager.getCurrentPlayer().getY(), "You need to be closer to do that...", DamageType.DEFAULT));
                     }

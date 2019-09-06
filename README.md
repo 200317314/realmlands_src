@@ -7,7 +7,8 @@ All files included is property of Xootic inc.
 # Active:
 - David Kuzmich - Developer
 - Josh Barcelos - Developer
-- Dakota Whyte - GFX
+- Travis Teerink - Developer
+- Alex Young - Gfx Designer
 
 # Non-Active:
 

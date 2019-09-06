@@ -264,35 +264,42 @@ public class UIManager {
                     label.setColor(Methods.getRarityColor(equipmentSlot.getItem().getRarity()));
 
                     Stack stack = new Stack();
-                    stack.add(new Image(new Texture(Gdx.files.internal("slots/" + equipmentSlot.getSlot().toLowerCase() + ".png"))));
-                    stack.add(equipmentSlot.getItem().getImage());
+                    if (Objects.nonNull(equipmentSlot.getItem())) {
+                        stack.add(new Image(new Texture(Gdx.files.internal("slots/" + equipmentSlot.getSlot().toLowerCase() + ".png"))));
 
-                    skillTable.add(stack);
-                    skillTable.add(label);
-                    skillTable.row();
-
-                    equipmentSlot.getItem().getImage().addListener(new ClickListener() {
-                        @Override
-                        public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-                            if (Objects.nonNull(equipmentSlot.getItem())) {
-                                equipmentSlot.getItem().setHovered(true);
-                            }
+                        if (Objects.nonNull(equipmentSlot.getItem().getImage())) {
+                            stack.add(equipmentSlot.getItem().getImage());
                         }
 
-                        @Override
-                        public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-                            if (Objects.nonNull(equipmentSlot.getItem())) {
-                                equipmentSlot.getItem().setHovered(false);
-                            }
-                        }
-                    });
+                        skillTable.add(stack);
+                        skillTable.add(label);
+                        skillTable.row();
 
-                    equipmentSlot.getItem().getImage().addListener(new ClickListener(Input.Buttons.RIGHT) {
-                        @Override
-                        public void clicked(InputEvent event, float x, float y) {
-                            PlayerManager.getCurrentPlayer().getEquipment().removeItem(equipmentSlot.getItem());
+                        if (Objects.nonNull(equipmentSlot.getItem().getImage())) {
+                            equipmentSlot.getItem().getImage().addListener(new ClickListener() {
+                                @Override
+                                public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+                                    if (Objects.nonNull(equipmentSlot.getItem())) {
+                                        equipmentSlot.getItem().setHovered(true);
+                                    }
+                                }
+
+                                @Override
+                                public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+                                    if (Objects.nonNull(equipmentSlot.getItem())) {
+                                        equipmentSlot.getItem().setHovered(false);
+                                    }
+                                }
+                            });
+
+                            equipmentSlot.getItem().getImage().addListener(new ClickListener(Input.Buttons.RIGHT) {
+                                @Override
+                                public void clicked(InputEvent event, float x, float y) {
+                                    PlayerManager.getCurrentPlayer().getEquipment().removeItem(equipmentSlot.getItem());
+                                }
+                            });
                         }
-                    });
+                    }
                 } else {
                     Label label = new Label("Nothing Equipped", Constants.DEFAULT_SKIN);
                     label.setColor(Color.RED);
@@ -314,6 +321,10 @@ public class UIManager {
     }
 
     public static void openAttributeTab() {
+        if (Objects.nonNull(attributeScrollPane)) {
+            attributeScrollPane.addAction(Actions.removeActor());
+        }
+
         Table skillTable = new Table(Constants.DEFAULT_SKIN);
 
         for (Attribute attribute : PlayerManager.getCurrentPlayer().getPlayerAttributes()) {
@@ -336,12 +347,16 @@ public class UIManager {
     }
 
     public static void openSkillTab() {
+        if (Objects.nonNull(skillScrollPane)) {
+            skillScrollPane.addAction(Actions.removeActor());
+        }
+
         Table skillTable = new Table(Constants.DEFAULT_SKIN);
 
         for (Skill skill : Objects.requireNonNull(PlayerManager.getCurrentPlayer()).getPlayerSkills()) {
             if (Objects.nonNull(skill)) {
                 Label label = new Label("" + skill.getName() + " Level: " + skill.getLevel() + " (" + Methods.convertNum((int)skill.getCurrentExp()) + "/" + Methods.convertNum((int)skill.getMaxExp()) + " xp)", Constants.DEFAULT_SKIN);
-                label.setColor(Color.GREEN);
+                label.setColor(Color.SCARLET);
 
                 skillTable.add(skill.getImage());
                 skillTable.add(label);

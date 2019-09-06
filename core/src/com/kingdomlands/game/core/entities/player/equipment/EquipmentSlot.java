@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.JsonWriter;
 import com.kingdomlands.game.core.entities.item.Item;
 import com.kingdomlands.game.core.entities.item.SlotType;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class EquipmentSlot implements Json.Serializable {
@@ -88,6 +89,22 @@ public class EquipmentSlot implements Json.Serializable {
             setY(jsonData.getInt("y"));
             setSlotType(SlotType.valueOf(jsonData.getString("slotType")));
             setItem(json.fromJson(Item.class, jsonData.get("item").prettyPrint(JsonWriter.OutputType.json, 0)));
+
+            if (Objects.nonNull(getItem())) {
+                if (getItem().getName().equals("BROKEN ITEM")) {
+                    if (getSlot().equals(SlotType.HELMET)) {
+                        EquipmentSlot es = new EquipmentSlot("Helmet", 1096, 408, SlotType.HELMET, null);
+
+                        setSlot(es.getSlot());
+                        setX(es.getX());
+                        setY(es.getY());
+                        setSlotType(es.getSlotType());
+                        setItem(null);
+                    }
+
+                    setItem(null);
+                }
+            }
         } else {
             setSlot("Helmet");
             setX(1096);
