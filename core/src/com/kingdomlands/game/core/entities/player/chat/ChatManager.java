@@ -108,6 +108,7 @@ public class ChatManager {
                 label.setWrap(true);
                 table.add(label).width(360);
                 table.row();
+                scrollPane.setScrollPercentY(100);
             });
 
             scrollPane.act(Gdx.graphics.getDeltaTime());
