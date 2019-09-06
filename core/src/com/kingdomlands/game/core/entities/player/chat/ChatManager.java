@@ -106,9 +106,11 @@ public class ChatManager {
                 label.setColor(DamageType.getColor(s));
                 label.setAlignment(Align.left);
                 label.setWrap(true);
+                label.setWidth(100);
                 table.add(label).width(360);
                 table.row();
-                scrollPane.setScrollPercentY(100);
+                scrollPane.scrollTo(0, 0, 0, 0);
+
             });
 
             scrollPane.act(Gdx.graphics.getDeltaTime());
