@@ -16,6 +16,8 @@ import com.kingdomlands.game.core.entities.npc.Npc;
 import com.kingdomlands.game.core.entities.npc.NpcManager;
 import com.kingdomlands.game.core.entities.objects.GameObject;
 import com.kingdomlands.game.core.entities.objects.ObjectManager;
+import com.kingdomlands.game.core.entities.player.Player;
+import com.kingdomlands.game.core.entities.player.PlayerManager;
 import com.kingdomlands.game.core.entities.player.shops.ShopManager;
 import com.kingdomlands.game.core.entities.projectile.Projectile;
 import com.kingdomlands.game.core.entities.projectile.Projectiles;
@@ -141,7 +143,8 @@ public class StageManager {
     public static List<Vector2> getAllEntityPositions(Entity e, Entity clicked) {
         List<Vector2> pos = new ArrayList<>();
 
-        getFilteredEntitys(en -> Objects.nonNull(en) && en.getDistance(e) <= 3200).forEach(entity -> {
+
+        for (Entity entity : getAllEntities()) {
             if (Objects.nonNull(entity)) {
                 if (Objects.nonNull(clicked)) {
                     if (entity.getEntityType() != EntityType.ITEM && entity.getEntityType() != EntityType.PLAYER && !entity.equals(e) && !entity.equals(clicked)) {
@@ -180,7 +183,49 @@ public class StageManager {
                     }
                 }
             }
-        });
+        }
+
+
+        /*getFilteredEntitys(en -> Objects.nonNull(en) && en.getDistance(e) <= 3200).forEach(entity -> {
+            if (Objects.nonNull(entity)) {
+                if (Objects.nonNull(clicked)) {
+                    if (entity.getEntityType() != EntityType.ITEM && entity.getEntityType() != EntityType.PLAYER && !entity.equals(e) && !entity.equals(clicked)) {
+                        Rectangle bounds = getEntityBounds(entity);
+                        if (bounds.width > 64) {
+                            for (int i = 0; i < (bounds.width/64); i++) {
+                                pos.add(new Vector2(entity.getPosition().x/64, entity.getPosition().y/64 + i));
+                            }
+                        }
+
+                        if (bounds.height > 64) {
+                            for (int i = 0; i < (bounds.height/64); i++) {
+                                pos.add(new Vector2(entity.getPosition().x/64 + i, entity.getPosition().y/64));
+                            }
+                        }
+
+                        pos.add(new Vector2(entity.getPosition().x/64, entity.getPosition().y/64));
+                    }
+                } else {
+                    if (entity.getEntityType() != EntityType.ITEM && entity.getEntityType() != EntityType.PLAYER && !entity.equals(e)) {
+                        Rectangle bounds = getEntityBounds(entity);
+
+                        if (bounds.width > 64) {
+                            for (int i = 0; i < (bounds.width/64); i++) {
+                                pos.add(new Vector2(entity.getPosition().x/64, entity.getPosition().y/64 + i));
+                            }
+                        }
+
+                        if (bounds.height > 64) {
+                            for (int i = 0; i < (bounds.height/64); i++) {
+                                pos.add(new Vector2(entity.getPosition().x/64 + i, entity.getPosition().y/64));
+                            }
+                        }
+
+                        pos.add(new Vector2(entity.getPosition().x/64, entity.getPosition().y/64));
+                    }
+                }
+            }
+        });*/
 
 
         return pos;
@@ -331,6 +376,10 @@ public class StageManager {
         Npc solomon = NpcManager.createNpc(6);
         solomon.setPosition(7104, 16000 - 7812);
         StageManager.addActor(solomon);
+
+        if (Objects.nonNull(PlayerManager.getCurrentPlayer())) {
+            PlayerManager.getCurrentPlayer().resetMovement();
+        }
 
         ShopManager.clearShopItems();
     }

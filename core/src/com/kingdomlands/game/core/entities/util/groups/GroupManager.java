@@ -24,7 +24,7 @@ public class GroupManager {
             }
         }
 
-        StageManager.addActor(ObjectManager.createObjectById(22, (int)(portalPos.x*50*64) - 1600, (int)(portalPos.y*50*64) - 1600));
+        StageManager.addActor(ObjectManager.createObjectById(22, 7940, 8200));
     }
 
     public static void generateGroup(Group group, int x, int y) {

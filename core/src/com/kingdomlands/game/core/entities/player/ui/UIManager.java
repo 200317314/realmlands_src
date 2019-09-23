@@ -24,10 +24,7 @@ import com.kingdomlands.game.core.entities.objects.ObjectManager;
 import com.kingdomlands.game.core.entities.player.Player;
 import com.kingdomlands.game.core.entities.player.PlayerManager;
 import com.kingdomlands.game.core.entities.player.equipment.EquipmentSlot;
-import com.kingdomlands.game.core.entities.util.Attribute;
-import com.kingdomlands.game.core.entities.util.ItemHoverManager;
-import com.kingdomlands.game.core.entities.util.Methods;
-import com.kingdomlands.game.core.entities.util.Skill;
+import com.kingdomlands.game.core.entities.util.*;
 import com.kingdomlands.game.core.entities.util.contextmenu.ContextManager;
 import com.kingdomlands.game.core.entities.util.groups.Group;
 import com.kingdomlands.game.core.stages.StageManager;
@@ -105,22 +102,27 @@ public class UIManager {
                 //End HUD
                 if (currentTab.equals(HUD.INVENTORY)) {
                     inventoryScrollPane.addAction(Actions.removeActor());
+                    SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "closeui.wav")));
                 }
 
                 if (currentTab.equals(HUD.SKILL)) {
                     skillScrollPane.addAction(Actions.removeActor());
+                    SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "closeui.wav")));
                 }
 
                 if (currentTab.equals(HUD.ATTRIBUTE)) {
                     attributeScrollPane.addAction(Actions.removeActor());
+                    SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "closeui.wav")));
                 }
 
                 if (currentTab.equals(HUD.EQUIPMENT)) {
                     equipmentScrollPane.addAction(Actions.removeActor());
+                    SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "closeui.wav")));
                 }
 
                 if (currentTab.equals(HUD.SETTINGS)) {
                     settingsScrollPane.addAction(Actions.removeActor());
+                    SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "closeui.wav")));
                 }
 
                 if (currentTab.equals(tab)) {
@@ -128,7 +130,7 @@ public class UIManager {
                 } else {
                     if (Objects.nonNull(tab)) {
                         currentTab = tab;
-
+                        SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "openui.wav")));
                         if (tab.equals(HUD.INVENTORY)) {
                             openInventoryTab();
                         }
@@ -152,6 +154,7 @@ public class UIManager {
                 }
             } else {
                 currentTab = tab;
+                SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "openui.wav")));
 
                 if (Objects.nonNull(tab)) {
                     if (tab.equals(HUD.INVENTORY)) {
@@ -176,7 +179,7 @@ public class UIManager {
                 }
             }
         }
-        timeout = 30;
+        timeout = 15;
     }
 
     public static void openInventoryTab() {
@@ -356,7 +359,7 @@ public class UIManager {
         for (Skill skill : Objects.requireNonNull(PlayerManager.getCurrentPlayer()).getPlayerSkills()) {
             if (Objects.nonNull(skill)) {
                 Label label = new Label("" + skill.getName() + " Level: " + skill.getLevel() + " (" + Methods.convertNum((int)skill.getCurrentExp()) + "/" + Methods.convertNum((int)skill.getMaxExp()) + " xp)", Constants.DEFAULT_SKIN);
-                label.setColor(Color.SCARLET);
+                label.setColor(Color.WHITE);
 
                 skillTable.add(skill.getImage());
                 skillTable.add(label);

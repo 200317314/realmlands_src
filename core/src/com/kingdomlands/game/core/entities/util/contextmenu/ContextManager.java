@@ -24,6 +24,7 @@ import com.kingdomlands.game.core.entities.player.PlayerManager;
 import com.kingdomlands.game.core.entities.player.bank.BankManager;
 import com.kingdomlands.game.core.entities.player.chat.ChatManager;
 import com.kingdomlands.game.core.entities.player.shops.ShopManager;
+import com.kingdomlands.game.core.entities.projectile.Projectile;
 import com.kingdomlands.game.core.entities.util.*;
 import com.kingdomlands.game.core.entities.util.groups.GroupManager;
 import com.kingdomlands.game.core.stages.StageManager;
@@ -230,12 +231,12 @@ public class ContextManager {
                     }
 
                     close();
-                } else if (selected.contains("Return Portal")) {
+                } else if (selected.contains("Return Town")) {
                     if (selectedEntity.getDistance(PlayerManager.getCurrentPlayer()) <= 160) {
                         Player player = PlayerManager.getCurrentPlayer();
 
                         StageManager.getAllEntities().forEach(e -> {
-                            if (e instanceof GameObject || e instanceof Npc || e instanceof Monster || e instanceof Item) {
+                            if (e instanceof GameObject || e instanceof Npc || e instanceof Monster || e instanceof Item || e instanceof Projectile) {
                                 e.remove();
                             }
                         });
@@ -244,7 +245,7 @@ public class ContextManager {
 
                         Gdx.input.setInputProcessor(StageManager.getCurrentStage());
                         StageManager.addActor(player);
-                        Objects.requireNonNull(player).setPosition(7165, 1378);
+                        Objects.requireNonNull(player).setPosition(7265, 7800);
 
                         //Add Buildings
                         StageManager.loadTown();

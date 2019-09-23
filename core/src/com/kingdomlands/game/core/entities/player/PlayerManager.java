@@ -74,6 +74,10 @@ public class PlayerManager {
             }
         });
 
+        if (players.size() == 0) {
+            return null;
+        }
+
         return players.get(0);
     }
 
@@ -212,6 +216,16 @@ public class PlayerManager {
             return 1.20;
         } else if (isPremium()) {
             return 1.15;
+        }
+
+        return 1;
+    }
+
+    public static double getExpSkillModifier() {
+        if (isFounder()) {
+            return 1.075;
+        } else if (isPremium()) {
+            return 1.05;
         }
 
         return 1;

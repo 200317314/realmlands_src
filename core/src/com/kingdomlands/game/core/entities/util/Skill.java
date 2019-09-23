@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
+import com.kingdomlands.game.core.entities.player.PlayerManager;
 import com.kingdomlands.game.core.entities.player.ui.UIManager;
 
 import java.util.List;
@@ -91,7 +92,7 @@ public class Skill implements Json.Serializable {
     public static void addExpToSkillFromList(List<Skill> skills, String name, double exp) {
         skills.forEach(skill -> {
             if(skill.name.equals(name))
-                skill.currentExp = skill.currentExp + exp;
+                skill.currentExp = skill.currentExp + (exp * PlayerManager.getExpSkillModifier());
         });
 
         UIManager.openSkillTab();

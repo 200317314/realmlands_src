@@ -12,6 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 public enum DamageType {
     DEFAULT("npc", Color.WHITE),
     PHYSICAL("physical", Color.RED),
+    RANGED("ranged", Color.SCARLET),
+    MAGICAL("magical", Color.BLUE),
     POISON("poison", Color.GREEN),
     NPC("npc", Color.ORANGE),
     EXP("exp", Color.CHARTREUSE),

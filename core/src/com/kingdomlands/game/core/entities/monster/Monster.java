@@ -83,7 +83,7 @@ public class Monster extends Entity {
             registerMove();
         }
 
-        inCombat();
+        Gdx.app.postRunnable(() -> inCombat());
         ambientMove();
 
         Player nearest = PlayerManager.getNearestPlayer(this);
@@ -118,16 +118,9 @@ public class Monster extends Entity {
             isMoving= true;
             Player nearest = PlayerManager.getNearestPlayer(this);
             if (Objects.nonNull(nearest)) {
-                if (Objects.nonNull(projectile)) {
-                    if (getDistance(nearest) >= projectile.getRange()*64) {
-                        isMoving = true;
-                        move(nearest.getPosition(), monsterAttributes.getMovementSpeed());
-                    }
-                } else {
-                    if (getDistance(nearest) <= range) {
-                        isMoving = true;
-                        move(nearest.getPosition(), monsterAttributes.getMovementSpeed());
-                    }
+                if (getDistance(nearest) <= range) {
+                    isMoving = true;
+                    Gdx.app.postRunnable(() -> move(nearest.getPosition(), monsterAttributes.getMovementSpeed()));
                 }
             }
         }
@@ -176,14 +169,20 @@ public class Monster extends Entity {
     }
 
     public void takeDamage(int damage, boolean crit, Projectiles projectile) {
+        DamageType damageType = DamageType.PHYSICAL;
+
         if (!aggressive) {
             aggressive = true;
         }
 
+        damage = PlayerManager.getCurrentPlayer().getDamageMultiplier(damage);
+
         if (Objects.nonNull(projectile)) {
             if (projectile.isMagical()) {
+                damageType = DamageType.MAGICAL;
                 SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/magic_attack.wav")));
             } else {
+                damageType = DamageType.RANGED;
                 SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/player_attack.wav")));
             }
         } else {
@@ -195,7 +194,7 @@ public class Monster extends Entity {
             monsterAttributes.setCurrentHp(monsterAttributes.getCurrentHp() - (int)monsterAttributes.getNegatedDamage(damage * 2));
             ChatManager.addChat("[Battle]: " + "You attack a " + this.getName() + " for " + (int)monsterAttributes.getNegatedDamage(damage * 2) + " damage.");
         } else {
-            DamageTextManager.add(new DamageText((int)getX() + 16, (int)getY() + 16, (int)monsterAttributes.getNegatedDamage(damage), 100, DamageType.PHYSICAL));
+            DamageTextManager.add(new DamageText((int)getX() + 16, (int)getY() + 16, (int)monsterAttributes.getNegatedDamage(damage), 100, damageType));
             monsterAttributes.setCurrentHp(monsterAttributes.getCurrentHp() - (int)monsterAttributes.getNegatedDamage(damage));
             ChatManager.addChat("[Battle]: " + "You attack a " + this.getName() + " for " + (int)monsterAttributes.getNegatedDamage(damage) + " damage.");
         }
@@ -261,6 +260,7 @@ public class Monster extends Entity {
                     ChatManager.addChat("[Loot]: " + "You gained " + monsterAttributes.getCurrExp() + " exp from " + this.getName() + ".");
                 }
 
+                SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "expgain.wav")));
                 PlayerManager.getNearestPlayer(this).addExp(monsterAttributes.getCurrExp());
             }
         }

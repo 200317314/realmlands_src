@@ -9,6 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
  */
 public enum Projectiles {
     ARROW("Arrow", new Image(new Texture(Gdx.files.internal("projectiles/arrow.png"))), 8, 6, true, false),
+    BONE_ARROW("Arrow", new Image(new Texture(Gdx.files.internal("projectiles/bone_arrow.png"))), 8, 6, true, false),
+    GOBLIN_ARROW("Arrow", new Image(new Texture(Gdx.files.internal("projectiles/goblin_arrow.png"))), 8, 6, true, false),
     MAGIC_ORB("Magic Orb", new Image(new Texture(Gdx.files.internal("projectiles/magic_orb.png"))), 8, 6, false, true);
 
     private final String name;

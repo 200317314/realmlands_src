@@ -2,6 +2,7 @@ package com.kingdomlands.game.core.entities.player.chat;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -104,6 +105,11 @@ public class ChatManager {
             chat.forEach(s -> {
                 Label label = new Label(s, Constants.DEFAULT_SKIN);
                 label.setColor(DamageType.getColor(s));
+
+                if (s.contains("[Battle]: You")) {
+                    label.setColor(Color.SCARLET);
+                }
+
                 label.setAlignment(Align.left);
                 label.setWrap(true);
                 label.setWidth(100);

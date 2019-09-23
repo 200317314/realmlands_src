@@ -4,6 +4,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.kingdomlands.game.core.entities.EntityType;
+import com.kingdomlands.game.core.entities.player.Player;
+import com.kingdomlands.game.core.entities.player.PlayerManager;
 import com.kingdomlands.game.core.entities.util.Methods;
 
 import java.util.Objects;

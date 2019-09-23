@@ -89,6 +89,10 @@ public class Main extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+		Gdx.app.postRunnable(() -> {
+			StageManager.getViewPort().setScreenSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		});
+
 		if (!Methods.getLoading()) {
 			StageRender.render();
 
@@ -183,7 +187,7 @@ public class Main extends ApplicationAdapter {
 					if (!getCurrentPlayer().getInventory().getItems().contains(isMouseOverItem())) {
 						GlyphLayout layout = new GlyphLayout();
 						layout.setText(Constants.DEFAULT_FONT, isMouseOverItem().getDescription());
-						ItemHoverManager.renderBackground(76 + isMouseOverItem().getAttributes().size()*12, (layout.width > 240) ? (int) layout.width : 240);
+						ItemHoverManager.renderBackground(76 + isMouseOverItem().getAttributes().size()*12, (layout.width > 240) ? (int) layout.width : 240, isMouseOverItem().getRarity());
 					}
 				}
 
@@ -196,7 +200,7 @@ public class Main extends ApplicationAdapter {
 
 						if (Objects.nonNull(layout) && Objects.nonNull(layout.width)) {
 							if (Objects.nonNull(Objects.requireNonNull(isMouseOverItemTab()).getAttributes())) {
-								ItemHoverManager.renderBackground(76 + Objects.requireNonNull(isMouseOverItemTab()).getAttributes().size()*12, (layout.width > 240) ? (int) layout.width : 240);
+								ItemHoverManager.renderBackground(76 + Objects.requireNonNull(isMouseOverItemTab()).getAttributes().size()*12, (layout.width > 240) ? (int) layout.width : 240, isMouseOverItemTab().getRarity());
 							}
 						}
 					}

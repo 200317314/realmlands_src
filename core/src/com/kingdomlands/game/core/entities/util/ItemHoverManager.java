@@ -30,16 +30,18 @@ public class ItemHoverManager {
         this.shapeRenderer = shapeRenderer;
     }
 
-    public static void renderBackground(int height, int width) {
+    public static void renderBackground(int height, int width, int rarity) {
         Vector2 pos = new Vector2(Gdx.input.getX() + 6 + 18, (800 - Gdx.input.getY()) - height + 16 + 24);
 
         if (pos.x <= 1028) {
             Gdx.gl20.glLineWidth(4);
-            shapeRenderer.setColor(new Color(0, 0, 0, 0.4f));
+            Color color = Methods.getRarityColor(rarity);
+
+            shapeRenderer.setColor(new Color(color.r, color.g, color.b, 0.6f));
             shapeRenderer.rect(pos.x, pos.y, width + 4, height + 4);
             shapeRenderer.rect(pos.x - 4, pos.y - 4, width + 4, height + 4);
 
-            shapeRenderer.setColor(new Color(0, 0, 0, 0.4f));
+            shapeRenderer.setColor(new Color(0, 0, 0, 0.9f));
             shapeRenderer.rect(pos.x, pos.y, width, height);
         } else {
             Gdx.gl20.glLineWidth(4);
@@ -47,7 +49,7 @@ public class ItemHoverManager {
             shapeRenderer.rect(pos.x - INVERT, pos.y, width + 4, height + 4);
             shapeRenderer.rect(pos.x - INVERT - 4, pos.y - 4, width + 4, height + 4);
 
-            shapeRenderer.setColor(new Color(0, 0, 0, 0.4f));
+            shapeRenderer.setColor(new Color(0, 0, 0, 0.9f));
             shapeRenderer.rect(pos.x - INVERT, pos.y, width, height);
         }
     }
@@ -67,9 +69,9 @@ public class ItemHoverManager {
                 layout.setText(Constants.DEFAULT_FONT, "Lvl: " + item.getLevel());
 
                 font.setColor(Color.RED);
-                font.draw(batch,  "Type: " + item.getItemType().toString().toLowerCase(), pos.x + (int) width/2 - 40, (int) pos.y + 2);
+                font.draw(batch,  "iLvl: " + ItemManager.getItemLevel(item) + "  Type: " + item.getItemType().toString().toLowerCase().replace("_", " "), pos.x + 12, (int) pos.y + 2);
                 font.setColor(Color.WHITE);
-                font.draw(batch, item.getDescription(), (int) pos.x + 12, (int) pos.y - 10);
+                font.draw(batch, item.getDescription(), (int) pos.x + 12, (int) pos.y - 11);
 
                 if (item.getAttributes().size() != 0) {
                     font.setColor(Color.SCARLET);

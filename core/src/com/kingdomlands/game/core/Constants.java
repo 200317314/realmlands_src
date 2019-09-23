@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
  */
 public class Constants {
     public static String TITLE = "Realm Lands";
-    public static boolean RESIZABLE = false;
+    public static boolean RESIZABLE = true;
 
     public static int FPS = 60;
     public static int WINDOW_WIDTH = 1280, WINDOW_HEIGHT = 800;

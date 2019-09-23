@@ -18,6 +18,7 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Timer;
 import com.kingdomlands.game.core.Constants;
+import com.kingdomlands.game.core.entities.EntityType;
 import com.kingdomlands.game.core.entities.player.Player;
 import com.kingdomlands.game.core.entities.player.PlayerManager;
 import com.kingdomlands.game.core.entities.player.chat.ChatManager;
@@ -91,6 +92,7 @@ public class LoginStage {
            @Override
            public void clicked(InputEvent event, float x, float y) {
                 String username = usernameField.getText();
+                username = username.toLowerCase();
                 String password = passwordField.getText();
 
                 if (username.isEmpty() || password.isEmpty()) {
@@ -108,6 +110,12 @@ public class LoginStage {
                         }
                     }
                 }
+
+                Gdx.app.postRunnable(() -> {
+                    if (Methods.getLoading()) {
+                        Methods.setLoading();
+                    }
+                });
            }
         });
 
@@ -201,6 +209,7 @@ public class LoginStage {
 
                     Gdx.app.postRunnable(() -> {
                         player = json.fromJson(Player.class, value.getString("playerJson"));
+
                         PlayerManager.setCurrentPlayer(player);
                         ChatManager.addChat("[Login]: " + "Welcome back " + player.getName() + ".");
 

@@ -151,4 +151,28 @@ public class ItemManager {
         }
         return cost;
     }
+
+    public static int getItemLevel(Item item) {
+        int cost = 0;
+        int totalAttrs = 0;
+
+        if (Objects.nonNull(item) && Objects.nonNull(item.getAttributes())) {
+            for (Attribute a : item.getAttributes()) {
+                if (Objects.nonNull(a)) {
+                    if (a.getName().contains("Current")) {
+                        totalAttrs += a.getValue()/15;
+                    } else {
+                        totalAttrs += a.getValue();
+                    }
+                }
+            }
+        }
+
+        cost = totalAttrs;
+
+        if (cost == 0) {
+            cost = 1;
+        }
+        return cost;
+    }
 }

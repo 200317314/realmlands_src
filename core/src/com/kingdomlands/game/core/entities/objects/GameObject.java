@@ -85,9 +85,10 @@ public class GameObject extends Entity {
         if (Objects.nonNull(resource)) {
             if (resourceHp <= 0) {
 
-                if (resource.getDepletedId() != -1) {
+                //Fix spawn moving and blocking in the player
+                /*if (resource.getDepletedId() != -1) {
                     StageManager.addActor(ObjectManager.createObjectById(resource.getDepletedId(), (int)this.getX() + 32, (int)this.getY()));
-                }
+                }*/
 
                 Gdx.app.postRunnable(this::remove);
             }

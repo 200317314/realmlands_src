@@ -1,18 +1,16 @@
 package com.kingdomlands.game.core.entities.player;
 
-import com.kingdomlands.game.core.entities.util.AlertText;
-import com.kingdomlands.game.core.entities.util.AlertTextManager;
-import com.kingdomlands.game.core.entities.util.Attribute;
-import com.kingdomlands.game.core.entities.util.DamageType;
+import com.badlogic.gdx.Gdx;
+import com.kingdomlands.game.core.entities.util.*;
 
 import java.util.List;
 import java.util.Objects;
 
 public enum PlayerClass {
-    KNIGHT("Knight", 5, 15, 1, 0, 0, 3, 1, 5, 0, 0, "knight.png", "KNIGHT_HUD"),
-    ARCHER("Archer", 10, 10, 0, 0, 1, 2, 2, 3, 0, 0, "archer.png", "ARCHER_HUD"),
-    DRUID("Druid", 15, 5, 0, 1, 0, 1, 3, 1, 0, 0, "druid.png", "DRUID_HUD"),
-    WIZARD("Wizard", 15, 5, 0, 1, 0, 1, 3, 1, 0, 0, "wizard.png", "WIZARD_HUD");
+    KNIGHT("Knight", 5, 30, 1, 0, 0, 0, 0, 5, 0, 0, "knight.png", "KNIGHT_HUD"),
+    ARCHER("Archer", 10, 20, 0, 0, 1, 0, 0, 3, 0, 0, "archer.png", "ARCHER_HUD"),
+    DRUID("Druid", 15, 10, 0, 1, 0, 0, 0, 1, 0, 0, "druid.png", "DRUID_HUD"),
+    WIZARD("Wizard", 15, 10, 0, 1, 0, 0, 0, 1, 0, 0, "wizard.png", "WIZARD_HUD");
 
     private final String name;
     private final int bonusMana;
@@ -46,6 +44,8 @@ public enum PlayerClass {
 
     public static void levelUp(Player player) {
         if (Objects.nonNull(player.getPlayerAttributes())) {
+            SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "levelup.wav")));
+
             Attribute.setAttributeValueFromList(player.getPlayerAttributes(),
                     "Level",
                     Attribute.getAttributeFromList(player.getPlayerAttributes(), "Level").getLevel(player.getPlayerAttributes()) + 1);

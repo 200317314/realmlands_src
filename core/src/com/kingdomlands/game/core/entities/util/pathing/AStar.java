@@ -1,5 +1,6 @@
 package com.kingdomlands.game.core.entities.util.pathing;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
@@ -219,10 +220,32 @@ public class AStar {
                     return new Vector2(endX, endY);
                 }
             } else {
-                return path.get(1);
+                Vector2 next = path.get(1);
+                path.remove(0);
+
+                return next;
             }
         } else {
             return null;
         }
+    }
+
+    public List<Vector2> getPath() {
+        List<Vector2> path = new ArrayList<>();
+
+        if (closedCells[endX][endY]) {
+            Cell current = grid[endX][endY];
+            grid[current.getX()][current.getY()].setSolution(true);
+
+            while (current.getParent() != null) {
+                path.add(new Vector2(current.getParent().getX(), current.getParent().getY()));
+                grid[current.getParent().getX()][current.getParent().getY()].setSolution(true);
+                current = current.getParent();
+            }
+        } else {
+            return null;
+        }
+
+        return path;
     }
 }

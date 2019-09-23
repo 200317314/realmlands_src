@@ -13,7 +13,7 @@
       "weight": 3,
       "description": "A strong scythe.",
       "attributes": {
-        "AttackPower": 5
+        "AttackPower": 2
       }
     },
     {
@@ -29,7 +29,7 @@
       "weight": 4,
       "description": "A fungal grown blade.",
       "attributes": {
-        "AttackPower": 15
+        "AttackPower": 11
       }
     },
     {
@@ -45,8 +45,8 @@
       "weight": 7,
       "description": "A blessed mace by a cleric",
       "attributes": {
-        "AttackPower": 24,
-        "Crit": 5
+        "AttackPower": 16,
+        "Crit": 1
       }
     },
     {
@@ -62,7 +62,7 @@
       "weight": 5,
       "description": "A refined tooth of a wyvern.",
       "attributes": {
-        "AttackPower": 35
+        "AttackPower": 25
       }
     },
     {
@@ -78,7 +78,7 @@
       "weight": 3,
       "description": "A basic dagger made of iron.",
       "attributes": {
-        "AttackPower": 2
+        "AttackPower": 1
       }
     },
     {
@@ -94,7 +94,7 @@
       "weight": 3,
       "description": "A basic axe made of iron.",
       "attributes": {
-        "AttackPower": 3
+        "AttackPower": 2
       }
     },
     {
@@ -110,7 +110,7 @@
       "weight": 7,
       "description": "A fine longsword made of iron.",
       "attributes": {
-        "AttackPower": 8
+        "AttackPower": 5
       }
     },
     {
@@ -126,7 +126,7 @@
       "weight": 6,
       "description": "A fine scimitar made of iron.",
       "attributes": {
-        "AttackPower": 10
+        "AttackPower": 5
       }
     },
     {
@@ -142,7 +142,7 @@
       "weight": 5,
       "description": "A fine sword made of iron.",
       "attributes": {
-        "AttackPower": 4
+        "AttackPower": 3
       }
     },
     {
@@ -165,7 +165,7 @@
       "id": 11,
       "name": "Wooden Shield",
       "image": "wooden_shield.png",
-      "type": "ARMOR",
+      "type": "LIGHT_ARMOR",
       "slot": "LEFTHAND",
       "level": 1,
       "stackable": false,
@@ -173,7 +173,7 @@
       "weight": 9,
       "description": "A wooden shield of planks.",
       "attributes": {
-        "Armor": 10
+        "Armor": 12
       }
     },
     {
@@ -222,7 +222,7 @@
       "aspeed": 2.8,
       "description": "A strong iron hatchet.",
       "attributes": {
-        "AttackPower": 7
+        "AttackPower": 5
       }
     },
     {
@@ -255,7 +255,7 @@
       "aspeed": 3.0,
       "description": "A tail of a scorpion on a spear.",
       "attributes": {
-        "AttackPower": 12
+        "AttackPower": 9
       }
     },
     {
@@ -277,7 +277,7 @@
       "id": 18,
       "name": "Iron Boots",
       "image": "iron_boots.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "BOOTS",
       "level": 5,
       "stackable": false,
@@ -292,7 +292,7 @@
       "id": 19,
       "name": "Iron Chestplate",
       "image": "iron_chestplate.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "CHESTPLATE",
       "level": 5,
       "stackable": false,
@@ -307,7 +307,7 @@
       "id": 20,
       "name": "Iron Gauntlets",
       "image": "iron_gauntlets.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "GLOVES",
       "level": 5,
       "stackable": false,
@@ -322,7 +322,7 @@
       "id": 21,
       "name": "Iron Helmet",
       "image": "iron_helmet.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "HELMET",
       "level": 5,
       "stackable": false,
@@ -337,7 +337,7 @@
       "id": 22,
       "name": "Iron Platelegs",
       "image": "iron_platelegs.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "PLATELEGS",
       "level": 5,
       "stackable": false,
@@ -352,7 +352,7 @@
       "id": 23,
       "name": "Iron Shield",
       "image": "iron_shield.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "LEFTHAND",
       "level": 5,
       "stackable": false,
@@ -376,7 +376,7 @@
       "aspeed": 2.5,
       "description": "A devastating axe used by orcs.",
       "attributes": {
-        "AttackPower": 16
+        "AttackPower": 10
       }
     },
     {
@@ -422,7 +422,7 @@
       "aspeed": 2.6,
       "description": "A axe that commands truth.",
       "attributes": {
-        "AttackPower": 46
+        "AttackPower": 32
       }
     },
     {
@@ -453,7 +453,7 @@
       "aspeed": 3.0,
       "description": "A basic bow staff.",
       "attributes": {
-        "AttackPower": 8
+        "AttackPower": 6
       },
       "projectile": "MAGIC_ORB"
     },
@@ -603,7 +603,7 @@
       "id": 39,
       "name": "Demon Boots",
       "image": "demon_boots.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "BOOTS",
       "level": 40,
       "stackable": false,
@@ -618,7 +618,7 @@
       "id": 40,
       "name": "Demon Chestplate",
       "image": "demon_chestplate.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "CHESTPLATE",
       "level": 40,
       "stackable": false,
@@ -633,7 +633,7 @@
       "id": 41,
       "name": "Demon Gauntlets",
       "image": "demon_gauntlets.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "GLOVES",
       "level": 40,
       "stackable": false,
@@ -648,7 +648,7 @@
       "id": 42,
       "name": "Demon Helmet",
       "image": "demon_helmet.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "HELMET",
       "level": 40,
       "stackable": false,
@@ -663,7 +663,7 @@
       "id": 43,
       "name": "Demon Platelegs",
       "image": "demon_platelegs.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "PLATELEGS",
       "level": 40,
       "stackable": false,
@@ -680,14 +680,14 @@
       "image": "gloom_blade.png",
       "type": "SWORD",
       "slot": "RIGHTHAND",
-      "level": 34,
+      "level": 32,
       "stackable": false,
       "rarity": -1,
       "weight": 15,
       "aspeed": 2.4,
       "description": "A sword of pure darkness.",
       "attributes": {
-        "AttackPower": 40
+        "AttackPower": 34
       }
     },
     {
@@ -760,7 +760,7 @@
       "id": 49,
       "name": "Large Buckler",
       "image": "large_buckler.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "LEFTHAND",
       "level": 10,
       "stackable": false,
@@ -806,7 +806,7 @@
       "id": 52,
       "name": "Oblivionic Boots",
       "image": "oblivion_boots.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "BOOTS",
       "level": 50,
       "stackable": false,
@@ -821,7 +821,7 @@
       "id": 53,
       "name": "Oblivionic Chestplate",
       "image": "oblivion_chestplate.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "CHESTPLATE",
       "level": 50,
       "stackable": false,
@@ -836,7 +836,7 @@
       "id": 54,
       "name": "Oblivionic Gauntlets",
       "image": "oblivion_gauntlets.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "GLOVES",
       "level": 50,
       "stackable": false,
@@ -851,7 +851,7 @@
       "id": 55,
       "name": "Oblivionic Helmet",
       "image": "oblivion_helmet.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "HELMET",
       "level": 50,
       "stackable": false,
@@ -866,7 +866,7 @@
       "id": 56,
       "name": "Oblivionic Platelegs",
       "image": "oblivion_platelegs.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "PLATELEGS",
       "level": 50,
       "stackable": false,
@@ -943,7 +943,7 @@
       "id": 61,
       "name": "Ranger Boots",
       "image": "ranger_boots.png",
-      "type": "ARMOR",
+      "type": "MEDIUM_ARMOR",
       "slot": "BOOTS",
       "level": 30,
       "stackable": false,
@@ -958,7 +958,7 @@
       "id": 62,
       "name": "Ranger Chestplate",
       "image": "ranger_chestplate.png",
-      "type": "ARMOR",
+      "type": "MEDIUM_ARMOR",
       "slot": "CHESTPLATE",
       "level": 30,
       "stackable": false,
@@ -973,7 +973,7 @@
       "id": 63,
       "name": "Ranger Gloves",
       "image": "ranger_gloves.png",
-      "type": "ARMOR",
+      "type": "MEDIUM_ARMOR",
       "slot": "GLOVES",
       "level": 30,
       "stackable": false,
@@ -988,7 +988,7 @@
       "id": 64,
       "name": "Ranger Hood",
       "image": "ranger_hood.png",
-      "type": "ARMOR",
+      "type": "MEDIUM_ARMOR",
       "slot": "HELMET",
       "level": 30,
       "stackable": false,
@@ -1003,7 +1003,7 @@
       "id": 65,
       "name": "Ranger Chaps",
       "image": "ranger_chaps.png",
-      "type": "ARMOR",
+      "type": "MEDIUM_ARMOR",
       "slot": "PLATELEGS",
       "level": 30,
       "stackable": false,
@@ -1894,7 +1894,7 @@
       "id": 120,
       "name": "Bone Crown",
       "image": "bone_crown.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "HELMET",
       "level": 10,
       "stackable": false,
@@ -1909,7 +1909,7 @@
       "id": 121,
       "name": "Bone Shield",
       "image": "bone_shield.png",
-      "type": "ARMOR",
+      "type": "HEAVY_ARMOR",
       "slot": "LEFTHAND",
       "level": 10,
       "stackable": false,
@@ -1973,7 +1973,7 @@
       "id": 125,
       "name": "Goblin Helmet",
       "image": "goblin_helmet.png",
-      "type": "ARMOR",
+      "type": "MEDIUM_ARMOR",
       "slot": "HELMET",
       "level": 5,
       "stackable": false,
@@ -2297,6 +2297,141 @@
       "description": "A misc resource",
       "attributes": {
         "Gold": 42
+      }
+    },
+    {
+      "id": 147,
+      "name": "Leather Helmet",
+      "image": "leather_helmet.png",
+      "type": "MEDIUM_ARMOR",
+      "slot": "HELMET",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A sturdy leather helmet.",
+      "attributes": {
+        "Armor": 8
+      }
+    },
+    {
+      "id": 148,
+      "name": "Leather Body",
+      "image": "leather_chestplate.png",
+      "type": "MEDIUM_ARMOR",
+      "slot": "CHESTPLATE",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A sturdy leather chest piece.",
+      "attributes": {
+        "Armor": 15
+      }
+    },
+    {
+      "id": 149,
+      "name": "Leather Leggings",
+      "image": "leather_leggings.png",
+      "type": "MEDIUM_ARMOR",
+      "slot": "PLATELEGS",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A sturdy leather leggings.",
+      "attributes": {
+        "Armor": 10
+      }
+    },
+    {
+      "id": 150,
+      "name": "Leather Boots",
+      "image": "leather_boots.png",
+      "type": "MEDIUM_ARMOR",
+      "slot": "BOOTS",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A sturdy leather boots.",
+      "attributes": {
+        "Armor": 8
+      }
+    },
+    {
+      "id": 151,
+      "name": "Spidersilk Hood",
+      "image": "spidersilk_hood.png",
+      "type": "LIGHT_ARMOR",
+      "slot": "HELMET",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A magic light hood.",
+      "attributes": {
+        "Armor": 6
+      }
+    },
+    {
+      "id": 152,
+      "name": "Spidersilk Robe",
+      "image": "spidersilk_chest.png",
+      "type": "LIGHT_ARMOR",
+      "slot": "CHESTPLATE",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A magic light robe.",
+      "attributes": {
+        "Armor": 12
+      }
+    },
+    {
+      "id": 153,
+      "name": "Spidersilk Bottoms",
+      "image": "spidersilk_bottoms.png",
+      "type": "LIGHT_ARMOR",
+      "slot": "PLATELEGS",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A magic light bottoms.",
+      "attributes": {
+        "Armor": 8
+      }
+    },
+    {
+      "id": 154,
+      "name": "Spidersilk Boots",
+      "image": "spidersilk_boots.png",
+      "type": "LIGHT_ARMOR",
+      "slot": "BOOTS",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A magic light bottoms.",
+      "attributes": {
+        "Armor": 6
+      }
+    },
+    {
+      "id": 155,
+      "name": "Spidersilk Gloves",
+      "image": "spidersilk_gloves.png",
+      "type": "LIGHT_ARMOR",
+      "slot": "GLOVES",
+      "level": 1,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 7,
+      "description": "A magic light gloves.",
+      "attributes": {
+        "Armor": 8
       }
     }
   ]

@@ -133,8 +133,8 @@ public class Inventory extends Actor implements Json.Serializable {
 
     public void removeItem(int index, int amt) {
         if (Objects.nonNull(slots[index])) {
-            slots[index].setX(getPlayer().getX());
-            slots[index].setY(getPlayer().getY());
+            slots[index].setX(PlayerManager.getCurrentPlayer().getX());
+            slots[index].setY(PlayerManager.getCurrentPlayer().getY());
 
             if (slots[index].isStackable() && slots[index].getAmount() > 1) {
                 slots[index].setAmount(slots[index].getAmount() - amt);
@@ -142,7 +142,7 @@ public class Inventory extends Actor implements Json.Serializable {
                 Item dropItem = ItemManager.createItemById(slots[index].getId(), amt);
                 dropItem.setRarity(slots[index].getRarity());
                 dropItem.setAttributes(slots[index].getAttributes());
-                dropItem.setPosition((int)getPlayer().getX(), (int)getPlayer().getY());
+                dropItem.setPosition((int)PlayerManager.getCurrentPlayer().getX(), (int)PlayerManager.getCurrentPlayer().getY());
 
                 StageManager.addActor(dropItem);
 

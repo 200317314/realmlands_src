@@ -67,17 +67,24 @@ public class Item extends Entity implements Json.Serializable {
             }
 
             addRandomAttributes(this.rarity);
+            double percent = ((float)this.rarity/10.00) + 1;
 
             for (Attribute a : this.attributes) {
                 if (!a.getName().equals("AttackSpeed") && a.getValue() == 1.0) {
-                    if (a.getName().contains("Regen")) {
-                        int stat = Methods.random((this.level + this.rarity), (this.level + this.rarity) * 3) / 8;
+                    if (a.getName().contains("Max")) {
+                        a.setValue(Methods.random((this.level + this.rarity), (int) ((this.level + this.rarity * 2) * percent)) + a.getValue());
+                    } else if (a.getName().contains("Stamina") || a.getName().contains("Strength") || a.getName().contains("Intellect") || a.getName().contains("Agility")) {
+                        double stat = Methods.random((this.level + this.rarity), (int) ((this.level + this.rarity) * percent)) + a.getValue();
+                        stat = (int)(stat/10);
+                        a.setValue((stat == 0) ? 1 : stat);
+                    } else if (a.getName().contains("Regen")) {
+                        int stat = Methods.random((this.level), (int) ((this.level + this.rarity) * percent)) / 8;
                         a.setValue((stat == 0) ? 1 : stat);
                     } else {
-                        a.setValue(Methods.random((this.level + this.rarity), (this.level + this.rarity) * 3));
+                        a.setValue(Methods.random((this.level), (int) ((this.level + this.rarity) * percent)));
                     }
                 } else if (a.getValue() != 1.0 && !a.getName().equals("AttackSpeed")) {
-                    a.setValue(Methods.random((this.level + this.rarity), (this.level + this.rarity) * 2) + a.getValue());
+                    a.setValue(Methods.random((this.level + this.rarity), (int) ((this.level + this.rarity) * percent)) + a.getValue());
                 }
             }
         }

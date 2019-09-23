@@ -19,6 +19,9 @@ import com.kingdomlands.game.core.entities.util.pathing.AStar;
 import com.kingdomlands.game.core.stages.StageManager;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -28,6 +31,8 @@ public abstract class Entity extends Actor {
     private EntityType entityType;
     private final SecureRandom secureRandom = new SecureRandom();
     private Vector2 moveTo = null;
+    private AStar aStar;
+    private List<Vector2> path;
 
     public Entity(EntityType entityType, String name, int x, int y) {
         this.setName(name);
@@ -128,34 +133,77 @@ public abstract class Entity extends Actor {
 
     public boolean move(Vector2 target, double speed) {
         Gdx.app.postRunnable(() -> {
-            AStar aStar;
-            if (this instanceof Player) {
-                aStar = new AStar(this.getPosition(), target, this, PlayerManager.getCurrentPlayer().getTarget());
-            } else {
-                aStar = new AStar(this.getPosition(), target, this, null);
-            }
-
-            Vector2 next = aStar.getNextNode();
-
-            if (Objects.nonNull(next)) {
-                double destX = next.y*64 - this.getX();
-                double destY = next.x*64 - this.getY();
-
-                double dist = Math.sqrt(destX * destX + destY * destY);
-                destX = destX / dist;
-                destY = destY / dist;
-
-                double travelX = (destX * speed);
-                double travelY = (destY * speed);
-
-                if (speed < dist) {
-                    this.moveBy((int) travelX, (int)travelY);
+            if (Objects.nonNull(path)) {
+                if (pathContainsObstacles(path)) {
+                    path = null;
                 }
-            } else {
-                moveTo = null;
             }
         });
 
+        if (this.getDistanceVector(target) <= 400) {
+            if (this instanceof Player) {
+                path = new AStar(this.getPosition(), target, this, PlayerManager.getCurrentPlayer().getTarget()).getPath();
+            } else {
+                path = new AStar(this.getPosition(), target, this, null).getPath();
+            }
+
+            if (Objects.nonNull(path)) {
+                Collections.reverse(path);
+            }
+        } else {
+            if (Objects.isNull(path)) {
+                if (this instanceof Player) {
+                    path = new AStar(this.getPosition(), target, this, PlayerManager.getCurrentPlayer().getTarget()).getPath();
+                } else {
+                    path = new AStar(this.getPosition(), target, this, null).getPath();
+                }
+
+                if (Objects.nonNull(path)) {
+                    Collections.reverse(path);
+                }
+            }
+        }
+
+        Vector2 next = null;
+
+        if (Objects.nonNull(path)) {
+            if (path.size() > 1) {
+                next = path.get(1);
+            } else {
+                if (path.size() == 0) {
+                    next = null;
+                } else {
+                    next = path.get(0);
+                }
+            }
+        }
+
+        if (Objects.nonNull(next)) {
+            if (next.equals(new Vector2(Math.round(PlayerManager.getCurrentPlayer().getY()/64), Math.round(PlayerManager.getCurrentPlayer().getX()/64)))) {
+
+                if (path.size() != 1) {
+                    path.remove(0);
+                }
+            }
+
+            //System.out.println("Next: " + next.x + "," + next.y + " Pos: " + Math.round(PlayerManager.getCurrentPlayer().getX()/64) + "," + PlayerManager.getCurrentPlayer().getY()/64);
+            double destX = next.y*64 - this.getX();
+            double destY = next.x*64 - this.getY();
+
+            double dist = Math.sqrt(destX * destX + destY * destY);
+            destX = destX / dist;
+            destY = destY / dist;
+
+            double travelX = (destX * speed);
+            double travelY = (destY * speed);
+
+            if (speed < dist) {
+                this.moveBy((int) travelX, (int)travelY);
+            }
+        } else {
+            moveTo = null;
+            path = null;
+        }
 
         return false;
     }
@@ -203,7 +251,7 @@ public abstract class Entity extends Actor {
             y = -Methods.random(64, (distance * base)) + (int)entity.getY();
         }
 
-        if (x >= 15600) {
+        /*if (x >= 15600) {
             x = 15600;
         }
 
@@ -217,7 +265,7 @@ public abstract class Entity extends Actor {
 
         if (y <= 66) {
             y = 66;
-        }
+        }*/
         return new Vector2(x, y);
     }
 
@@ -231,6 +279,23 @@ public abstract class Entity extends Actor {
 
     public int getLayer() {
         return this.getEntityType().getLayer();
+    }
+
+    public boolean pathContainsObstacles(List<Vector2> path) {
+        for (Vector2 tile : path) {
+            if (Objects.nonNull(tile)) {
+                Vector2 reversed = new Vector2(tile.y * 64, tile.x * 64);
+                if (StageManager.getFilteredEntitys(e -> Objects.nonNull(e) && e.getBounds().contains(reversed)).size() != 0) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public void resetPath() {
+        path = null;
     }
 
     @Override

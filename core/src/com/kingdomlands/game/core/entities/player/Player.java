@@ -40,6 +40,8 @@ import com.kingdomlands.game.core.entities.util.contextmenu.ContextManager;
 import com.kingdomlands.game.core.stages.StageManager;
 import com.kingdomlands.game.core.stages.StageRender;
 import com.kingdomlands.game.core.stages.Stages;
+import jdk.nashorn.internal.ir.debug.JSONWriter;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.omg.CORBA.ObjectHelper;
 
 import java.math.BigDecimal;
@@ -71,7 +73,9 @@ public class Player extends Entity implements Json.Serializable {
     public Player(int id, EntityType entityType, String name, int x, int y) {
         super(entityType, name, x, y);
         this.id = id;
-        image = new Image(new Texture(Gdx.files.internal("images/player.png")));
+
+        setPlayerClass(PlayerClass.KNIGHT);
+        setImage(new Image(new Texture(Gdx.files.internal("classes/" + playerClass.getImage()))));
 
         playerAttributes.add(new Attribute("Stamina", 1));
         playerAttributes.add(new Attribute("Strength", 1));
@@ -92,15 +96,15 @@ public class Player extends Entity implements Json.Serializable {
         playerAttributes.add(new Attribute("Parry", 1));
         playerAttributes.add(new Attribute("Block", 1));
         playerAttributes.add(new Attribute("Resist", 1));
-        playerAttributes.add(new Attribute("MovementSpeed", 6));
+        playerAttributes.add(new Attribute("MovementSpeed", 3));
         playerAttributes.add(new Attribute("CurrentHp", 100));
         playerAttributes.add(new Attribute("MaxHp", 100));
-        playerAttributes.add(new Attribute("CurrentExp", 99));
+        playerAttributes.add(new Attribute("CurrentExp", 0));
         playerAttributes.add(new Attribute("MaxExp", 100));
-        playerAttributes.add(new Attribute("Level", 5));
+        playerAttributes.add(new Attribute("Level", 1));
         playerAttributes.add(new Attribute("CurrentMana", 100));
         playerAttributes.add(new Attribute("MaxMana", 100));
-        playerAttributes.add(new Attribute("AttackSpeed", 0.5));
+        playerAttributes.add(new Attribute("AttackSpeed", 3.0));
         playerAttributes.add(new Attribute("Slowness", 0));
 
         playerSkills.add(new Skill("Sword Proficiency", 1, 0, 100, "sword.png"));
@@ -108,6 +112,11 @@ public class Player extends Entity implements Json.Serializable {
         playerSkills.add(new Skill("Mace Proficiency", 1, 0, 100, "mace.png"));
         playerSkills.add(new Skill("Staff Proficiency", 1, 0, 100, "staff.png"));
         playerSkills.add(new Skill("Bow Proficiency", 1, 0, 100, "bow.png"));
+
+        playerSkills.add(new Skill("Light Armor", 1, 0, 100, "lightarmor.png"));
+        playerSkills.add(new Skill("Medium Armor", 1, 0, 100, "mediumarmor.png"));
+        playerSkills.add(new Skill("Heavy Armor", 1, 0, 100, "heavyarmor.png"));
+
         playerSkills.add(new Skill("Woodcutting", 1, 0, 100, "woodcutting.png"));
         playerSkills.add(new Skill("Fishing", 1, 0, 100, "fishing.png"));
         playerSkills.add(new Skill("Mining", 1, 0, 100, "mining.png"));
@@ -279,20 +288,21 @@ public class Player extends Entity implements Json.Serializable {
                         if (Objects.nonNull(UIManager.getCurrentTab())) {
                             if (!UIManager.isMouseOverTab() && timeout <= 0) {
                                 //if (!StageManager.clickedAnEntity(new Vector2(Gdx.input.getX(), Constants.WINDOW_HEIGHT - Gdx.input.getY()))) {
-                                    tilePoint = Methods.getCenter(new Vector2((int)clickVector.x, (int)clickVector.y));
-
-                                    if (Objects.nonNull(target)) {
-                                        target = null;
-                                    }
-                               // }
-                            }
-                        } else if (timeout <= 0) {
-                            //if (!StageManager.clickedAnEntity(new Vector2(Gdx.input.getX(), Constants.WINDOW_HEIGHT - Gdx.input.getY()))) {
+                                this.resetPath();
                                 tilePoint = Methods.getCenter(new Vector2((int)clickVector.x, (int)clickVector.y));
 
                                 if (Objects.nonNull(target)) {
                                     target = null;
                                 }
+                                // }
+                            }
+                        } else if (timeout <= 0) {
+                            //if (!StageManager.clickedAnEntity(new Vector2(Gdx.input.getX(), Constants.WINDOW_HEIGHT - Gdx.input.getY()))) {
+                            tilePoint = Methods.getCenter(new Vector2((int)clickVector.x, (int)clickVector.y));
+
+                            if (Objects.nonNull(target)) {
+                                target = null;
+                            }
                             //}
                         }
                     }
@@ -301,11 +311,13 @@ public class Player extends Entity implements Json.Serializable {
         }
 
         if(Objects.nonNull(tilePoint)) {
-            if (getDistanceVector(tilePoint) <= RANGE) {
+            if (getDistanceVector(tilePoint) <= 16) {
                 tilePoint = null;
             } else {
-                if (tilePoint.x <= 15600 && tilePoint.x >= 66 && tilePoint.y <= 15600 && tilePoint.y >= 66 && timeout <= 0) {
-                    this.move(Methods.getCenter(tilePoint), Attribute.getAttributeFromList(this.playerAttributes, "MovementSpeed").getMovementSpeed(this.playerAttributes));
+                if (/*tilePoint.x <= 15600 && tilePoint.x >= 66 && tilePoint.y <= 15600 && tilePoint.y >= 66 && */timeout <= 0) {
+                    //Gdx.app.postRunnable(() -> {
+                        this.move(Methods.getCenter(tilePoint), Attribute.getAttributeFromList(this.playerAttributes, "MovementSpeed").getMovementSpeed(this.playerAttributes));
+                    //});
                 }
             }
         }
@@ -315,7 +327,7 @@ public class Player extends Entity implements Json.Serializable {
         }
 
         if (Objects.nonNull(target) && target instanceof Item) {
-           pickUpItem();
+            pickUpItem();
         }
 
         if (Objects.nonNull(target) && target instanceof GameObject) {
@@ -332,7 +344,7 @@ public class Player extends Entity implements Json.Serializable {
 
         if(isDead()){
             PlayerManager.getCurrentPlayer().setTarget(null);
-            inventory.getItems().forEach(item -> PlayerManager.getCurrentPlayer().getInventory().removeItem(inventory.getItemIndex(item)));
+           // inventory.getItems().forEach(item -> PlayerManager.getCurrentPlayer().getInventory().removeItem(inventory.getItemIndex(item)));
             Attribute.setAttributeValueFromList(this.playerAttributes, "CurrentHp", Attribute.getAttributeValueFromList(this.playerAttributes, "MaxHp"));
 
             Gdx.app.postRunnable(() -> {
@@ -356,6 +368,12 @@ public class Player extends Entity implements Json.Serializable {
                 StageManager.loadTown();
 
                 ChatManager.init();
+
+                tilePoint = null;
+                target = null;
+
+                setInventory(new Inventory());
+                ChatManager.addChat("[Battle]: You have died and lost your inventory to the realm, perhaps buying or making better equipment to continue. If you are new check your bank for starter gold.");
             });
         }
 
@@ -395,17 +413,29 @@ public class Player extends Entity implements Json.Serializable {
                         SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + object.getResource().getSound())));
 
                         if ((resourceHpDone/damageForItem) > 1) {
+                            int exp = 0; int amount = 0; String name = "";
+
                             for (int i = 0; i <= (resourceHpDone/damageForItem); i++) {
                                 if (resourceHpDone >= damageForItem) {
                                     resourceHpDone -= damageForItem;
 
                                     Item item = ItemManager.createItemById(object.getResource().getResourceId(), 1);
-                                    DamageTextManager.add(new DamageText((int)getX() + 16, (int)getY() + 16 - (16*i), object.getResource().getExp(), 100, DamageType.EXP));
-                                    ChatManager.addChat("[Loot]: " + "You collect a " + item.getName() + " and gained " + object.getResource().getExp() + " " + object.getResource().getSkill() + " exp.");
-                                    Skill.addExpToSkillFromList(playerSkills, object.getResource().getSkill(), object.getResource().getExp());
-                                    PlayerManager.getCurrentPlayer().getInventory().addItem(item);
+                                    exp += object.getResource().getExp();
+                                    amount++;
+                                    name = item.getName();
+                                    if (getInventory().getItems().size() < 30) {
+                                        PlayerManager.getCurrentPlayer().getInventory().addItem(item);
+                                    } else {
+                                        item.setPosition(getX(), getY());
+                                        StageManager.addActor(item);
+                                    }
                                 }
                             }
+
+                            DamageTextManager.add(new DamageText((int)getX() + 16, (int)getY() + 16, exp, 100, DamageType.EXP));
+                            ChatManager.addChat("[Loot]: " + "You collect x" + amount + " " + name + " and gained " + exp + " " + object.getResource().getSkill() + " exp.");
+                            Skill.addExpToSkillFromList(playerSkills, object.getResource().getSkill(), exp);
+                            SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "expgain.wav")));
                         } else {
                             if (resourceHpDone >= damageForItem) {
                                 resourceHpDone -= damageForItem;
@@ -414,7 +444,15 @@ public class Player extends Entity implements Json.Serializable {
                                 DamageTextManager.add(new DamageText((int)getX() + 16, (int)getY() + 16, object.getResource().getExp(), 100, DamageType.EXP));
                                 ChatManager.addChat("[Loot]: " + "You collect a " + item.getName() + " and gained " + object.getResource().getExp() + " " + object.getResource().getSkill() + " exp.");
                                 Skill.addExpToSkillFromList(playerSkills, object.getResource().getSkill(), object.getResource().getExp());
-                                PlayerManager.getCurrentPlayer().getInventory().addItem(item);
+
+                                if (getInventory().getItems().size() < 30) {
+                                    PlayerManager.getCurrentPlayer().getInventory().addItem(item);
+                                } else {
+                                    item.setPosition(getX(), getY());
+                                    StageManager.addActor(item);
+                                }
+
+                                SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "expgain.wav")));
                             }
 
                             AlertTextManager.add(new AlertText((int)PlayerManager.getCurrentPlayer().getX(), (int)PlayerManager.getCurrentPlayer().getY(), object.getResource().getBlurb(), DamageType.DEFAULT));
@@ -478,6 +516,8 @@ public class Player extends Entity implements Json.Serializable {
     }
 
     public void takeDamage(int damage, Entity damager, boolean crit) {
+        DamageType damageType = DamageType.PHYSICAL;
+
         if (!Objects.nonNull(target)) {
             if (damager instanceof Monster) {
                 target = damager;
@@ -488,8 +528,10 @@ public class Player extends Entity implements Json.Serializable {
             SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/monster_attack.wav")));
         } else if (damager instanceof Projectile) {
             if (((Projectile) damager).getProjectiles().isMagical()) {
+                damageType = DamageType.MAGICAL;
                 SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/magic_attack.wav")));
             } else {
+                damageType = DamageType.RANGED;
                 SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/arrow_attack.wav")));
             }
         }
@@ -504,9 +546,17 @@ public class Player extends Entity implements Json.Serializable {
             Attribute.setAttributeValueFromList(this.playerAttributes,
                     "CurrentHp",
                     Attribute.getAttributeFromList(this.playerAttributes, "CurrentHp").getCurrentHp(this.playerAttributes) - Attribute.getNegatedDamage(damage, this.playerAttributes) );
-            DamageTextManager.add(new DamageText((int)this.getX() + 32, (int)this.getY() + 32, (int)Attribute.getNegatedDamage(damage, this.playerAttributes) , 100, DamageType.PHYSICAL));
+            DamageTextManager.add(new DamageText((int)this.getX() + 32, (int)this.getY() + 32, (int)Attribute.getNegatedDamage(damage, this.playerAttributes) , 100, damageType));
             ChatManager.addChat("[Battle]: " + damager.getName() + " has attacked you for " + (int)Attribute.getNegatedDamage(damage, this.playerAttributes)  + " damage.");
         }
+
+        //add armor skills
+        addArmorSkills();
+    }
+
+    public void resetMovement() {
+        tilePoint = null;
+        target = null;
     }
 
     public void levelUp() {
@@ -534,6 +584,7 @@ public class Player extends Entity implements Json.Serializable {
                         }
                     }
 
+                    SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "levelup.wav")));
                     s.setMaxExp(getExpForLevel(s.getLevel() - boostedLevels));
                     AlertTextManager.add(new AlertText((int)PlayerManager.getCurrentPlayer().getX() + 32, (int)PlayerManager.getCurrentPlayer().getY(), "Skill Up!", DamageType.LEVEL_UP));
                 }
@@ -578,6 +629,8 @@ public class Player extends Entity implements Json.Serializable {
                             if (getEquipment().getItemFromSlot(SlotType.RIGHTHAND).getProjectile().isAmmo()) {
                                 getEquipment().removeQuantityOne(SlotType.CAPE);
                             }
+
+                            addCombatSkill();
                         } else {
                             time = 0;
                             AlertTextManager.add(new AlertText((int)getX(), (int)getY(), "You need proper arrows.", DamageType.DEFAULT));
@@ -596,8 +649,10 @@ public class Player extends Entity implements Json.Serializable {
 
                         if (Methods.random(1, 100) <= Attribute.getAttributeFromList(this.playerAttributes, "Crit").getCrit(this.playerAttributes)) {
                             monster.takeDamage(damage, true, null);
+                            addCombatSkill();
                         } else {
                             monster.takeDamage(damage, false, null);
+                            addCombatSkill();
                         }
                         time = 0;
                     }
@@ -784,6 +839,128 @@ public class Player extends Entity implements Json.Serializable {
         return false;
     }
 
+    public void addCombatSkill() {
+        if (Objects.nonNull(getEquipment()) && Objects.nonNull(getEquipment().getItemFromSlot(SlotType.RIGHTHAND))) {
+            if (getEquipment().getItemFromSlot(SlotType.RIGHTHAND).getItemType() == ItemType.SWORD) {
+                if (getPlayerClass() == PlayerClass.KNIGHT) {
+                    Skill.addExpToSkillFromList(getPlayerSkills(), "Sword Proficiency", 3);
+                } else {
+                    Skill.addExpToSkillFromList(getPlayerSkills(), "Sword Proficiency", 1);
+                }
+            }
+
+            if (getEquipment().getItemFromSlot(SlotType.RIGHTHAND).getItemType() == ItemType.AXE) {
+                if (getPlayerClass() == PlayerClass.KNIGHT) {
+                    Skill.addExpToSkillFromList(getPlayerSkills(), "Axe Proficiency", 3);
+                } else {
+                    Skill.addExpToSkillFromList(getPlayerSkills(), "Axe Proficiency", 1);
+                }
+            }
+
+            if (getEquipment().getItemFromSlot(SlotType.RIGHTHAND).getItemType() == ItemType.MACE) {
+                if (getPlayerClass() == PlayerClass.KNIGHT || getPlayerClass() == PlayerClass.DRUID) {
+                    Skill.addExpToSkillFromList(getPlayerSkills(), "Mace Proficiency", 3);
+                } else {
+                    Skill.addExpToSkillFromList(getPlayerSkills(), "Mace Proficiency", 1);
+                }
+            }
+
+            if (getEquipment().getItemFromSlot(SlotType.RIGHTHAND).getItemType() == ItemType.BOW) {
+                if (getPlayerClass() == PlayerClass.ARCHER) {
+                    Skill.addExpToSkillFromList(getPlayerSkills(), "Bow Proficiency", 3);
+                } else {
+                    Skill.addExpToSkillFromList(getPlayerSkills(), "Bow Proficiency", 1);
+                }
+            }
+            if (getEquipment().getItemFromSlot(SlotType.RIGHTHAND).getItemType() == ItemType.WAND) {
+                if (getPlayerClass() == PlayerClass.DRUID || getPlayerClass() == PlayerClass.WIZARD) {
+                    Skill.addExpToSkillFromList(getPlayerSkills(), "Staff Proficiency", 3);
+                } else {
+                    Skill.addExpToSkillFromList(getPlayerSkills(), "Staff Proficiency", 1);
+                }
+            }
+        }
+    }
+
+    public void addArmorSkills() {
+        int lightExp = 0, mediumExp = 0, heavyExp = 0;
+
+        for (Item item : getEquipment().getItems()) {
+            if (Objects.nonNull(item)) {
+                if (item.getItemType().equals(ItemType.LIGHT_ARMOR)) {
+                    if (getPlayerClass() == PlayerClass.DRUID || getPlayerClass() == PlayerClass.WIZARD) {
+                        lightExp += 2;
+                    } else {
+                        lightExp += 1;
+                    }
+                }
+
+                if (item.getItemType().equals(ItemType.MEDIUM_ARMOR)) {
+                    if (getPlayerClass() == PlayerClass.DRUID || getPlayerClass() == PlayerClass.ARCHER) {
+                        mediumExp += 2;
+                    } else {
+                        mediumExp += 1;
+                    }
+                }
+
+                if (item.getItemType().equals(ItemType.HEAVY_ARMOR)) {
+                    if (getPlayerClass() == PlayerClass.KNIGHT) {
+                        heavyExp += 2;
+                    } else {
+                        heavyExp += 1;
+                    }
+                }
+            }
+        }
+
+        if (lightExp != 0) {
+            Skill.addExpToSkillFromList(getPlayerSkills(), "Light Armor", lightExp);
+        }
+
+        if (mediumExp != 0) {
+            Skill.addExpToSkillFromList(getPlayerSkills(), "Medium Armor", mediumExp);
+        }
+
+        if (heavyExp != 0) {
+            Skill.addExpToSkillFromList(getPlayerSkills(), "Heavy Armor", heavyExp);
+        }
+    }
+
+    public int getDamageMultiplier(int damage) {
+        if (Objects.nonNull(getEquipment()) && Objects.nonNull(getEquipment().getItemFromSlot(SlotType.RIGHTHAND))) {
+            if (getEquipment().getItemFromSlot(SlotType.RIGHTHAND).getItemType() == ItemType.SWORD) {
+                double percent = ((float)Skill.getSkillFromList(getPlayerSkills(), "Sword Proficiency").getLevel()/100.00) + 1;
+
+                damage = (int)(damage * percent);
+            }
+
+            if (getEquipment().getItemFromSlot(SlotType.RIGHTHAND).getItemType() == ItemType.AXE) {
+                double percent = ((float)Skill.getSkillFromList(getPlayerSkills(), "Axe Proficiency").getLevel()/100.00) + 1;
+
+                damage = (int)(damage * percent);
+            }
+
+            if (getEquipment().getItemFromSlot(SlotType.RIGHTHAND).getItemType() == ItemType.MACE) {
+                double percent = ((float)Skill.getSkillFromList(getPlayerSkills(), "Mace Proficiency").getLevel()/100.00) + 1;
+
+                damage = (int)(damage * percent);
+            }
+
+            if (getEquipment().getItemFromSlot(SlotType.RIGHTHAND).getItemType() == ItemType.BOW) {
+                double percent = ((float)Skill.getSkillFromList(getPlayerSkills(), "Bow Proficiency").getLevel()/100.00) + 1;
+
+                damage = (int)(damage * percent);
+            }
+            if (getEquipment().getItemFromSlot(SlotType.RIGHTHAND).getItemType() == ItemType.WAND) {
+                double percent = ((float)Skill.getSkillFromList(getPlayerSkills(), "Staff Proficiency").getLevel()/100.00) + 1;
+
+                damage = (int)(damage * percent);
+            }
+        }
+
+        return damage;
+    }
+
     @Override
     public void write(Json json) {
         json.writeValue("id", getId());
@@ -844,6 +1021,9 @@ public class Player extends Entity implements Json.Serializable {
             playerSkills.add(new Skill("Mace Proficiency", 1, 0, 100, "mace.png"));
             playerSkills.add(new Skill("Staff Proficiency", 1, 0, 100, "staff.png"));
             playerSkills.add(new Skill("Bow Proficiency", 1, 0, 100, "bow.png"));
+            playerSkills.add(new Skill("Light Armor", 1, 0, 100, "lightarmor.png"));
+            playerSkills.add(new Skill("Medium Armor", 1, 0, 100, "mediumarmor.png"));
+            playerSkills.add(new Skill("Heavy Armor", 1, 0, 100, "heavyarmor.png"));
             playerSkills.add(new Skill("Woodcutting", 1, 0, 100, "woodcutting.png"));
             playerSkills.add(new Skill("Fishing", 1, 0, 100, "fishing.png"));
             playerSkills.add(new Skill("Mining", 1, 0, 100, "mining.png"));
