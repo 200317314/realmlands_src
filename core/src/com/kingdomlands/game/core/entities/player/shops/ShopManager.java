@@ -327,7 +327,7 @@ public class ShopManager {
         shopList = null;
 
         if (UIManager.isInventoryOpen()) {
-            UIManager.setCurrentTab(null);
+            UIManager.setCurrentTab(HUD.INVENTORY);
         }
         ContextManager.close();
     }

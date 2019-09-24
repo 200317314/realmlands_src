@@ -286,7 +286,7 @@ public class BankManager {
         bankOpen = false;
 
         if (UIManager.isInventoryOpen()) {
-            UIManager.setCurrentTab(null);
+            UIManager.setCurrentTab(HUD.INVENTORY);
         }
         ContextManager.close();
     }
