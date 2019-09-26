@@ -53,6 +53,9 @@ public class ShopManager {
 
     public static void openShop(int id) {
         ContextManager.close();
+        PlayerManager.getCurrentPlayer().resetTilePoint();
+        PlayerManager.getCurrentPlayer().resetMovement();
+
 
         if (!UIManager.isInventoryOpen()) {
             UIManager.setCurrentTab(HUD.INVENTORY);

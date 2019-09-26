@@ -95,64 +95,62 @@ public class DamageText {
     public void render(SpriteBatch spriteBatch) {
         GlyphLayout layout = new GlyphLayout();
 
-       Gdx.app.postRunnable(() -> {
-           if (damageType.equals(DamageType.CRITICAL)) {
-               if (alpha > 0) {
-                   alpha--;
+        if (damageType.equals(DamageType.CRITICAL)) {
+            if (alpha > 0) {
+                alpha--;
 
-                   if (alpha >= 50) {
-                       y ++;
-                   } else {
-                       y ++;
-                   }
+                if (alpha >= 50) {
+                    y ++;
+                } else {
+                    y ++;
+                }
 
-                   layout.setText(Constants.DEFAULT_FONT, "-" + Methods.convertNum(damage) + " Crit!");
-                   font.draw(spriteBatch, "-" + Methods.convertNum(damage) + " Crit!", x, y);
-               } else {
-                   icon.remove();
-                   DamageTextManager.remove(this);
-               }
-           } else if(!damageType.equals(DamageType.EXP) && !damageType.equals(DamageType.HPREGEN)) {
-               if (alpha > 0) {
-                   alpha--;
+                layout.setText(Constants.DEFAULT_FONT, "-" + Methods.convertNum(damage) + " Crit!");
+                font.draw(spriteBatch, "-" + Methods.convertNum(damage) + " Crit!", x, y);
+            } else {
+                icon.remove();
+                DamageTextManager.remove(this);
+            }
+        } else if(!damageType.equals(DamageType.EXP) && !damageType.equals(DamageType.HPREGEN)) {
+            if (alpha > 0) {
+                alpha--;
 
-                   if (alpha >= 50) {
-                       y ++;
-                   } else {
-                       y ++;
-                   }
+                if (alpha >= 50) {
+                    y ++;
+                } else {
+                    y ++;
+                }
 
-                   layout.setText(Constants.DEFAULT_FONT, "-" + Methods.convertNum(damage));
-                   font.draw(spriteBatch, "-" + Methods.convertNum(damage), x, y);
-               } else {
-                   icon.remove();
-                   DamageTextManager.remove(this);
-               }
-           } else if (damageType.equals(DamageType.EXP)) {
-               if (alpha > 0) {
-                   alpha--;
-                   y ++;
+                layout.setText(Constants.DEFAULT_FONT, "-" + Methods.convertNum(damage));
+                font.draw(spriteBatch, "-" + Methods.convertNum(damage), x, y);
+            } else {
+                icon.remove();
+                DamageTextManager.remove(this);
+            }
+        } else if (damageType.equals(DamageType.EXP)) {
+            if (alpha > 0) {
+                alpha--;
+                y ++;
 
-                   layout.setText(Constants.DEFAULT_FONT, "+" + Methods.convertNum(damage) + " Exp");
-                   font.draw(spriteBatch, "+" + Methods.convertNum(damage) + " Exp", x, y);
-               } else {
-                   icon.remove();
-                   DamageTextManager.remove(this);
-               }
-           } else if (damageType.equals(DamageType.HPREGEN)) {
-               if (alpha > 0) {
-                   alpha--;
-                   y ++;
+                layout.setText(Constants.DEFAULT_FONT, "+" + Methods.convertNum(damage) + " Exp");
+                font.draw(spriteBatch, "+" + Methods.convertNum(damage) + " Exp", x, y);
+            } else {
+                icon.remove();
+                DamageTextManager.remove(this);
+            }
+        } else if (damageType.equals(DamageType.HPREGEN)) {
+            if (alpha > 0) {
+                alpha--;
+                y ++;
 
-                   layout.setText(Constants.DEFAULT_FONT, "+" + Methods.convertNum(damage) + " Hp");
-                   font.draw(spriteBatch, "+" + Methods.convertNum(damage) + " Hp", x, y);
-               } else {
-                   icon.remove();
-                   DamageTextManager.remove(this);
-               }
-           }
+                layout.setText(Constants.DEFAULT_FONT, "+" + Methods.convertNum(damage) + " Hp");
+                font.draw(spriteBatch, "+" + Methods.convertNum(damage) + " Hp", x, y);
+            } else {
+                icon.remove();
+                DamageTextManager.remove(this);
+            }
+        }
 
-           icon.setPosition(x + layout.width + 18, y - 12);
-       });
+        icon.setPosition(x + layout.width + 18, y - 12);
     }
 }

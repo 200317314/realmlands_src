@@ -111,6 +111,9 @@ public class BankManager {
     public static void openBank() {
         ContextManager.close();
 
+        PlayerManager.getCurrentPlayer().resetTilePoint();
+        PlayerManager.getCurrentPlayer().resetMovement();
+
         if (isBankOpen()) {
             closeBank();
         }

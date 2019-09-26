@@ -226,7 +226,7 @@ public class Item extends Entity implements Json.Serializable {
 
                 if (ShopManager.isShopOpen() && this.getId() != 75) {
                     if (!this.isStackable() || this.isStackable() && this.getAmount() == 1 || this.isStackable() && this.getAmount() < 5) {
-                        list.setItems("Choose:", "Drop", "Sell 1", "Examine");
+                        list.setItems("Choose:", "Drop", "Sell 1", "Sell All", "Examine");
                     } else if (this.getAmount() >= 100) {
                         list.setItems("Choose:", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell 50", "Sell 100", "Sell All", "Examine");
                     } else if (this.getAmount() >= 50) {
@@ -244,7 +244,7 @@ public class Item extends Entity implements Json.Serializable {
 
                 if (BankManager.isBankOpen()) {
                     if (!this.isStackable() || this.isStackable() && this.getAmount() == 1) {
-                        list.setItems("Choose:", "Drop", "Deposit 1", "Examine");
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Deposit All", "Examine");
                     } else if (this.getAmount() >= 100) {
                         list.setItems("Choose:", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit 50", "Deposit 100", "Deposit All", "Examine");
                     } else if (this.getAmount() >= 50) {
@@ -273,7 +273,7 @@ public class Item extends Entity implements Json.Serializable {
 
                 if (BankManager.isBankOpen()) {
                     if (!this.isStackable() || this.isStackable() && this.getAmount() == 1 || this.isStackable() && this.getAmount() < 5) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Examine");
+                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit All", "Examine");
                     } else if (this.getAmount() >= 100) {
                         list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit 50", "Deposit 100", "Deposit All", "Examine");
                     } else if (this.getAmount() >= 50) {
@@ -294,7 +294,7 @@ public class Item extends Entity implements Json.Serializable {
 
                 if (ShopManager.isShopOpen() && this.getId() != 75) {
                     if (!this.isStackable() || this.isStackable() && this.getAmount() == 1 || this.isStackable() && this.getAmount() < 5) {
-                        list.setItems("Choose:", "Drop", "Sell 1", "Examine");
+                        list.setItems("Choose:", "Drop", "Sell 1", "Sell All", "Examine");
                     } else if (this.getAmount() >= 100) {
                         list.setItems("Choose:", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell 50", "Sell 100", "Sell All", "Examine");
                     } else if (this.getAmount() >= 50) {
