@@ -157,18 +157,10 @@ public class ContextManager {
                     if (selectedEntity instanceof Item) {
                         Item item = (Item) selectedEntity;
 
-                        if (item.getItemType().equals(ItemType.CONSUMABLE)) {
-                            if (Attribute.getAttributeValueFromList(PlayerManager.getCurrentPlayer().getPlayerAttributes(), "Level") >= item.getLevel()) {
-                                item.consume();
-                            } else {
-                                AlertTextManager.add(new AlertText((int)PlayerManager.getCurrentPlayer().getX(), (int)PlayerManager.getCurrentPlayer().getY(), "Level is too low...", DamageType.DEFAULT));
-                            }
+                        if (Attribute.getAttributeValueFromList(PlayerManager.getCurrentPlayer().getPlayerAttributes(), "Level") >= item.getLevel()) {
+                            PlayerManager.getCurrentPlayer().getEquipment().addItem(item);
                         } else {
-                            if (Attribute.getAttributeValueFromList(PlayerManager.getCurrentPlayer().getPlayerAttributes(), "Level") >= item.getLevel()) {
-                                PlayerManager.getCurrentPlayer().getEquipment().addItem(item);
-                            } else {
-                                AlertTextManager.add(new AlertText((int)PlayerManager.getCurrentPlayer().getX(), (int)PlayerManager.getCurrentPlayer().getY(), "Level is too low...", DamageType.DEFAULT));
-                            }
+                            AlertTextManager.add(new AlertText((int)PlayerManager.getCurrentPlayer().getX(), (int)PlayerManager.getCurrentPlayer().getY(), "Level is too low...", DamageType.DEFAULT));
                         }
                     }
 
@@ -257,7 +249,7 @@ public class ContextManager {
 
                     close();
                 } else if (selectedEntity instanceof GameObject && Objects.nonNull(((GameObject) selectedEntity).getResource())) {
-                    if (selectedEntity.getDistance(PlayerManager.getCurrentPlayer()) <= 160) {
+                    if (selectedEntity.getDistance(PlayerManager.getCurrentPlayer()) <= 256) {
                         if (Objects.nonNull(((GameObject) selectedEntity).getResource())) {
                             PlayerManager.getCurrentPlayer().setTarget(selectedEntity);
                         }
@@ -266,6 +258,18 @@ public class ContextManager {
                     }
 
                     close();
+                } else if (selected.contains("Consume")) {
+                    if (selectedEntity instanceof Item) {
+                        Item item = (Item) selectedEntity;
+
+                        if (item.getItemType().equals(ItemType.CONSUMABLE)) {
+                            if (Attribute.getAttributeValueFromList(PlayerManager.getCurrentPlayer().getPlayerAttributes(), "Level") >= item.getLevel()) {
+                                item.consume();
+                            } else {
+                                AlertTextManager.add(new AlertText((int)PlayerManager.getCurrentPlayer().getX(), (int)PlayerManager.getCurrentPlayer().getY(), "Level is too low...", DamageType.DEFAULT));
+                            }
+                        }
+                    }
                 }
             }
         });

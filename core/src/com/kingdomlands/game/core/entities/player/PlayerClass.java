@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Objects;
 
 public enum PlayerClass {
-    KNIGHT("Knight", 5, 30, 1, 0, 0, 0, 0, 5, 0, 0, "knight.png", "KNIGHT_HUD"),
-    ARCHER("Archer", 10, 20, 0, 0, 1, 0, 0, 3, 0, 0, "archer.png", "ARCHER_HUD"),
-    DRUID("Druid", 15, 10, 0, 1, 0, 0, 0, 1, 0, 0, "druid.png", "DRUID_HUD"),
-    WIZARD("Wizard", 15, 10, 0, 1, 0, 0, 0, 1, 0, 0, "wizard.png", "WIZARD_HUD");
+    KNIGHT("Knight", 5, 50, 1, 0, 0, 0, 0, 5, 0, 0, "knight.png", "KNIGHT_HUD"),
+    ARCHER("Archer", 10, 35, 0, 0, 1, 0, 0, 3, 0, 0, "archer.png", "ARCHER_HUD"),
+    DRUID("Druid", 15, 25, 0, 1, 0, 0, 0, 1, 0, 0, "druid.png", "DRUID_HUD"),
+    WIZARD("Wizard", 15, 25, 0, 1, 0, 0, 0, 1, 0, 0, "wizard.png", "WIZARD_HUD");
 
     private final String name;
     private final int bonusMana;

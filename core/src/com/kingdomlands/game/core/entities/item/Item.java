@@ -225,39 +225,38 @@ public class Item extends Entity implements Json.Serializable {
                 com.badlogic.gdx.scenes.scene2d.ui.List<String> list = new com.badlogic.gdx.scenes.scene2d.ui.List<String>(Constants.DEFAULT_SKIN);
 
                 if (ShopManager.isShopOpen() && this.getId() != 75) {
-                    if (!this.isStackable() || this.isStackable() && this.getAmount() == 1) {
-                        list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Examine");
+                    if (!this.isStackable() || this.isStackable() && this.getAmount() == 1 || this.isStackable() && this.getAmount() < 5) {
+                        list.setItems("Choose:", "Drop", "Sell 1", "Examine");
                     } else if (this.getAmount() >= 100) {
-                        list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell 50", "Sell 100", "Sell All", "Examine");
+                        list.setItems("Choose:", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell 50", "Sell 100", "Sell All", "Examine");
                     } else if (this.getAmount() >= 50) {
-                        list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell 50", "Sell All", "Examine");
+                        list.setItems("Choose:", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell 50", "Sell All", "Examine");
                     } else if (this.getAmount() >= 25) {
-                        list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell All", "Examine");
+                        list.setItems("Choose:", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell All", "Examine");
                     } else if (this.getAmount() >= 10) {
-                        list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell All", "Examine");
+                        list.setItems("Choose:", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell All", "Examine");
                     } else if (this.getAmount() >= 5) {
-                        list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Sell 5", "Sell All", "Examine");
+                        list.setItems("Choose:", "Drop", "Sell 1", "Sell 5", "Sell All", "Examine");
                     }
                 } else {
-                    System.out.println("else ree");
                     list.setItems("Choose:", "Consume", "Drop", "Examine");
                 }
 
                 if (BankManager.isBankOpen()) {
                     if (!this.isStackable() || this.isStackable() && this.getAmount() == 1) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Examine");
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Examine");
                     } else if (this.getAmount() >= 100) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit 50", "Deposit 100", "Deposit All", "Examine");
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit 50", "Deposit 100", "Deposit All", "Examine");
                     } else if (this.getAmount() >= 50) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit 50", "Deposit All", "Examine");
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit 50", "Deposit All", "Examine");
                     } else if (this.getAmount() >= 25) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit All", "Examine");
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit All", "Examine");
                     } else if (this.getAmount() >= 10) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit All", "Examine");
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit All", "Examine");
                     } else if (this.getAmount() >= 5) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit All", "Examine");
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Deposit 5", "Deposit All", "Examine");
                     }
-                } else {
+                } else if (!ShopManager.isShopOpen()) {
                     list.setItems("Choose:", "Consume", "Drop", "Examine");
                 }
 
@@ -273,7 +272,7 @@ public class Item extends Entity implements Json.Serializable {
                 }
 
                 if (BankManager.isBankOpen()) {
-                    if (!this.isStackable() || this.isStackable() && this.getAmount() == 1) {
+                    if (!this.isStackable() || this.isStackable() && this.getAmount() == 1 || this.isStackable() && this.getAmount() < 5) {
                         list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Examine");
                     } else if (this.getAmount() >= 100) {
                         list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit 50", "Deposit 100", "Deposit All", "Examine");
@@ -294,48 +293,48 @@ public class Item extends Entity implements Json.Serializable {
                 com.badlogic.gdx.scenes.scene2d.ui.List<String> list = new com.badlogic.gdx.scenes.scene2d.ui.List<String>(Constants.DEFAULT_SKIN);
 
                 if (ShopManager.isShopOpen() && this.getId() != 75) {
-                    if (!this.isStackable() || this.isStackable() && this.getAmount() == 1) {
-                        list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Examine");
+                    if (!this.isStackable() || this.isStackable() && this.getAmount() == 1 || this.isStackable() && this.getAmount() < 5) {
+                        list.setItems("Choose:", "Drop", "Sell 1", "Examine");
                     } else if (this.getAmount() >= 100) {
-                        list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell 50", "Sell 100", "Sell All", "Examine");
+                        list.setItems("Choose:", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell 50", "Sell 100", "Sell All", "Examine");
                     } else if (this.getAmount() >= 50) {
-                        list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell 50", "Sell All", "Examine");
+                        list.setItems("Choose:", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell 50", "Sell All", "Examine");
                     } else if (this.getAmount() >= 25) {
-                        list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell All", "Examine");
+                        list.setItems("Choose:", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell 25", "Sell All", "Examine");
                     } else if (this.getAmount() >= 10) {
-                        list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell All", "Examine");
+                        list.setItems("Choose:", "Drop", "Sell 1", "Sell 5", "Sell 10", "Sell All", "Examine");
                     } else if (this.getAmount() >= 5) {
-                        list.setItems("Choose:", "Consume", "Drop", "Sell 1", "Sell 5", "Sell All", "Examine");
+                        list.setItems("Choose:", "Drop", "Sell 1", "Sell 5", "Sell All", "Examine");
                     }
                 } else {
-                    if (!this.isStackable() || this.isStackable() && this.getAmount() == 1) {
-                        list.setItems("Choose:", "Consume", "Drop", "Examine");
+                    if (!this.isStackable() || this.isStackable() && this.getAmount() == 1 || this.isStackable() && this.getAmount() < 5) {
+                        list.setItems("Choose:", "Drop", "Examine");
                     } else if (this.getAmount() >= 100) {
-                        list.setItems("Choose:", "Consume", "Drop", "Drop 1", "Drop 5", "Drop 10", "Drop 25", "Drop 50", "Drop 100", "Drop All", "Examine");
+                        list.setItems("Choose:", "Drop", "Drop 1", "Drop 5", "Drop 10", "Drop 25", "Drop 50", "Drop 100", "Drop All", "Examine");
                     } else if (this.getAmount() >= 50) {
-                        list.setItems("Choose:", "Consume", "Drop 1", "Drop 5", "Drop 10", "Drop 25", "Drop 50", "Drop All", "Examine");
+                        list.setItems("Choose:", "Drop 1", "Drop 5", "Drop 10", "Drop 25", "Drop 50", "Drop All", "Examine");
                     } else if (this.getAmount() >= 25) {
-                        list.setItems("Choose:", "Consume", "Drop 1", "Drop 5", "Drop 10", "Drop 25", "Drop All", "Examine");
+                        list.setItems("Choose:", "Drop 1", "Drop 5", "Drop 10", "Drop 25", "Drop All", "Examine");
                     } else if (this.getAmount() >= 10) {
-                        list.setItems("Choose:", "Consume", "Drop 1", "Drop 5", "Drop 10", "Drop All", "Examine");
+                        list.setItems("Choose:", "Drop 1", "Drop 5", "Drop 10", "Drop All", "Examine");
                     } else if (this.getAmount() >= 5) {
-                        list.setItems("Choose:", "Consume", "Drop 1", "Drop 5", "Drop All", "Examine");
+                        list.setItems("Choose:", "Drop 1", "Drop 5", "Drop All", "Examine");
                     }
                 }
 
                 if (BankManager.isBankOpen()) {
-                    if (!this.isStackable() || this.isStackable() && this.getAmount() == 1) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Examine");
+                    if (!this.isStackable() || this.isStackable() && this.getAmount() == 1 || this.isStackable() && this.getAmount() < 5) {
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Examine");
                     } else if (this.getAmount() >= 100) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit 50", "Deposit 100", "Deposit All", "Examine");
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit 50", "Deposit 100", "Deposit All", "Examine");
                     } else if (this.getAmount() >= 50) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit 50", "Deposit All", "Examine");
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit 50", "Deposit All", "Examine");
                     } else if (this.getAmount() >= 25) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit All", "Examine");
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit 25", "Deposit All", "Examine");
                     } else if (this.getAmount() >= 10) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit All", "Examine");
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Deposit 5", "Deposit 10", "Deposit All", "Examine");
                     } else if (this.getAmount() >= 5) {
-                        list.setItems("Choose:", "Consume", "Drop", "Deposit 1", "Deposit 5", "Deposit All", "Examine");
+                        list.setItems("Choose:", "Drop", "Deposit 1", "Deposit 5", "Deposit All", "Examine");
                     }
                 }/* else {
                     if (!this.isStackable() || this.isStackable() && this.getAmount() == 1) {

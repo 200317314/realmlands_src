@@ -179,7 +179,8 @@ public class UIManager {
                 }
             }
         }
-        timeout = 15;
+
+        timeout = 5;
     }
 
     public static void openInventoryTab() {

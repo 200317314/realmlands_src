@@ -83,8 +83,8 @@ public class Monster extends Entity {
             registerMove();
         }
 
-        Gdx.app.postRunnable(() -> inCombat());
-        ambientMove();
+        inCombat();
+        //Gdx.app.postRunnable(() -> ambientMove());
 
         Player nearest = PlayerManager.getNearestPlayer(this);
         if (Objects.nonNull(nearest)) {
@@ -120,7 +120,7 @@ public class Monster extends Entity {
             if (Objects.nonNull(nearest)) {
                 if (getDistance(nearest) <= range) {
                     isMoving = true;
-                    Gdx.app.postRunnable(() -> move(nearest.getPosition(), monsterAttributes.getMovementSpeed()));
+                    move(nearest.getPosition(), monsterAttributes.getMovementSpeed());
                 }
             }
         }
@@ -255,9 +255,9 @@ public class Monster extends Entity {
                         }
                     }
 
-                    ChatManager.addChat("[Loot]: " + "You gained " + monsterAttributes.getCurrExp() + " exp and looted, " + line + " from " + this.getName() + ".");
+                    ChatManager.addChat("[Loot]: " + "You gained " + Math.round(monsterAttributes.getCurrExp()) + " exp and looted, " + line + " from " + this.getName() + ".");
                 } else {
-                    ChatManager.addChat("[Loot]: " + "You gained " + monsterAttributes.getCurrExp() + " exp from " + this.getName() + ".");
+                    ChatManager.addChat("[Loot]: " + "You gained " + Math.round(monsterAttributes.getCurrExp()) + " exp from " + this.getName() + ".");
                 }
 
                 SoundManager.playSoundFx(Gdx.audio.newSound(Gdx.files.internal("sounds/" + "expgain.wav")));

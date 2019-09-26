@@ -143,7 +143,11 @@ public class Equipment implements Json.Serializable {
             if (Objects.nonNull(a)) {
                 double currVal = Attribute.getAttributeValueFromList(PlayerManager.getCurrentPlayer().getPlayerAttributes(), a.getName());
 
-                Attribute.setAttributeValueFromList(PlayerManager.getCurrentPlayer().getPlayerAttributes(), a.getName(), (int) (currVal + a.getValue()));
+                if (a.getName().contains("AttackSpeed")) {
+                    Attribute.setAttributeValueFromList(PlayerManager.getCurrentPlayer().getPlayerAttributes(), a.getName(), (int) (a.getValue()));
+                } else {
+                    Attribute.setAttributeValueFromList(PlayerManager.getCurrentPlayer().getPlayerAttributes(), a.getName(), (int) (currVal + a.getValue()));
+                }
 
                 if (containsSkillBuff(a)) {
                     Skill.addLevelToSkillFromList(PlayerManager.getCurrentPlayer().getPlayerSkills(), a.getName(), a.getValue());

@@ -262,6 +262,11 @@ public class Methods {
     }
 
     public static void setLoading() {
+        if (Objects.nonNull(PlayerManager.getCurrentPlayer())) {
+            PlayerManager.getCurrentPlayer().resetMovement();
+            PlayerManager.getCurrentPlayer().resetTilePoint();
+        }
+
         if (!loading) {
             loading = true;
         } else {

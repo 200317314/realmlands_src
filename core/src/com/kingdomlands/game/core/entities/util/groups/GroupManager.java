@@ -11,6 +11,8 @@ import com.kingdomlands.game.core.entities.objects.portal.Realms;
 import com.kingdomlands.game.core.entities.util.Methods;
 import com.kingdomlands.game.core.stages.StageManager;
 
+import java.util.Objects;
+
 public class GroupManager {
     public static void initGenerator(Realms realm) {
         Vector2[] vector2s = new Vector2[]{new Vector2(1,0), new Vector2(5,5), new Vector2(1, 5), new Vector2(5, 1)};
@@ -30,7 +32,8 @@ public class GroupManager {
     public static void generateGroup(Group group, int x, int y) {
         if (group.getMonsterIds().length != 0) {
             for (int i = 0; i < Methods.random(group.getMinMonsterSpawn(), group.getMaxMonsterSpawn()); i++) {
-                Vector2 point = Methods.getRandomPointAway(new Vector2((x*50*64) - 1600, (y*50*64) - 1600), 20);
+                Vector2 point = Methods.getRandomPointAway(new Vector2((x*50*64) - 1600, (y*50*64) - 1600), 25);
+
                 Monster genMonster = MonsterManager.generateRngMonster(group.getMonsterIds()[Methods.getSecureRandom().nextInt(group.getMonsterIds().length)]);
                 genMonster.setPosition(point.x, point.y);
                 StageManager.addActor(genMonster);

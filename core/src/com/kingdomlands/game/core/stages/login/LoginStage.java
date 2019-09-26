@@ -34,6 +34,7 @@ public class LoginStage {
     private Player player = null;
     private TextField usernameField, passwordField;
     private ImageButton loginButton, registerButton;
+    private Label errorMessage;
     private Skin skin;
     private String test = "";
 
@@ -58,6 +59,11 @@ public class LoginStage {
         passwordField.setMessageText("Password");
         passwordField.setPasswordMode(true);
         passwordField.setPasswordCharacter('X');
+
+        errorMessage = new Label("", Constants.DEFAULT_SKIN);
+        errorMessage.setColor(Color.RED);
+        errorMessage.setPosition(500,482);
+        errorMessage.setWidth(290);
 
         loginButton = new ImageButton(loginDrawable);
         loginButton.setPosition(500, 300);
@@ -96,7 +102,14 @@ public class LoginStage {
                 String password = passwordField.getText();
 
                 if (username.isEmpty() || password.isEmpty()) {
-                    promptMessage("Username or Password cannot be empty.");
+                    //promptMessage("Username or Password cannot be empty.");
+                    errorMessage.setText("Username or Password cannot be empty.");
+
+                    Gdx.app.postRunnable(() -> {
+                        if (Methods.getLoading()) {
+                            Methods.setLoading();
+                        }
+                    });
                 } else {
                     Methods.setLoading();
                     String loginRes = login(username, password);
@@ -110,12 +123,6 @@ public class LoginStage {
                         }
                     }
                 }
-
-                Gdx.app.postRunnable(() -> {
-                    if (Methods.getLoading()) {
-                        Methods.setLoading();
-                    }
-                });
            }
         });
 
@@ -131,6 +138,7 @@ public class LoginStage {
         StageManager.addActor(passwordField);
         StageManager.addActor(loginButton);
         StageManager.addActor(registerButton);
+        StageManager.addActor(errorMessage);
     }
 
     public void render(Batch batch) {
@@ -167,19 +175,47 @@ public class LoginStage {
                     token = response;
                     PlayerManager.setPlayerToken(token);
                     retrievePlayer(token);
+
+                    if (response.contains("Wrong")) {
+                        Gdx.app.postRunnable(() -> {
+                            if (Methods.getLoading()) {
+                                Methods.setLoading();
+                                //promptMessage("Wrong Username or Password");
+                                errorMessage.setText("Wrong Username or Password.");
+                            }
+                        });
+                    }
                 } else {
-                    promptMessage("No account found.");
+                    //promptMessage("No account found.");
+                    errorMessage.setText("No account found.");
+                    Gdx.app.postRunnable(() -> {
+                        if (Methods.getLoading()) {
+                            Methods.setLoading();
+                        }
+                    });
                 }
             }
 
             @Override
             public void failed(Throwable t) {
-                promptMessage("Failed to login, please wait and retry.");
+                //promptMessage("Failed to login, please wait and retry.");
+                errorMessage.setText("Failed to login, please wait and retry.");
+                Gdx.app.postRunnable(() -> {
+                    if (Methods.getLoading()) {
+                        Methods.setLoading();
+                    }
+                });
             }
 
             @Override
             public void cancelled() {
-                promptMessage("Failed to login, please wait and retry.");
+                //promptMessage("Failed to login, please wait and retry.");
+                errorMessage.setText("Failed to login, please wait and retry.");
+                Gdx.app.postRunnable(() -> {
+                    if (Methods.getLoading()) {
+                        Methods.setLoading();
+                    }
+                });
             }
         });
 
@@ -227,12 +263,26 @@ public class LoginStage {
             @Override
             public void failed(Throwable t) {
                 t.printStackTrace();
-                promptMessage("Failed to login, please wait and retry.");
+                //promptMessage("Failed to login, please wait and retry.");
+                errorMessage.setText("Failed to login, please wait and retry.");
+
+                Gdx.app.postRunnable(() -> {
+                    if (Methods.getLoading()) {
+                        Methods.setLoading();
+                    }
+                });
             }
 
             @Override
             public void cancelled() {
-                promptMessage("Failed to login, please wait and retry.");
+                //promptMessage("Failed to login, please wait and retry.");
+                errorMessage.setText("Failed to login, please wait and retry.");
+
+                Gdx.app.postRunnable(() -> {
+                    if (Methods.getLoading()) {
+                        Methods.setLoading();
+                    }
+                });
             }
         });
 

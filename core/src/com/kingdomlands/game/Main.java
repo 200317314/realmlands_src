@@ -118,19 +118,21 @@ public class Main extends ApplicationAdapter {
 				}
 
 				if (Objects.nonNull(StageManager.getCurrentStage())) {
-					StageManager.getCurrentStage().getActors().sort((o1, o2) -> {
-						if (o1 instanceof Entity && o2 instanceof Entity) {
-							Entity e1 = (Entity) o1;
-							Entity e2 = (Entity) o2;
+					Gdx.app.postRunnable(() -> {
+						StageManager.getCurrentStage().getActors().sort((o1, o2) -> {
+							if (o1 instanceof Entity && o2 instanceof Entity) {
+								Entity e1 = (Entity) o1;
+								Entity e2 = (Entity) o2;
 
-							if (e1.equals(e2)) {
-								return 0;
+								if (e1.equals(e2)) {
+									return 0;
+								}
+
+								return e1.getLayer() > e2.getLayer() ? 1 : -1;
 							}
 
-							return e1.getLayer() > e2.getLayer() ? 1 : -1;
-						}
-
-						return 0;
+							return 0;
+						});
 					});
 
 					StageManager.getCurrentStage().draw();

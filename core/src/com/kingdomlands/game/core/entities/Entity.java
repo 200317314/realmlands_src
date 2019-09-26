@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.kingdomlands.game.core.Constants;
+import com.kingdomlands.game.core.entities.monster.Monster;
 import com.kingdomlands.game.core.entities.player.Player;
 import com.kingdomlands.game.core.entities.player.PlayerManager;
 import com.kingdomlands.game.core.entities.util.Methods;
@@ -117,7 +118,7 @@ public abstract class Entity extends Actor {
 
     public double getDistance(Entity entity) {
         if (Objects.nonNull(entity)) {
-            return (int)Math.hypot(this.getX()-entity.getX(), this.getY()-entity.getY());
+            return (int)Math.hypot(this.getCenter().x-entity.getX(), this.getCenter().y-entity.getY());
         }
 
         return -1;
@@ -140,70 +141,66 @@ public abstract class Entity extends Actor {
             }
         });
 
-        if (this.getDistanceVector(target) <= 400) {
-            if (this instanceof Player) {
-                path = new AStar(this.getPosition(), target, this, PlayerManager.getCurrentPlayer().getTarget()).getPath();
-            } else {
-                path = new AStar(this.getPosition(), target, this, null).getPath();
-            }
-
-            if (Objects.nonNull(path)) {
-                Collections.reverse(path);
-            }
-        } else {
+        Gdx.app.postRunnable(() -> {
             if (Objects.isNull(path)) {
                 if (this instanceof Player) {
                     path = new AStar(this.getPosition(), target, this, PlayerManager.getCurrentPlayer().getTarget()).getPath();
                 } else {
-                    path = new AStar(this.getPosition(), target, this, null).getPath();
+                    if (Objects.nonNull(target) && Objects.nonNull(this)) {
+                        path = new AStar(this.getPosition(), target, this, null).getPath();
+                    }
                 }
 
                 if (Objects.nonNull(path)) {
                     Collections.reverse(path);
                 }
             }
-        }
 
-        Vector2 next = null;
+            Vector2 next = null;
 
-        if (Objects.nonNull(path)) {
-            if (path.size() > 1) {
-                next = path.get(1);
-            } else {
-                if (path.size() == 0) {
-                    next = null;
+            if (Objects.nonNull(path)) {
+                if (path.size() > 1) {
+                    next = path.get(1);
                 } else {
-                    next = path.get(0);
-                }
-            }
-        }
-
-        if (Objects.nonNull(next)) {
-            if (next.equals(new Vector2(Math.round(PlayerManager.getCurrentPlayer().getY()/64), Math.round(PlayerManager.getCurrentPlayer().getX()/64)))) {
-
-                if (path.size() != 1) {
-                    path.remove(0);
+                    if (path.size() == 0) {
+                        next = null;
+                    } else {
+                        next = path.get(0);
+                    }
                 }
             }
 
-            //System.out.println("Next: " + next.x + "," + next.y + " Pos: " + Math.round(PlayerManager.getCurrentPlayer().getX()/64) + "," + PlayerManager.getCurrentPlayer().getY()/64);
-            double destX = next.y*64 - this.getX();
-            double destY = next.x*64 - this.getY();
+            if (Objects.nonNull(next)) {
+                if (next.equals(new Vector2(Math.round(PlayerManager.getCurrentPlayer().getY()/64), Math.round(PlayerManager.getCurrentPlayer().getX()/64)))) {
 
-            double dist = Math.sqrt(destX * destX + destY * destY);
-            destX = destX / dist;
-            destY = destY / dist;
+                    if (path.size() != 1) {
+                        path.remove(0);
+                    }
+                }
 
-            double travelX = (destX * speed);
-            double travelY = (destY * speed);
+                //System.out.println("Next: " + next.x + "," + next.y + " Pos: " + Math.round(PlayerManager.getCurrentPlayer().getX()/64) + "," + PlayerManager.getCurrentPlayer().getY()/64);
+                double destX = next.y*64 - this.getX();
+                double destY = next.x*64 - this.getY();
 
-            if (speed < dist) {
+                double dist = Math.sqrt(destX * destX + destY * destY);
+                destX = destX / dist;
+                destY = destY / dist;
+
+                double travelX = (destX * speed);
+                double travelY = (destY * speed);
+
                 this.moveBy((int) travelX, (int)travelY);
+
+                if (this instanceof Player) {
+                    if (dist <= 3) {
+                        PlayerManager.getCurrentPlayer().resetTilePoint();
+                    }
+                }
+            } else {
+                moveTo = null;
+                path = null;
             }
-        } else {
-            moveTo = null;
-            path = null;
-        }
+        });
 
         return false;
     }
@@ -296,6 +293,10 @@ public abstract class Entity extends Actor {
 
     public void resetPath() {
         path = null;
+    }
+
+    public Vector2 getCenter() {
+        return new Vector2(this.getX() + this.getBounds().getWidth()/2, this.getY() + this.getBounds().getHeight()/2);
     }
 
     @Override

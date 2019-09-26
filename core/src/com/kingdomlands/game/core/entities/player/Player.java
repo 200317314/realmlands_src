@@ -150,6 +150,10 @@ public class Player extends Entity implements Json.Serializable {
             }
         }
 
+        if (Attribute.getAttributeFromList(this.playerAttributes, "AttackSpeed").getAttackSpeed(this.playerAttributes) <= 0) {
+            Attribute.setAttributeValueFromList(this.playerAttributes, "AttackSpeed", 3);
+        }
+
         //slowDown();
 
         this.setBounds(getX(), getY(), 64, 64);
@@ -298,6 +302,7 @@ public class Player extends Entity implements Json.Serializable {
                             }
                         } else if (timeout <= 0) {
                             //if (!StageManager.clickedAnEntity(new Vector2(Gdx.input.getX(), Constants.WINDOW_HEIGHT - Gdx.input.getY()))) {
+                            this.resetPath();
                             tilePoint = Methods.getCenter(new Vector2((int)clickVector.x, (int)clickVector.y));
 
                             if (Objects.nonNull(target)) {
@@ -342,7 +347,7 @@ public class Player extends Entity implements Json.Serializable {
 
         StageManager.getCurrentStage().getCamera().position.set(getX(), getY(), 0);
 
-        if(isDead()){
+        if (isDead()){
             PlayerManager.getCurrentPlayer().setTarget(null);
            // inventory.getItems().forEach(item -> PlayerManager.getCurrentPlayer().getInventory().removeItem(inventory.getItemIndex(item)));
             Attribute.setAttributeValueFromList(this.playerAttributes, "CurrentHp", Attribute.getAttributeValueFromList(this.playerAttributes, "MaxHp"));
@@ -590,6 +595,8 @@ public class Player extends Entity implements Json.Serializable {
                 }
             }
         }
+
+        //UIManager.openSkillTab();
     }
 
     public boolean containsSkillBuff(Attribute a) {
@@ -640,7 +647,7 @@ public class Player extends Entity implements Json.Serializable {
                         AlertTextManager.add(new AlertText((int)getX(), (int)getY(), "You need arrows.", DamageType.DEFAULT));
                     }
                 } else if (distance >= getEquipment().getItemFromSlot(SlotType.RIGHTHAND).getProjectile().getRange()*64) {
-                    move(new Vector2((int)monster.getX(), (int)monster.getY()), Attribute.getAttributeFromList(this.playerAttributes, "MovementSpeed").getMovementSpeed(this.playerAttributes) * 1.2);
+                    move(new Vector2((int)monster.getX(), (int)monster.getY()), Attribute.getAttributeFromList(this.playerAttributes, "MovementSpeed").getMovementSpeed(this.playerAttributes));
                 }
             } else {
                 if (distance <= RANGE) {
@@ -657,7 +664,7 @@ public class Player extends Entity implements Json.Serializable {
                         time = 0;
                     }
                 } else {
-                    move(new Vector2((int)monster.getX(), (int)monster.getY()), Attribute.getAttributeFromList(this.playerAttributes, "MovementSpeed").getMovementSpeed(this.playerAttributes) * 1.2);
+                    move(new Vector2((int)monster.getX(), (int)monster.getY()), Attribute.getAttributeFromList(this.playerAttributes, "MovementSpeed").getMovementSpeed(this.playerAttributes));
                 }
             }
         }
@@ -672,7 +679,7 @@ public class Player extends Entity implements Json.Serializable {
                 inventory.addItem(item);
                 target = null;
             } else {
-                move(new Vector2((int)item.getX() + 32, (int)item.getY() + 32), Attribute.getAttributeFromList(this.playerAttributes, "MovementSpeed").getMovementSpeed(this.playerAttributes) * 1.2);
+                move(new Vector2((int)item.getX() + 32, (int)item.getY() + 32), Attribute.getAttributeFromList(this.playerAttributes, "MovementSpeed").getMovementSpeed(this.playerAttributes));
             }
         }
     }
@@ -767,6 +774,10 @@ public class Player extends Entity implements Json.Serializable {
     public void setPlayerSkills(List<Skill> playerSkills) { this.playerSkills = playerSkills; }
 
     public List<Skill> getPlayerSkills() { return this.playerSkills; }
+
+    public void resetTilePoint() {
+        tilePoint = null;
+    }
 
     private UI clickedIcon(Vector2 click) {
         for (UI ui : UIManager.getIcons()) {
