@@ -42,7 +42,7 @@ public class Projectile extends Entity {
     }
 
     private void update() {
-        if (this.getDistance(target) < 46) {
+        if (this.getDistanceRaw(target) < 64) {
             if (target instanceof Monster) {
                 ((Monster) target).takeDamage(damage, false, projectiles);
             } else if (target instanceof Player) {

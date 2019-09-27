@@ -124,6 +124,14 @@ public abstract class Entity extends Actor {
         return -1;
     }
 
+    public double getDistanceRaw(Entity entity) {
+        if (Objects.nonNull(entity)) {
+            return (int)Math.hypot(this.getX()-entity.getX(), this.getY()-entity.getY());
+        }
+
+        return -1;
+    }
+
     public double getDistanceVector(Vector2 vector2) {
         if (Objects.nonNull(vector2)) {
             return Math.hypot(this.getX()-vector2.x, this.getY()-vector2.y);
@@ -189,11 +197,23 @@ public abstract class Entity extends Actor {
                 double travelX = (destX * speed);
                 double travelY = (destY * speed);
 
-                this.moveBy((int) travelX, (int)travelY);
-
-                if (this instanceof Player) {
-                    if (dist <= 3) {
-                        PlayerManager.getCurrentPlayer().resetTilePoint();
+                if (path.size() >= 1 && speed >= dist) {
+                    if (this instanceof Player) {
+                        if (getDistanceVector(target) <= 150) {
+                            PlayerManager.getCurrentPlayer().resetTilePoint();
+                        } else {
+                            this.moveBy((int) travelX, (int)travelY);
+                        }
+                    } else {
+                        this.moveBy((int) travelX, (int)travelY);
+                    }
+                } else {
+                    if (dist >= speed) {
+                        this.moveBy((int) travelX, (int)travelY);
+                    } else if (speed >= dist) {
+                        if (this instanceof Player) {
+                            PlayerManager.getCurrentPlayer().resetTilePoint();
+                        }
                     }
                 }
             } else {

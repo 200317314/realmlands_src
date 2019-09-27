@@ -94,6 +94,32 @@ public class UIManager {
                 }
             }
         }
+
+        killLooseScrollPanes();
+    }
+
+    private static void killLooseScrollPanes() {
+        if (Objects.isNull(currentTab)) {
+            if (Objects.nonNull(skillScrollPane)) {
+                skillScrollPane.addAction(Actions.removeActor());
+            }
+
+            if (Objects.nonNull(inventoryScrollPane)) {
+                inventoryScrollPane.addAction(Actions.removeActor());
+            }
+
+            if (Objects.nonNull(attributeScrollPane)) {
+                attributeScrollPane.addAction(Actions.removeActor());
+            }
+
+            if (Objects.nonNull(equipmentScrollPane)) {
+                equipmentScrollPane.addAction(Actions.removeActor());
+            }
+
+            if (Objects.nonNull(settingsScrollPane)) {
+                settingsScrollPane.addAction(Actions.removeActor());
+            }
+        }
     }
 
     public static void setCurrentTab(HUD tab) {

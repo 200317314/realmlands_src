@@ -1,6 +1,7 @@
 package com.kingdomlands.game.core.stages.login;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Net;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -124,6 +125,41 @@ public class LoginStage {
                     }
                 }
            }
+        });
+
+        StageManager.getCurrentStage().addListener(new InputListener() {
+            @Override
+            public boolean keyDown(InputEvent event, int keycode) {
+                if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+                    String username = usernameField.getText();
+                    username = username.toLowerCase();
+                    String password = passwordField.getText();
+
+                    if (username.isEmpty() || password.isEmpty()) {
+                        //promptMessage("Username or Password cannot be empty.");
+                        errorMessage.setText("Username or Password cannot be empty.");
+
+                        Gdx.app.postRunnable(() -> {
+                            if (Methods.getLoading()) {
+                                Methods.setLoading();
+                            }
+                        });
+                    } else {
+                        Methods.setLoading();
+                        String loginRes = login(username, password);
+
+                        if (!loginRes.isEmpty()) {
+                            Player p = retrievePlayer(loginRes);
+
+                            if (Objects.nonNull(p)) {
+                                PlayerManager.setPlayerToken(loginRes);
+                                PlayerManager.setCurrentPlayer(p);
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
         });
 
         registerButton.addListener(new ClickListener() {

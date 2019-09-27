@@ -7,8 +7,14 @@ public enum Resource {
     WILLOW_TREE(350, 14, 87, 26, 5, new int[]{1, 10}, "Chop Down", "Woodcutting", "Chop!", "woodcutting.wav"),
     MAPLE_TREE(750, 32, 88, 28, 10, new int[]{1, 5}, "Chop Down", "Woodcutting", "Chop!", "woodcutting.wav"),
     SHRIMP_FISHSPOT(100, 7, 91, -1, 1, new int[]{1, 5}, "Fish", "Fishing", "Blub!", "fishing.wav"),
+    MINNOWS_FISHSPOT(140, 9, 90, -1, 2, new int[]{1, 10}, "Fish", "Fishing", "Blub!", "fishing.wav"),
     CRAYFISH_FISHSPOT(100, 5, 89, -1, 1, new int[]{1, 10}, "Fish", "Fishing", "Blub!", "fishing.wav"),
     WHITEPERCH_FISHSPOT(200, 11, 96, -1, 3, new int[]{1, 5}, "Fish", "Fishing", "Blub!", "fishing.wav"),
+    YELLOWPERCH_FISHSPOT(280, 15, 97, -1, 4, new int[]{1, 6}, "Fish", "Fishing", "Blub!", "fishing.wav"),
+    STRIPEDBASS_FISHSPOT(360, 20, 93, -1, 5, new int[]{3, 8}, "Fish", "Fishing", "Blub!", "fishing.wav"),
+    TROUT_FISHSPOT(360, 28, 94, -1, 7, new int[]{1, 10}, "Fish", "Fishing", "Blub!", "fishing.wav"),
+    WALLEYE_FISHSPOT(520, 36, 95, -1, 10, new int[]{1, 10}, "Fish", "Fishing", "Blub!", "fishing.wav"),
+    SMALLMOUTHBASS_FISHSPOT(680, 46, 92, -1, 12, new int[]{1, 10}, "Fish", "Fishing", "Blub!", "fishing.wav"),
     COPPER_ROCK(100, 5, 127, 31, 1, new int[]{1, 10}, "Mine", "Mining", "Tick!", "mining.wav"),
     TIN_ROCK(100, 5, 129, 31, 1, new int[]{1, 10}, "Mine", "Mining", "Tick!", "mining.wav");
 

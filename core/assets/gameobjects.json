@@ -271,6 +271,60 @@
       "description": "Must have level 1 mining.",
       "type": "RESOURCE",
       "tree_type": "TIN_ROCK"
+    },
+    {
+      "id": 35,
+      "name": "Minnows Fishing",
+      "image": "minnows_fishspot.png",
+      "rarity": -1,
+      "description": "Must have level 2 fishing.",
+      "type": "RESOURCE",
+      "tree_type": "MINNOWS_FISHSPOT"
+    },
+    {
+      "id": 36,
+      "name": "Yellow Perch",
+      "image": "yellowperch_fishspot.png",
+      "rarity": -1,
+      "description": "Must have level 4 fishing.",
+      "type": "RESOURCE",
+      "tree_type": "YELLOWPERCH_FISHSPOT"
+    },
+    {
+      "id": 37,
+      "name": "Striped Bass",
+      "image": "stripedbass_fishspot.png",
+      "rarity": -1,
+      "description": "Must have level 5 fishing.",
+      "type": "RESOURCE",
+      "tree_type": "STRIPEDBASS_FISHSPOT"
+    },
+    {
+      "id": 38,
+      "name": "Trout",
+      "image": "trout_fishspot.png",
+      "rarity": -1,
+      "description": "Must have level 7 fishing.",
+      "type": "RESOURCE",
+      "tree_type": "TROUT_FISHSPOT"
+    },
+    {
+      "id": 39,
+      "name": "Walleye",
+      "image": "walleye_fishspot.png",
+      "rarity": -1,
+      "description": "Must have level 10 fishing.",
+      "type": "RESOURCE",
+      "tree_type": "WALLEYE_FISHSPOT"
+    },
+    {
+      "id": 40,
+      "name": "Small Mouth Bass",
+      "image": "smallmouthbass_fishspot.png",
+      "rarity": -1,
+      "description": "Must have level 12 fishing.",
+      "type": "RESOURCE",
+      "tree_type": "SMALLMOUTHBASS_FISHSPOT"
     }
   ]
 }

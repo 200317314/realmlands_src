@@ -334,7 +334,7 @@ public class Monster extends Entity {
         Player nearest = PlayerManager.getNearestPlayer(this);
 
         if (Objects.nonNull(nearest)) {
-            if (aggressive && this.getDistance(nearest) <= 90) {
+            if (aggressive && this.getDistance(nearest) <= 64) {
                 return true;
             }
         }

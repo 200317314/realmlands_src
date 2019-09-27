@@ -446,7 +446,7 @@
       "image": "bowstaff.png",
       "type": "SWORD",
       "slot": "RIGHTHAND",
-      "level": 7,
+      "level": 5,
       "stackable": false,
       "rarity": -1,
       "weight": 13,
@@ -588,16 +588,16 @@
       "image": "earth_staff.png",
       "type": "WAND",
       "slot": "RIGHTHAND",
-      "level": 37,
+      "level": 10,
       "stackable": false,
       "rarity": -1,
       "weight": 12,
       "aspeed": 3.0,
       "description": "A staff of earth.",
       "attributes": {
-        "AttackPower": 48
+        "AttackPower": 16
       },
-      "projectile": "MAGIC_ORB"
+      "projectile": "EARTH_BLAST"
     },
     {
       "id": 39,
@@ -2433,6 +2433,39 @@
       "attributes": {
         "Armor": 8
       }
+    },
+    {
+      "id": 156,
+      "name": "Bone Longbow",
+      "image": "bone_longbow.png",
+      "type": "BOW",
+      "slot": "RIGHTHAND",
+      "level": 10,
+      "stackable": false,
+      "rarity": -1,
+      "weight": 4,
+      "aspeed": 2.8,
+      "description": "A sturdy bone bow.",
+      "attributes": {
+        "AttackPower": 14
+      },
+      "projectile": "BONE_ARROW"
+    },
+    {
+      "id": 157,
+      "name": "Bone Arrows",
+      "image": "bone_arrows.png",
+      "type": "BOW",
+      "slot": "CAPE",
+      "level": 10,
+      "stackable": true,
+      "rarity": 1,
+      "weight": 0,
+      "description": "A hard bone arrow",
+      "attributes": {
+        "AttackPower": 6
+      },
+      "projectile": "ARROW"
     }
   ]
 }

@@ -1,17 +1,17 @@
 package com.kingdomlands.game.core.entities.util.groups;
 
 public enum Group {
-    SNAKE_PIT("Snake Pit", new int[]{4, 5, 6}, new int[]{5, 23, 24, 28, 29, 33, 34}, new int[]{}, 0, 0, 4, 10, 5, 15, 10),
-    SCORPION_PIT("Scorpion Den", new int[]{3, 3, 3, 3, 4}, new int[]{5, 3, 2, 28, 29, 34, 33}, new int[]{}, 0, 0, 3, 5, 5, 15, 10),
-    CREATURE_PIT("Critters", new int[]{1, 2}, new int[]{5, 3, 2, 28, 29, 33, 34}, new int[]{}, 0, 0, 0, 3, 8, 15, 10),
-    GOBLIN_CAMP("Goblin Camp", new int[]{14}, new int[]{6, 8, 10, 25, 29, 33, 34}, new int[]{}, 0, 0, 0, 3, 6, 10, 10),
-    GOBLIN_SCOUT("Goblin Scout Camp", new int[]{14, 15, 14, 14}, new int[]{6, 8, 10, 25, 29, 33, 34}, new int[]{}, 0, 0, 1, 8, 6, 10, 10),
-    GOBLIN_ENCLOSURE("Goblin Prison Camp", new int[]{14, 15, 14, 14, 8, 7}, new int[]{6, 8, 10, 25, 29, 33, 34}, new int[]{}, 0, 0, 2, 8, 6, 10, 10),
-    GOBLIN_WARBAND("Goblin War Band", new int[]{15, 17, 14}, new int[]{6, 8, 10, 25, 29, 33, 34}, new int[]{}, 0, 0, 2, 8, 6, 10, 10),
-    GOBLIN_SCAVANGE("Goblin Scavenge Party", new int[]{14, 15, 16}, new int[]{6, 8, 10, 25, 29, 33, 34}, new int[]{}, 0, 0, 2, 8, 6, 10, 10),
-    SKELETON_CRYPT("Skeleton Crypt", new int[]{8, 7}, new int[]{6, 8, 10, 25, 29, 33, 34}, new int[]{}, 0, 0, 2, 8, 6, 10, 10),
-    SKELETON_SCOUT("Skeleton Scouts", new int[]{8, 11}, new int[]{6, 8, 10, 25, 29, 33, 34}, new int[]{}, 0, 0, 2, 8, 6, 10, 10),
-    SKELETON_ARMY("Skeleton Army", new int[]{11, 9}, new int[]{6, 8, 10, 25, 29, 33, 34}, new int[]{}, 0, 0, 2, 8, 6, 10, 10);
+    SNAKE_PIT("Snake Pit", new int[]{4, 5, 6}, new int[]{5, 23, 24, 28, 29, 33, 34, 35, 36}, new int[]{}, 0, 0, 4, 10, 5, 15, 10),
+    SCORPION_PIT("Scorpion Den", new int[]{3, 3, 3, 3, 4}, new int[]{5, 3, 2, 28, 29, 34, 33, 35, 36}, new int[]{}, 0, 0, 3, 5, 5, 15, 10),
+    CREATURE_PIT("Critters", new int[]{1, 2}, new int[]{5, 3, 2, 28, 29, 33, 34, 35, 36}, new int[]{}, 0, 0, 0, 3, 8, 15, 10),
+    GOBLIN_CAMP("Goblin Camp", new int[]{14}, new int[]{6, 8, 10, 25, 29, 33, 34, 36, 37, 38}, new int[]{}, 0, 0, 0, 3, 6, 10, 10),
+    GOBLIN_SCOUT("Goblin Scout Camp", new int[]{14, 15, 14, 14}, new int[]{6, 8, 10, 25, 29, 33, 34, 37, 38}, new int[]{}, 0, 0, 1, 8, 6, 10, 10),
+    GOBLIN_ENCLOSURE("Goblin Prison Camp", new int[]{14, 15, 14, 14, 8, 7}, new int[]{6, 8, 10, 25, 29, 33, 34, 37, 38}, new int[]{}, 0, 0, 2, 8, 6, 10, 10),
+    GOBLIN_WARBAND("Goblin War Band", new int[]{15, 17, 14}, new int[]{6, 8, 10, 25, 29, 33, 34, 37, 38}, new int[]{}, 0, 0, 2, 8, 6, 10, 10),
+    GOBLIN_SCAVANGE("Goblin Scavenge Party", new int[]{14, 15, 16}, new int[]{6, 8, 10, 25, 29, 33, 34, 37, 38}, new int[]{}, 0, 0, 2, 8, 6, 10, 10),
+    SKELETON_CRYPT("Skeleton Crypt", new int[]{8, 7}, new int[]{6, 8, 10, 25, 29, 33, 34, 39, 40}, new int[]{}, 0, 0, 2, 8, 6, 10, 10),
+    SKELETON_SCOUT("Skeleton Scouts", new int[]{8, 11}, new int[]{6, 8, 10, 25, 29, 33, 34, 39, 40}, new int[]{}, 0, 0, 2, 8, 6, 10, 10),
+    SKELETON_ARMY("Skeleton Army", new int[]{11, 9}, new int[]{6, 8, 10, 25, 29, 33, 34, 39, 40}, new int[]{}, 0, 0, 2, 8, 6, 10, 10);
 
     private final int[] monsterIds;
     private final int[] gameObjectIds;
